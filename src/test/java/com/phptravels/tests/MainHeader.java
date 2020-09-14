@@ -32,7 +32,6 @@ public class MainHeader {
         String actual = loginTab.getText().trim();
 
         Assert.assertEquals(actual,expected,"default text does not match");
-        System.out.println("success");
     }
 
     @AfterMethod
