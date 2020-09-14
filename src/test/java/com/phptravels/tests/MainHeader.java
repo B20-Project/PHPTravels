@@ -33,6 +33,15 @@ public class MainHeader {
 
         Assert.assertEquals(actual,expected,"default text does not match");
     }
+    
+    @Test//AC#1 - verify phptravels logo is visible 
+    public void User_Story_1_AC1(){
+        // locate logo element and assign it
+        WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
+        Assert.assertTrue(logo.isDisplayed(),"Logo is not visible");
+    }
+    
+    
 
     @AfterMethod
     public void tearDown(){
