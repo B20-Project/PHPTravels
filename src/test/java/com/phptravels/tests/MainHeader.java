@@ -32,6 +32,7 @@ public class MainHeader {
         String actual = loginTab.getText().trim();
 
         Assert.assertEquals(actual,expected,"default text does not match");
+        System.out.println("test1");
     }
     
     @Test//AC#1 - verify phptravels logo is visible 
@@ -40,6 +41,8 @@ public class MainHeader {
         WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
         Assert.assertTrue(logo.isDisplayed(),"Logo is not visible");
     }
+
+
     
     
 
