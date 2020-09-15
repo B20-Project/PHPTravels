@@ -51,7 +51,7 @@ public class MainHeader {
 
         String defaultSelectedLanguage = "ENGLISH";
         String actualSelectedLanguage = languageBar.getText();
-        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "AC6");
+        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
 
     }
 
