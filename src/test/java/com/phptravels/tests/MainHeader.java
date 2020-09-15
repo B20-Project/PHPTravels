@@ -4,6 +4,7 @@ import com.phptravels.Util.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -41,6 +42,18 @@ public class MainHeader {
         WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
         Assert.assertTrue(logo.isDisplayed(),"Logo is not visible");
     }
+
+    @Test// AC#6-Verify language bar visible & default language selected (ENGLISH)
+    public void global_language_bar(){
+        WebElement languageBar = driver.findElement(By.xpath("//a[@id='dropdownLangauge']"));
+        Assert.assertTrue(languageBar.isDisplayed());
+
+        String defaultSelectedLanguage = "ENGLISH";
+        String actualSelectedLanguage = languageBar.getText();
+        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "AC6");
+
+    }
+
 
     @Test //AC#8 - verify phone icon visible
     public void User_Story_1_AC8 (){
