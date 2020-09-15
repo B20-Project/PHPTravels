@@ -42,11 +42,16 @@ public class MainHeader {
         Assert.assertTrue(logo.isDisplayed(),"Logo is not visible");
     }
 
-    @Test //AC#8 - verify phone icon visible
+      @Test //AC#8 - verify phone icon visible
     public void User_Story_1_AC8 (){
-        WebElement phoneIcon = driver.findElement(By.xpath("//i[contains(@class,'material-icons')]"));
+        WebElement phoneIcon = driver.findElement(By.xpath("//div[contains(@class,'navbar-phone d-none d-lg-block o1')]//i")); //one match
+        
+        //NOTE: There were two matches with the below so I used the one at top which has one match
+        //WebElement phoneIcon = driver.findElement(By.xpath("//i[contains(@class,'material-icons')]"));
+        
         Assert.assertTrue(phoneIcon.isDisplayed(),"Login tab is not displayed");
     }
+
 
     @AfterMethod
     public void tearDown(){
