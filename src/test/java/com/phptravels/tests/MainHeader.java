@@ -48,6 +48,14 @@ public class MainHeader {
         Assert.assertTrue(phoneIcon.isDisplayed(),"Login tab is not displayed");
     }
 
+    @Test //AC#5 verify currency is visible and default selected
+
+    public void User_Story_1_AC5(){
+        WebElement currency = driver.findElement(By.xpath("//a[contains(.,'USD   ')]"));
+        Assert.assertTrue(currency.isDisplayed(),"Currency default USD is not displayed ");
+
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();
