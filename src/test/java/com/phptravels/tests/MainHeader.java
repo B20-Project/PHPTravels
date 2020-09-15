@@ -42,6 +42,26 @@ public class MainHeader {
         WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
         Assert.assertTrue(logo.isDisplayed(),"Logo is not visible");
     }
+    
+    @Test// AC#2 - verify phptravels logo is clickable - arpat
+    public void User_Story_1_AC2() throws InterruptedException {
+
+
+        //go to any web inside of PHPTRAVels
+        driver.get("https://www.phptravels.net/blog/Fiercely-Independent-Cultures");
+        Thread.sleep(10000);
+
+        //Click the logo
+        WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
+        logo.click();
+
+        //verify  the URL
+        String expectedResult="https://www.phptravels.net/";
+        String actuallyResult= driver.getCurrentUrl();
+
+        Assert.assertTrue(expectedResult.equalsIgnoreCase(actuallyResult));
+
+    }
 
 
     @Test// AC#6-Verify language bar visible & default language selected (ENGLISH)
