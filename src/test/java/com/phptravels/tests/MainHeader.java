@@ -22,7 +22,7 @@ public class MainHeader {
         driver.get(URL);
     }
 
-    @Test
+    @Test //AC#9
     public void login_tab() {
         WebElement loginTab = driver.findElement(By.xpath("//div[contains(@class,'dropdown dropdown-login')]/a"));
         Assert.assertTrue(loginTab.isDisplayed(),"Login tab is not displayed");
@@ -41,7 +41,7 @@ public class MainHeader {
     }
     
     @Test// AC#2 - verify phptravels logo is clickable - arpat
-    public void User_Story_1_AC2() throws InterruptedException {
+    public void User_Story_1_AC2() {
 
         driver.navigate().to("https://www.phptravels.net/blog/Fiercely-Independent-Cultures");
 
