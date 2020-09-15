@@ -4,12 +4,10 @@ import com.phptravels.Util.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.util.concurrent.TimeUnit;
 
 public class MainHeader {
@@ -25,7 +23,7 @@ public class MainHeader {
     }
 
     @Test
-    public void login_tab(){
+    public void login_tab() {
         WebElement loginTab = driver.findElement(By.xpath("//div[contains(@class,'dropdown dropdown-login')]/a"));
         Assert.assertTrue(loginTab.isDisplayed(),"Login tab is not displayed");
 
@@ -33,7 +31,6 @@ public class MainHeader {
         String actual = loginTab.getText().trim();
 
         Assert.assertEquals(actual,expected,"default text does not match");
-        System.out.println("test1");
     }
     
     @Test//AC#1 - verify phptravels logo is visible 
@@ -46,23 +43,17 @@ public class MainHeader {
     @Test// AC#2 - verify phptravels logo is clickable - arpat
     public void User_Story_1_AC2() throws InterruptedException {
 
+        driver.navigate().to("https://www.phptravels.net/blog/Fiercely-Independent-Cultures");
 
-        //go to any web inside of PHPTRAVels
-        driver.get("https://www.phptravels.net/blog/Fiercely-Independent-Cultures");
-        Thread.sleep(10000);
-
-        //Click the logo
-        WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
+        WebElement logo = driver.findElement(By.xpath("//div[@class='header-logo go-right']/a"));
         logo.click();
 
-        //verify  the URL
         String expectedResult="https://www.phptravels.net/";
         String actuallyResult= driver.getCurrentUrl();
 
         Assert.assertTrue(expectedResult.equalsIgnoreCase(actuallyResult));
 
     }
-
 
     @Test// AC#6-Verify language bar visible & default language selected (ENGLISH)
     public void global_language_bar(){
@@ -72,10 +63,7 @@ public class MainHeader {
         String defaultSelectedLanguage = "ENGLISH";
         String actualSelectedLanguage = languageBar.getText();
         Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
-
     }
-
-
 
     @Test  //AC#7 - verify phoneNumber is visible & correct (+1-234-56789)
     public void User_Story_1_AC7 (){
@@ -91,7 +79,6 @@ public class MainHeader {
         Assert.assertTrue(phoneNumber.isDisplayed(),"Login tab is not displayed");
         Assert.assertEquals(actual,expected,"default text does not match");
     }
-    
 
     @Test //AC#8 - verify phone icon visible
     public void User_Story_1_AC8 (){
