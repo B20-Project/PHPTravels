@@ -14,13 +14,14 @@ import java.util.concurrent.TimeUnit;
 
 public class HeaderDropDownModules {
     WebDriver driver;
+    String browserType = "chrome";
     String URL = "https://www.phptravels.net/";
     String languageBarXpath = "//a[@id='dropdownLangauge']";
     String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
 
     @BeforeMethod
     public void setUp(){
-        driver = WebDriverFactory.getDriver("chrome");
+        driver = WebDriverFactory.getDriver(browserType);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(URL);
