@@ -12,11 +12,13 @@ import java.util.concurrent.TimeUnit;
 
 public class MainHeader {
     WebDriver driver;
-    String URL = "https://www.phptravels.net/";
+    String browserType = "chrome";
+    private String URL = "https://www.phptravels.net/";
+    private String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";
 
     @BeforeMethod
     public void setUp(){
-        driver = WebDriverFactory.getDriver("chrome");
+        driver = WebDriverFactory.getDriver(browserType);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(URL);
@@ -24,7 +26,7 @@ public class MainHeader {
 
     @Test //AC#9
     public void login_tab() {
-        WebElement loginTab = driver.findElement(By.xpath("//div[contains(@class,'dropdown dropdown-login')]/a"));
+        WebElement loginTab = driver.findElement(By.xpath(loginTabXpath));
         Assert.assertTrue(loginTab.isDisplayed(),"Login tab is not displayed");
 
         String expected = "MY ACCOUNT";
@@ -52,7 +54,6 @@ public class MainHeader {
         String actuallyResult= driver.getCurrentUrl();
 
         Assert.assertTrue(expectedResult.equalsIgnoreCase(actuallyResult));
-
     }
 
     @Test// AC#6-Verify language bar visible & default language selected (ENGLISH)
