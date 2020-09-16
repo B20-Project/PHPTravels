@@ -26,12 +26,11 @@ public class HeaderDropDownModules {
         driver.get(URL);
     }
 
-    @Test //AC#3 - Language DropDown - verify each language (Elvira)
+    @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
     public void language_dropDown(){
 
         WebElement languageBar = driver.findElement(By.xpath(languageBarXpath));
         languageBar.click();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
 
