@@ -16,6 +16,10 @@ public class MainHeader {
     private String URL = "https://www.phptravels.net/";
     private String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";
 
+    private String contact_US_Url = "https://www.phptravels.net/contact-us";
+    private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
+
+
     @BeforeMethod
     public void setUp(){
         driver = WebDriverFactory.getDriver(browserType);
@@ -95,8 +99,54 @@ public class MainHeader {
 
     }
 
+    @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
+    public void homeTab_Verification(){
+        driver.get(contact_US_Url);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.findElement(By.xpath(homeTabXpath)).click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) { }
+
+        String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
+    }
+
+
     @AfterMethod
     public void tearDown(){
         driver.quit();
     }
-}
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
