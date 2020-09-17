@@ -84,7 +84,7 @@ public class FooterLinks_Features {
 
      }
     
-    @Test //AC#2 - Verify all footer texts - (Ahmet) 
+    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet) 
     public void User_Story_3_AC2()  {
         List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
 
@@ -103,7 +103,7 @@ public class FooterLinks_Features {
         
     }
     
-     @Test //AC#3 - verify subscription function with valid email - (Ahmet)
+     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
     public void User_Story_3_AC3() throws InterruptedException {
 
         int randomNumber = (int) (Math.random() * 1000);
