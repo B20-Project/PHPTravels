@@ -28,6 +28,11 @@ public class HeaderDropDownModules {
     String loginTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[1]";
     String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
 
+    //Company tab
+    private String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
+    private String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
+
+
     @BeforeMethod
     public void setUp(){
         driver = WebDriverFactory.getDriver(browserType);
@@ -102,8 +107,47 @@ public class HeaderDropDownModules {
         Assert.assertEquals(actual,expected,"page title does not match");
     }
 
+    // BTOR-1_AC#4 Verify company tab is functional (abdu)
+    @Test
+    public void company_DropDown_Verification() throws InterruptedException {
+        driver.findElement(By.xpath(companyTabXpath)).click();
+        Thread.sleep(1000);
+        String actual_Style_Value = driver.findElement(By.xpath(getCompanyTabStyleXpath)).getAttribute("style");
+        // System.out.println("actual_Style_Value = " + actual_Style_Value);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
+        String expected_Style_Value = "display: block;";
+        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
+    }
+
+    // BTOR-12_AC#1 Verify company dropdown Contact tab is functional (abdu)
+    @Test
+    public void company_DropDown_contact_Verification() throws InterruptedException {
+        driver.findElement(By.xpath(companyTabXpath)).click();
+        Thread.sleep(1000);
+        driver.findElement((By.linkText("Contact"))).click();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
+        String expected_title_Value = "Contact";
+        String actual_title_Value = driver.getTitle();
+        Assert.assertEquals(actual_title_Value, expected_title_Value, "page title does not match");
+    }
+
+    // BTOR-12_AC#1 Verify company dropdown About Us tab is functional(abdu)
+    @Test
+    public void company_DropDown_AboutUs_Verification() throws InterruptedException {
+        driver.findElement(By.xpath(companyTabXpath)).click();
+        Thread.sleep(1000);
+        driver.findElement((By.linkText("About Us"))).click();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        String expected_title_Value = "About Us";
+        String actual_title_Value = driver.getTitle();
+        Assert.assertEquals(actual_title_Value, expected_title_Value, "page title does not match");
+    }
+
     @AfterMethod
     public void tearDown(){
         driver.quit();
     }
+
 }
