@@ -70,7 +70,7 @@ public class MainHeader {
         Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
     }
 
-    @Test  //UserStory#1-AC#7 - verify phoneNumber is visible & correct (+1-234-56789) (Ahmet)
+    @Test  //UserStory#1(BTOR-9) AC#7 - verify phoneNumber is visible & correct (+1-234-56789) (Ahmet)
     public void User_Story_1_AC7() {
 
         WebElement phoneNumber = driver.findElement(By.xpath("//span[contains(@class,'d-block footer-phone text-white')]"));
@@ -85,7 +85,7 @@ public class MainHeader {
         Assert.assertEquals(actual, expected, "default text does not match");
     }
 
-    @Test //UserStory#1-AC#8 - verify phone icon visible (Ahmet)
+    @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
     public void User_Story_1_AC8() {
         WebElement phoneIcon = driver.findElement(By.xpath("//i[contains(@class,'material-icons')]"));
         Assert.assertTrue(phoneIcon.isDisplayed(), "Login tab is not displayed");
