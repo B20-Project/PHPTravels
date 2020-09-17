@@ -21,7 +21,7 @@ public class MainHeader {
 
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = WebDriverFactory.getDriver(browserType);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -31,21 +31,21 @@ public class MainHeader {
     @Test //AC#9
     public void login_tab() {
         WebElement loginTab = driver.findElement(By.xpath(loginTabXpath));
-        Assert.assertTrue(loginTab.isDisplayed(),"Login tab is not displayed");
+        Assert.assertTrue(loginTab.isDisplayed(), "Login tab is not displayed");
 
         String expected = "MY ACCOUNT";
         String actual = loginTab.getText().trim();
 
-        Assert.assertEquals(actual,expected,"default text does not match");
+        Assert.assertEquals(actual, expected, "default text does not match");
     }
-    
+
     @Test//AC#1 - verify phptravels logo is visible 
-    public void User_Story_1_AC1(){
+    public void User_Story_1_AC1() {
         // locate logo element and assign it
-        WebElement logo =  driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
-        Assert.assertTrue(logo.isDisplayed(),"Logo is not visible");
+        WebElement logo = driver.findElement(By.cssSelector("div[class='header-logo go-right']"));
+        Assert.assertTrue(logo.isDisplayed(), "Logo is not visible");
     }
-    
+
     @Test// AC#2 - verify phptravels logo is clickable - arpat
     public void User_Story_1_AC2() {
 
@@ -54,14 +54,14 @@ public class MainHeader {
         WebElement logo = driver.findElement(By.xpath("//div[@class='header-logo go-right']/a"));
         logo.click();
 
-        String expectedResult="https://www.phptravels.net/";
-        String actuallyResult= driver.getCurrentUrl();
+        String expectedResult = "https://www.phptravels.net/";
+        String actuallyResult = driver.getCurrentUrl();
 
         Assert.assertTrue(expectedResult.equalsIgnoreCase(actuallyResult));
     }
 
     @Test// AC#6-Verify language bar visible & default language selected (ENGLISH)
-    public void global_language_bar(){
+    public void global_language_bar() {
         WebElement languageBar = driver.findElement(By.xpath("//a[@id='dropdownLangauge']"));
         Assert.assertTrue(languageBar.isDisplayed());
 
@@ -71,7 +71,7 @@ public class MainHeader {
     }
 
     @Test  //AC#7 - verify phoneNumber is visible & correct (+1-234-56789)
-    public void User_Story_1_AC7 (){
+    public void User_Story_1_AC7() {
 
         WebElement phoneNumber = driver.findElement(By.xpath("//span[contains(@class,'d-block footer-phone text-white')]"));
         String text = phoneNumber.getText();
@@ -81,72 +81,42 @@ public class MainHeader {
         String expected = "phone +1-234-56789";
         String actual = phoneNumber.getText().trim();
 
-        Assert.assertTrue(phoneNumber.isDisplayed(),"Login tab is not displayed");
-        Assert.assertEquals(actual,expected,"default text does not match");
+        Assert.assertTrue(phoneNumber.isDisplayed(), "Login tab is not displayed");
+        Assert.assertEquals(actual, expected, "default text does not match");
     }
 
     @Test //AC#8 - verify phone icon visible
-    public void User_Story_1_AC8 (){
+    public void User_Story_1_AC8() {
         WebElement phoneIcon = driver.findElement(By.xpath("//i[contains(@class,'material-icons')]"));
-        Assert.assertTrue(phoneIcon.isDisplayed(),"Login tab is not displayed");
+        Assert.assertTrue(phoneIcon.isDisplayed(), "Login tab is not displayed");
     }
 
     @Test //AC#5 verify currency is visible and default selected
 
-    public void User_Story_1_AC5(){
+    public void User_Story_1_AC5() {
         WebElement currency = driver.findElement(By.xpath("//a[contains(.,'USD   ')]"));
-        Assert.assertTrue(currency.isDisplayed(),"Currency default USD is not displayed ");
+        Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
 
     }
 
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
-    public void homeTab_Verification(){
+    public void homeTab_Verification() {
         driver.get(contact_US_Url);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.findElement(By.xpath(homeTabXpath)).click();
 
         try {
             Thread.sleep(1000);
-        } catch (InterruptedException e) { }
+        } catch (InterruptedException e) {
+        }
 
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = driver.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
     }
 
-
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
