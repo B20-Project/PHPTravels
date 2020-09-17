@@ -16,6 +16,9 @@ public class FooterLinks_Features {
     WebDriver driver;
     String browserType = "chrome";
     String URL = "https://www.phptravels.net/";
+    
+    String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
+    String EnterEmailXpath = "//input[contains(@type,'email')]";
 
 
     @BeforeMethod
@@ -81,7 +84,7 @@ public class FooterLinks_Features {
 
      }
     
-    @Test //AC#2 - Verify all footer texts
+    @Test //AC#2 - Verify all footer texts - (Ahmet) 
     public void User_Story_3_AC2()  {
         List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
 
@@ -97,32 +100,32 @@ public class FooterLinks_Features {
             i++;
         }
         System.out.println("===================================");
-
-        /*MANUAL WAY OF IDENTIFYING ONE BY ONE
         
-        //SUPPLIER SIGN UP
-        WebElement SupplierSignUp = driver.findElement(By.xpath("//a[contains(@href,'https://www.phptravels.net/supplier-register/')]"));
-        String text1 = SupplierSignUp.getText();
-        System.out.println(text1);
-
-        String expected1 = "Supplier Sign Up";
-        String actual1 = SupplierSignUp.getText().trim();
-        
-        Assert.assertTrue(SupplierSignUp.isDisplayed(),"Supplier Sign up text is not displayed");
-        Assert.assertEquals(actual1,expected1,"default text does not match");
-
-        // SUPPLIER LOGIN
-        WebElement SupplierLogin = driver.findElement(By.xpath("//a[contains(@href,'https://www.phptravels.net/supplier/')]"));
-        String text2 = SupplierLogin.getText();
-        System.out.println(text2);
-
-        String expected2 = "Supplier Login";
-        String actual2 = SupplierLogin.getText().trim();
-
-        Assert.assertTrue(SupplierLogin.isDisplayed(), "Supplier Login text is not displayed");
-        Assert.assertEquals(actual2, expected2, "default text does not match");
-*/
     }
+    
+     @Test //AC#3 - verify subscription function with valid email - (Ahmet)
+    public void User_Story_3_AC3() throws InterruptedException {
+
+        int randomNumber = (int) (Math.random() * 1000);
+        //System.out.println("randomNumber = " + randomNumber); //testing random #
+        String firstTime = "test" + randomNumber + "@gmail.com";
+        System.out.println(firstTime);
+        String inValid = "@gmail.com";
+        String secondTime = "test";
+
+        driver.findElement(By.xpath(EnterEmailXpath)).sendKeys(firstTime + Keys.ENTER);
+        Thread.sleep(3000);
+
+        driver.findElement(By.xpath(SubscribeButtonXpath)).click();
+        Thread.sleep(1000);
+
+        WebElement SubscribedSuccessfully = driver.findElement(By.xpath("//ul[@class='nav navbar-nav']"));
+        String expected = "Subscribed Successfully";
+        String actual = SubscribedSuccessfully.getText().trim();
+
+        Assert.assertEquals(actual,expected,"default text does not match");
+    }
+
     
 
     @AfterMethod
