@@ -26,6 +26,61 @@ public class FooterLinks_Features {
         driver.get(URL);
     }
     
+        @Test //AC#1 - verify all footer anchor links (Arpat)
+    public void User_Story_3_AC1() throws InterruptedException {
+        //SUPPLIER
+        String[]supplierExpected = {"supplier Registration","Supplier Login"};
+        List<WebElement> supplierList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li"));// it should give me 3
+
+        for (int i = 1; i <supplierList.size() ; i++) {// start with 1 bec first one is not clickable
+            driver.findElement(By.xpath(            "//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li["+i+"]/a"));
+            driver.get(driver.findElement(By.xpath("//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li["+(i+1)+"]/a")).getAttribute("href"));
+            Thread.sleep(3000);
+            //get expectResult
+            Assert.assertEquals(driver.getTitle(),supplierExpected[i-1]);
+            driver.navigate().back();
+        }
+
+        // COMPANY
+        String[] companyExpected = {"Contact","How to Book","Booking Tips","About Us"};
+        List<WebElement> companyList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li"));// it should give me 4 result
+        for (int i = 0; i <companyList.size() ; i++) {
+            driver.findElement(By.xpath(           "//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li["+(i+1)+"]//a"));// re fined when page get refresh
+            driver.get(driver.findElement(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li["+(i+1)+"]//a")).getAttribute("href"));
+            Thread.sleep(3000);
+            Assert.assertEquals(driver.getTitle(), companyExpected[i]);
+            driver.navigate().back();
+        }
+
+        //SUPPORT
+        String[] supportExpected = {"FAQ","Our Partners","Privacy Policy","Terms of Use"};
+        List<WebElement> supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
+        for (int i = 0; i <companyList.size() ; i++) {
+            driver.findElement(By.xpath(           "//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li["+(i+1)+"]//a"));// re fined when page get refresh
+            driver.get(driver.findElement(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li["+(i+1)+"]//a")).getAttribute("href"));
+            Thread.sleep(3000);
+            Assert.assertEquals(driver.getTitle(), supportExpected[i]);
+            driver.navigate().back();
+        }
+
+        //webs
+        String [] websExpected = {"Happy To Serve Travel - Home | Facebook",
+                          "PHPTRAVELS (@PHPTRAVELS) / Twitter",
+                          "PHPTRAVELS - YouTube",
+                          "Share on WhatsApp",
+                          "Your location to phptravels google maps - Google Maps",
+                          "Page Not Found • Instagram"};
+        List<WebElement> websList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='col-inner mt-25-sm']//div[@class='footer-socials go-right']/a"));// it should give me 4 result
+        for (int i = 0; i < websList.size() ; i++) {
+            driver.findElement(By.xpath(           "//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='col-inner mt-25-sm']//div[@class='footer-socials go-right']/a"));// re fined when page get refresh
+            driver.get(driver.findElement(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='col-inner mt-25-sm']//div[@class='footer-socials go-right']/a["+(i+1)+"]")).getAttribute("href"));
+            Thread.sleep(3000);
+            Assert.assertEquals(driver.getTitle(),websExpected[i]);
+            driver.navigate().back();
+        }
+
+     }
+    
     @Test //AC#2 - Verify all footer texts
     public void User_Story_3_AC2()  {
         List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
