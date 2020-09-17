@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +37,7 @@ public class Signup {
         driver.get(URL);
     }
 
+    @Test
     public void signuptest1(){
         // **DO NOT RUN** Need a parent class from Header
         driver.findElement(By.xpath(firstNameXpath)).sendKeys(firstName);
