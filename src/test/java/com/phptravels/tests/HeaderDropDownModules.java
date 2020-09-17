@@ -16,11 +16,17 @@ public class HeaderDropDownModules {
     WebDriver driver;
     String browserType = "chrome";
     String URL = "https://www.phptravels.net/";
+
     String languageBarXpath = "//a[@id='dropdownLangauge']";
     String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
     String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
     String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
 
+
+    //My Account Dropdown tabs
+    String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
+    String loginTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[1]";
+    String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
 
     @BeforeMethod
     public void setUp(){
@@ -29,6 +35,7 @@ public class HeaderDropDownModules {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(URL);
     }
+
     @Test //AC#2 - Currency DropDown - verify each currency(Zeliha)
     public void currency_dropdown (){
 
@@ -52,15 +59,7 @@ public class HeaderDropDownModules {
         int sizeOfListOfCurrencies = listOfCurrencies.size();
 
         Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
-
-
-
-
-
-
-
     }
-
 
     @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
     public void language_dropDown(){
@@ -83,7 +82,25 @@ public class HeaderDropDownModules {
         Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
     }
 
+    @Test
+    public void login_Tab(){
+        driver.findElement(By.xpath(myAccountXpath)).click();
+        driver.findElement(By.xpath(loginTabXpath)).click();
 
+        String expected = "Login";
+        String actual = driver.getTitle();
+        Assert.assertEquals(actual,expected,"page title does not match");
+    }
+
+    @Test
+    public void signUp_tab(){
+        driver.findElement(By.xpath(myAccountXpath)).click();
+        driver.findElement(By.xpath(signupTabXpath)).click();
+
+        String expected = "Register";
+        String actual = driver.getTitle();
+        Assert.assertEquals(actual,expected,"page title does not match");
+    }
 
     @AfterMethod
     public void tearDown(){
