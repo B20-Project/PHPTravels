@@ -81,7 +81,14 @@ public class FooterLinks_Features {
             Assert.assertEquals(driver.getTitle(),websExpected[i]);
             driver.navigate().back();
         }
-
+        
+        //Logo
+        String logoExpected ="PHPTRAVELS booking script and system for hotels airline flights tours cars online application - PHPTRAVELS";
+        driver.get(driver.findElement(By.cssSelector("#footer > div.container > div.d-none.d-md-block > div > div > a")).getAttribute("href"));
+        driver.getTitle();
+        Assert.assertEquals(driver.getTitle(),logoExpected);
+        driver.navigate().back();
+     
      }
     
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet) 
