@@ -33,4 +33,13 @@ public class Homepage extends  AbstractPageBase {
     String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
     String EnterEmailXpath = "//input[contains(@type,'email')]";
 
+
+    // Arpat
+    /////////////////////////////////////////////////////////////////////////////
+    public static void footer_supplier_Sign_Up(){
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
 }
