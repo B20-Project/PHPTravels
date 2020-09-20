@@ -1,10 +1,10 @@
 package com.Draft.tests;
 
 import com.Draft.pages.AbstractPageBase;
-import com.Draft.pages.SingUpPage;
+import com.Draft.pages.SignUpPage;
 import sun.jvm.hotspot.debugger.Page;
 
-public class SignUpPage extends AbstractPageBase {
+public class TestSignUpPage extends AbstractPageBase {
 
 
     SignUpPage signuppage = new SignUpPage();
