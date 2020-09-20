@@ -20,6 +20,7 @@ public class FooterLinks_Features {
     
     String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
     String EnterEmailXpath = "//input[contains(@type,'email')]";
+    String SubscribedSuccessfully = "//ul[@class='nav navbar-nav')]";
 
 
     @BeforeMethod
@@ -129,9 +130,8 @@ public class FooterLinks_Features {
         driver.findElement(By.xpath(SubscribeButtonXpath)).click();
         Thread.sleep(1000);
 
-        WebElement SubscribedSuccessfully = driver.findElement(By.xpath("//ul[@class='nav navbar-nav']"));
         String expected = "Subscribed Successfully";
-        String actual = SubscribedSuccessfully.getText().trim();
+        String actual = driver.findElement(By.xpath(SubscribedSuccessfully)).getText().trim();
 
         Assert.assertEquals(actual,expected,"default text does not match");
     }
