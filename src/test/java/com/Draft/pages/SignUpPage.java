@@ -1,5 +1,5 @@
 package com.Draft.pages;
 
-public class SingUpPage {
+public class SignUpPage {
 
 }
