@@ -14,7 +14,7 @@ import com.Draft.pages.*;
 
 public class TestHomePage extends AbstractTestBase{
 
-    Homepage homepage = new Homepage();
+    HomePage homepage = new HomePage();
 
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
     public void homeTab_Verification() {
