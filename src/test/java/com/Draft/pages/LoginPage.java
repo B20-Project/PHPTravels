@@ -1,4 +1,4 @@
-package com.Draft.pages;
+package com.Draft.Pages;
 
 public class LoginPage {
 

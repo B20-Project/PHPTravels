@@ -1,6 +1,6 @@
-package com.Draft.tests;
+package com.Draft.Tests;
 
-import com.Draft.pages.AbstractPageBase;
+import com.Draft.Pages.AbstractPageBase;
 
 public class LoginPage extends AbstractPageBase {
 }
