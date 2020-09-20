@@ -1,8 +1,8 @@
 package com.Draft.pages;
 
 
-public  class AbstractPageBase {
-
+public  abstract class AbstractPageBase {
+String PhPUrl = "https://www.phptravels.net/contact-us";
 
 
 
