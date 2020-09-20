@@ -47,7 +47,7 @@ public class Homepage extends  AbstractPageBase {
     }
 
     private static List<WebElement>companyList=null;
-    public static List<WebElement> companyList(WebElement driver){
+    public static List<WebElement> companyList(WebDriver driver){
         companyList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li"));// it should give me 4 result
         return companyList;
     }
