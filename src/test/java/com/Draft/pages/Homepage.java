@@ -1,7 +1,11 @@
 package com.Draft.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 public class Homepage extends  AbstractPageBase {
 
@@ -36,9 +40,15 @@ public class Homepage extends  AbstractPageBase {
 
     // Arpat
     /////////////////////////////////////////////////////////////////////////////
-    public static void footer_supplier_Sign_Up(){
+    private static List<WebElement> supplierList=null;
 
+    public static  List<WebElement> footer_ListOf_supplier_Sign_Up(WebDriver driver){
+       supplierList= driver.findElements(By.xpath("//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li"));
+      return supplierList;
     }
+
+
+
 
     ////////////////////////////////////////////////////////////////////////////
 
