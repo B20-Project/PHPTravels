@@ -2,6 +2,7 @@ package com.phptravels.tests;
 
 import com.phptravels.Util.WebDriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -42,6 +43,7 @@ public class FooterLinks_Features {
             //get expectResult
             Assert.assertEquals(driver.getTitle(),supplierExpected[i-1]);
             driver.navigate().back();
+
         }
 
         // COMPANY
