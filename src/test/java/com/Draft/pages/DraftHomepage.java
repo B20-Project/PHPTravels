@@ -7,14 +7,14 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class Homepage extends  AbstractPageBase {
+public class DraftHomepage extends  AbstractPageBase {
 
     //MAIN HEADER WEB ELEMENTS
     private String URL = "https://www.phptravels.net/";
     private String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";
 
     private String contact_US_Url = "https://www.phptravels.net/contact-us";
-    private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
+    //private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
 
 
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
@@ -59,7 +59,13 @@ public class Homepage extends  AbstractPageBase {
     }
 
 
+    private static WebElement homeTabXpath = null;
+    public static WebElement homeTabXpath (WebDriver driver){
+        homeTabXpath = driver.findElement(By.xpath("//div[@id='mobileMenuMain']/nav/ul[1]/li/a"));
+        return homeTabXpath;
+    }
 
-    ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 }

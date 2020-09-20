@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class HomePage   {
+public class TestHomePage {
 
     public static WebDriver driver;
     String browserType = "chrome";
@@ -21,22 +21,28 @@ public class HomePage   {
         driver.get(URL);
     }
 
+    @Test
+    public static void User_Story_1_AC3(){
+        DraftHomepage.homeTabXpath(driver).click();
+
+    }
+
 
     @Test //AC#1 - verify all footer anchor links (Arpat)
     public static void User_Story_3_AC1() throws InterruptedException {
         //SUPPLIER
         String[]supplierExpected = {"supplier Registration","Supplier Login"};
-        Homepage.companyList(driver).size();
+        DraftHomepage.companyList(driver).size();
 
 
 
         // COMPANY
         String[] companyExpected = {"Contact","How to Book","Booking Tips","About Us"};
-        Homepage.companyList(driver).size();
+        DraftHomepage.companyList(driver).size();
 
         //Support
         String[] supportExpected = {"FAQ","Our Partners","Privacy Policy","Terms of Use"};
-        Homepage.supportExpected(driver).size();
+        DraftHomepage.supportExpected(driver).size();
 
 
 
