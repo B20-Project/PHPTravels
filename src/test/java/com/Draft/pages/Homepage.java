@@ -41,12 +41,22 @@ public class Homepage extends  AbstractPageBase {
     // Arpat
     /////////////////////////////////////////////////////////////////////////////
     private static List<WebElement> supplierList=null;
-
     public static  List<WebElement> footer_ListOf_supplier_Sign_Up(WebDriver driver){
        supplierList= driver.findElements(By.xpath("//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li"));
       return supplierList;
     }
 
+    private static List<WebElement>companyList=null;
+    public static List<WebElement> companyList(WebElement driver){
+        companyList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li"));// it should give me 4 result
+        return companyList;
+    }
+
+    private static List<WebElement> supportList=null;
+    public static List<WebElement>supportExpected(WebDriver driver){
+        supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
+        return supportList;
+    }
 
 
 
