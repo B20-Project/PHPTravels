@@ -1,4 +1,4 @@
-package com.Draft.pages;
+package com.Draft.Pages;
 
 
 import com.Draft.Utility.WebDriverFactory;
