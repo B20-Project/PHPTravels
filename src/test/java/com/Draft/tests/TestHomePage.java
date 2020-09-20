@@ -2,6 +2,7 @@ package com.Draft.tests;
 import com.Draft.pages.*;
 import com.phptravels.Util.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -23,9 +24,20 @@ public class TestHomePage {
 
     @Test
     public static void User_Story_1_AC3(){
+        driver.get("https://www.phptravels.net/contact-us");
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         DraftHomepage.homeTabXpath(driver).click();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
 
+        String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
     }
+
+
 
 
     @Test //AC#1 - verify all footer anchor links (Arpat)
