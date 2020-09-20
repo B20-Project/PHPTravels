@@ -89,5 +89,35 @@ public class TestHomePage extends com.Draft.Tests.AbstractTestBase {
         Assert.assertEquals(actual,expected,"default text does not match");
     }
 
+    @Test// User story#1(BTOR-1) AC#6-Verify language bar visible & default language selected "ENGLISH" (Elvira)
+    public void global_language_bar() {
+        WebElement languageBar = driver.findElement(By.xpath(homepage.languageBarXpath));
+        Assert.assertTrue(languageBar.isDisplayed());
+
+        String defaultSelectedLanguage = "ENGLISH";
+        String actualSelectedLanguage = languageBar.getText();
+        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
+    }
+
+    @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
+    public void language_dropDown(){
+        WebElement languageBar = driver.findElement(By.xpath(homepage.languageBarXpath));
+        languageBar.click();
+
+        String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
+
+        int i = 0;
+        List<WebElement> listOfLanguages = driver.findElements(By.xpath(homepage.listOfLanguagesXpath));
+        for(WebElement each : listOfLanguages){
+            //System.out.println(each.getText());
+            Assert.assertEquals(each.getText(), expectedListOfLanguages[i]);
+            i++;
+        }
+
+        int sizeOfExpectedListOfLanguages = expectedListOfLanguages.length;
+        int sizeOfListOfLanguages = listOfLanguages.size();
+        Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
+    }
+
 
 }

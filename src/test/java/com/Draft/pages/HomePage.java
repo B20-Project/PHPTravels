@@ -15,8 +15,8 @@ public class HomePage {
     public String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
 
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
-    String languageBarXpath = "//a[@id='dropdownLangauge']";
-    String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+    public String languageBarXpath = "//a[@id='dropdownLangauge']";
+    public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
     String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
     String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
 
