@@ -7,15 +7,14 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class DraftHomepage extends  AbstractPageBase {
+public class Homepage extends  AbstractPageBase {
 
     //MAIN HEADER WEB ELEMENTS
-    private String URL = "https://www.phptravels.net/";
+    String URL = "https://www.phptravels.net/";
+    public String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";
 
-
-    private String contact_US_Url = "https://www.phptravels.net/contact-us";
-    //private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
-
+    public String contact_US_Url = "https://www.phptravels.net/contact-us";
+    public String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
 
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
     String languageBarXpath = "//a[@id='dropdownLangauge']";
@@ -25,12 +24,12 @@ public class DraftHomepage extends  AbstractPageBase {
 
     //My Account Dropdown tabs
     String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
-
+  // String loginTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[1]";
     String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
 
     //Company tab
-    private String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
-    private String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
+     String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
+     String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
@@ -47,7 +46,7 @@ public class DraftHomepage extends  AbstractPageBase {
     }
 
     private static List<WebElement>companyList=null;
-    public static List<WebElement> companyList(WebDriver driver){
+    public static List<WebElement> companyList(WebElement driver){
         companyList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li"));// it should give me 4 result
         return companyList;
     }
@@ -59,13 +58,7 @@ public class DraftHomepage extends  AbstractPageBase {
     }
 
 
-    private static WebElement homeTabXpath = null;
-    public static WebElement homeTabXpath(WebDriver driver){
-        homeTabXpath = driver.findElement(By.xpath(loginTabXpath));
-        return homeTabXpath;
-    }
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////////////////////////////////
 
 }

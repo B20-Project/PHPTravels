@@ -1,4 +1,6 @@
 package com.Draft.tests;
 
-public class SingupPage {
+import com.Draft.pages.AbstractPageBase;
+
+public class SingupPage extends AbstractPageBase {
 }

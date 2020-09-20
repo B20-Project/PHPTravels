@@ -1,4 +1,6 @@
 package com.Draft.tests;
 
-public class LoginPage {
+import com.Draft.pages.AbstractPageBase;
+
+public class LoginPage extends AbstractPageBase {
 }

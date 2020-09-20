@@ -1,32 +1,27 @@
 package com.Draft.tests;
-import com.Draft.pages.*;
-import com.phptravels.Util.WebDriverFactory;
-import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestHomePage {
+import com.Draft.pages.*;
 
-    public static WebDriver driver;
-    String browserType = "chrome";
-    String URL = "https://www.phptravels.net/";
 
-    @BeforeMethod
-    public void setUp(){
-        driver = WebDriverFactory.getDriver(browserType);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(URL);
-    }
 
-    @Test
-    public static void User_Story_1_AC3(){
-        driver.get("https://www.phptravels.net/contact-us");
+public class TestHomePage extends AbstractTestBase{
+
+    Homepage homepage = new Homepage();
+
+    @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
+    public void homeTab_Verification() {
+        driver.get(homepage.contact_US_Url);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        DraftHomepage.homeTabXpath(driver).click();
+        driver.findElement(By.xpath(homepage.homeTabXpath)).click();
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -37,29 +32,17 @@ public class TestHomePage {
         Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
     }
 
+    @Test //AC#9
+    public void login_tab() {
 
+        WebElement loginTab = driver.findElement(By.xpath(homepage.loginTabXpath));
+        Assert.assertTrue(loginTab.isDisplayed(), "Login tab is not displayed");
 
+        String expected = "MY ACCOUNT";
+        String actual = loginTab.getText().trim();
 
-    @Test //AC#1 - verify all footer anchor links (Arpat)
-    public static void User_Story_3_AC1() throws InterruptedException {
-        //SUPPLIER
-        String[]supplierExpected = {"supplier Registration","Supplier Login"};
-        DraftHomepage.companyList(driver).size();
-
-
-
-        // COMPANY
-        String[] companyExpected = {"Contact","How to Book","Booking Tips","About Us"};
-        DraftHomepage.companyList(driver).size();
-
-        //Support
-        String[] supportExpected = {"FAQ","Our Partners","Privacy Policy","Terms of Use"};
-        DraftHomepage.supportExpected(driver).size();
-
-
-
+        Assert.assertEquals(actual, expected, "default text does not match");
     }
-
 
 
 }

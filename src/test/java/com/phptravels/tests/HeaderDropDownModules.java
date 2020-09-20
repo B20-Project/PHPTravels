@@ -120,9 +120,9 @@ public class HeaderDropDownModules {
         Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
     }
 
-    // BTOR-12_AC#1 Verify company dropdown Contact tab is functional (abdu)
+    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
     @Test
-    public void company_DropDown_contact_Verification() throws InterruptedException {
+    public void company_DropDown_SubMenu_Verification() throws InterruptedException {
         driver.findElement(By.xpath(companyTabXpath)).click();
         Thread.sleep(1000);
         driver.findElement((By.linkText("Contact"))).click();
@@ -130,19 +130,18 @@ public class HeaderDropDownModules {
 
         String expected_title_Value = "Contact";
         String actual_title_Value = driver.getTitle();
-        Assert.assertEquals(actual_title_Value, expected_title_Value, "page title does not match");
-    }
+        Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
 
-    // BTOR-12_AC#1 Verify company dropdown About Us tab is functional(abdu)
-    @Test
-    public void company_DropDown_AboutUs_Verification() throws InterruptedException {
+        driver.navigate().back();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
         driver.findElement(By.xpath(companyTabXpath)).click();
         Thread.sleep(1000);
         driver.findElement((By.linkText("About Us"))).click();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        String expected_title_Value = "About Us";
-        String actual_title_Value = driver.getTitle();
-        Assert.assertEquals(actual_title_Value, expected_title_Value, "page title does not match");
+        String expected_title = "About Us";
+        String actual_title = driver.getTitle();
+        Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
     }
 
     @AfterMethod
