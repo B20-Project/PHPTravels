@@ -31,8 +31,9 @@ public class HomePage {
 
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
-    String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
-    String EnterEmailXpath = "//input[contains(@type,'email')]";
+    public  String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
+    public  String EnterEmailXpath = "//input[contains(@type,'email')]";
+    public  String SubscribedSuccessfully = "//ul[@class='nav navbar-nav')]";
 
 
     // Arpat
