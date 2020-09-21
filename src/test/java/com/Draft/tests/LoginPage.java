@@ -1,11 +1,7 @@
-package com.Draft.Tests;
+package com.Draft.tests;
 
 
-import com.Draft.Pages.AbstractPageBase;
-
-import com.Draft.Pages.AbstractPageBase;
-import com.Draft.Pages.HomePage;
-import com.phptravels.tests.Login;
+import com.Draft.pages.AbstractPageBase;
 
 public class LoginPage extends AbstractPageBase {
 

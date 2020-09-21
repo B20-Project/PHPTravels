@@ -1,6 +1,7 @@
-package com.Draft.Tests;
+package com.Draft.tests;
 
-import com.Draft.Pages.AbstractPageBase;
+
+import com.Draft.pages.AbstractPageBase;
 
 public class SignUpPage extends AbstractPageBase {
 }

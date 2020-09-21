@@ -1,4 +1,4 @@
-package com.Draft.Pages;
+package com.Draft.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,8 +28,8 @@ public class HomePage {
     String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
 
     //Company tab
-    String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
-    String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
+    public String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
+    public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
