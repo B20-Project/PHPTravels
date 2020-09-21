@@ -1,19 +1,21 @@
 package com.Draft.pages;
-
+;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
-    String URL = "https://www.phptravels.net/";
     public String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";
 
-    public String contact_US_Url = "https://www.phptravels.net/contact-us";
-    public String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
-
+    private String contact_US_Url = "https://www.phptravels.net/contact-us";
+//    private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
+//    private WebElement homeTab = driver.findElement(By.xpath(homeTabXpath));
+    @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a")
+    private WebElement homeTab;
 
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
     public String languageBarXpath = "//a[@id='dropdownLangauge']";
@@ -26,17 +28,17 @@ public class HomePage extends AbstractPageBase{
     public String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
     // String loginTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[1]";
     public String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
+    @FindBy(xpath = "//div[@class='mini-menu']/ul/li[3]/div/a")
+    private WebElement account;
 
     //Company tab
     public String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
     public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
-
     //FOOTER LINKS FEATURES WEB ELEMENTS
     public  String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
     public  String EnterEmailXpath = "//input[contains(@type,'email')]";
     public  String SubscribedSuccessfully = "//ul[@class='nav navbar-nav']";
-
 
     // Arpat
     /////////////////////////////////////////////////////////////////////////////
@@ -56,6 +58,27 @@ public class HomePage extends AbstractPageBase{
     public static List<WebElement>supportExpected(WebDriver driver){
         supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
         return supportList;
+    }
+
+    //Home tab method
+    public void click_home_tab(){
+        driver.get(contact_US_Url);
+        homeTab.click();
+    }
+
+    public String getTitle(){
+        String actualTitle = driver.getTitle();
+
+        return actualTitle;
+    }
+
+    //My Account tab methods
+    public void click_account_tab() {
+        account.click();
+    }
+    public String get_account_text(){
+
+        return account.getText();
     }
 
 

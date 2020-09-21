@@ -1,4 +1,4 @@
-package com.phptravels.Util;
+package com.Draft.Utility;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -15,15 +15,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
    return type: WebDriver
 
     */
-public class WebDriverFactory {
+public class Driver {
 
     private static WebDriver driver;
 
-    private WebDriverFactory(){
+    private Driver(){
 
     }
 
-    public static WebDriver getDriver(String browserType){
+    public static WebDriver getDriver(){
         if (driver==null){
 //            String browser = ConfigurationReader.getProperty("browser").toLowerCase();
             String browser = "chrome";

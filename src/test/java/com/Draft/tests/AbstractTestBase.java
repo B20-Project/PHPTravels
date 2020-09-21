@@ -1,29 +1,25 @@
 package com.Draft.tests;
 
-import com.phptravels.Util.WebDriverFactory;
-import org.openqa.selenium.WebDriver;
+import com.Draft.Utility.Driver;
+import com.Draft.pages.HomePage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.util.concurrent.TimeUnit;
-
 public abstract class  AbstractTestBase {
 
-    public WebDriver driver;
-    String browserType = "chrome";
-    String URL = "https://www.phptravels.net/";
+    HomePage homepage;
 
     @BeforeMethod
     public void setUp() {
-        driver = WebDriverFactory.getDriver(browserType);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(URL);
+        String URL = "https://www.phptravels.net/";
+        Driver.getDriver().get(URL);
+        Driver.getDriver().manage().window().maximize();
+        homepage = new HomePage();
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        Driver.closeDriver();
     }
 
 
