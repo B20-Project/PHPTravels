@@ -1,16 +1,15 @@
 package com.Draft.tests;
 
+import com.Draft.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.Draft.pages.*;
 
 
 
