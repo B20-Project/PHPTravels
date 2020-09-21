@@ -1,19 +1,20 @@
-package com.Draft.tests;
+package com.Draft.Tests;
 
-import com.Draft.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.Draft.Pages.*;
 
 
 
-public class TestHomePage extends AbstractTestBase{
+public class TestHomePage extends com.Draft.Tests.AbstractTestBase {
 
     HomePage homepage = new HomePage();
 
@@ -86,6 +87,71 @@ public class TestHomePage extends AbstractTestBase{
         String actual = driver.findElement(By.xpath(homepage.SubscribedSuccessfully)).getText().trim();
 
         Assert.assertEquals(actual,expected,"default text does not match");
+    }
+
+    @Test// User story#1(BTOR-1) AC#6-Verify language bar visible & default language selected "ENGLISH" (Elvira)
+    public void global_language_bar() {
+        WebElement languageBar = driver.findElement(By.xpath(homepage.languageBarXpath));
+        Assert.assertTrue(languageBar.isDisplayed());
+
+        String defaultSelectedLanguage = "ENGLISH";
+        String actualSelectedLanguage = languageBar.getText();
+        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
+    }
+
+    @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
+    public void language_dropDown(){
+        WebElement languageBar = driver.findElement(By.xpath(homepage.languageBarXpath));
+        languageBar.click();
+
+        String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
+
+        int i = 0;
+        List<WebElement> listOfLanguages = driver.findElements(By.xpath(homepage.listOfLanguagesXpath));
+        for(WebElement each : listOfLanguages){
+            //System.out.println(each.getText());
+            Assert.assertEquals(each.getText(), expectedListOfLanguages[i]);
+            i++;
+        }
+
+        int sizeOfExpectedListOfLanguages = expectedListOfLanguages.length;
+        int sizeOfListOfLanguages = listOfLanguages.size();
+        Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
+    }
+
+    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+
+    public void User_Story_1_AC5() {
+        WebElement currency = driver.findElement(By.xpath(homepage.currencyTextXpath));
+        Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
+
+    }
+
+
+
+    @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
+    public void currency_dropdown (){
+
+        WebElement currencyBar = driver.findElement(By.xpath(homepage.currencyDropdownXPath));
+        currencyBar.click();
+
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        String [] expectedCurrencyList = {"USD", "GBP","SAR","EUR","PKR","KWD","JPY","INR","CNY","TRY","RUB"};
+
+        int index=0;
+        List<WebElement> listOfCurrencies =driver.findElements(By.xpath(homepage.currencyDropdownList));
+        for(WebElement eachCurrency : listOfCurrencies){
+            Assert.assertEquals(eachCurrency.getText(),expectedCurrencyList[index]);
+            index++;
+        }
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        int sizeOfExpectedCurrencyList = expectedCurrencyList.length;
+        int sizeOfListOfCurrencies = listOfCurrencies.size();
+
+        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
     }
 
 

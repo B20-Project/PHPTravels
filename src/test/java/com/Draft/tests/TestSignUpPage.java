@@ -1,7 +1,8 @@
-package com.Draft.tests;
+package com.Draft.Tests;
 
-import com.Draft.pages.AbstractPageBase;
-import com.Draft.pages.SignUpPage;
+import com.Draft.Pages.AbstractPageBase;
+import com.Draft.Pages.SignUpPage;
+import sun.jvm.hotspot.debugger.Page;
 
 public class TestSignUpPage extends AbstractPageBase {
 

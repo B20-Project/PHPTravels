@@ -44,6 +44,7 @@ public class FooterLinks_Features {
             //get expectResult
             Assert.assertEquals(driver.getTitle(),supplierExpected[i-1]);
             driver.navigate().back();
+
         }
 
         // COMPANY
