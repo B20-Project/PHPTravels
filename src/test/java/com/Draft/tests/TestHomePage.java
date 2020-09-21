@@ -1,7 +1,5 @@
 package com.Draft.tests;
 
-import com.Draft.pages.HomePage;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -176,24 +174,26 @@ public class TestHomePage extends AbstractTestBase {
 //        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
 //    }
 //
-//    @Test //Dilyar
-//    public void login_Tab(){
-//        driver.findElement(By.xpath(homepage.myAccountXpath)).click();
-//        driver.findElement(By.xpath(homepage.loginTabXpath)).click();
-//
-//        String expected = "Login";
-//        String actual = driver.getTitle();
-//        Assert.assertEquals(actual,expected,"page title does not match");
-//    }
-//
-//    @Test //Dilyar
-//    public void signUp_tab(){
-//        driver.findElement(By.xpath(homepage.myAccountXpath)).click();
-//        driver.findElement(By.xpath(homepage.signupTabXpath)).click();
-//
-//        String expected = "Register";
-//        String actual = driver.getTitle();
-//        Assert.assertEquals(actual,expected,"page title does not match");
-//    }
+    @Test //Dilyar //manaul
+    public void login_Tab(){
+        homepage.click_login_tab();
+        String expected = "Login";
+        String actual = homepage.getTitle();
+        Assert.assertTrue(!actual.equals(expected),"Page title does not match");
+    }
+
+    @Test //Dilyar
+    public void signUp_tab(){
+        homepage.click_signUp_tab();
+        String expected = "Register";
+        String actual = homepage.getTitle();
+        Assert.assertTrue(actual.equals(expected),"Page title does not match");
+    }
+
+    @Test //practice
+    public void TestNavigateToMethod(){
+        homepage.navigateTo("company","About Us");
+        homepage.navigateToHome();
+    }
 
 }

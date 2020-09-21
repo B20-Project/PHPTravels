@@ -9,11 +9,9 @@ import java.util.List;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
-    public String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";
 
     private String contact_US_Url = "https://www.phptravels.net/contact-us";
-//    private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
-//    private WebElement homeTab = driver.findElement(By.xpath(homeTabXpath));
+
     @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a")
     private WebElement homeTab;
 
@@ -24,12 +22,16 @@ public class HomePage extends AbstractPageBase{
     public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
     public String currencyTextXpath = "//a[contains(.,'USD   ')]";
 
-    //My Account Dropdown tabs
-    public String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
-    // String loginTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[1]";
-    public String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
+    //My account Tab
     @FindBy(xpath = "//div[@class='mini-menu']/ul/li[3]/div/a")
-    private WebElement account;
+    private WebElement accountTab;
+
+    @FindBy(xpath = "/div[@class='mini-menu']/ul/li[3]/div/div//a[2]")
+    private WebElement signUpTab;
+
+    @FindBy(xpath = "//div[contains(@class,'dropdown dropdown-login')]/a")
+    private WebElement loginTab;
+
 
     //Company tab
     public String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
@@ -59,27 +61,27 @@ public class HomePage extends AbstractPageBase{
         supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
         return supportList;
     }
-
     //Home tab method
     public void click_home_tab(){
         driver.get(contact_US_Url);
         homeTab.click();
     }
-
     public String getTitle(){
         String actualTitle = driver.getTitle();
 
         return actualTitle;
     }
-
     //My Account tab methods
     public void click_account_tab() {
-        account.click();
+        accountTab.click();
     }
     public String get_account_text(){
-
-        return account.getText();
+        return accountTab.getText();
     }
-
-
+    public void click_login_tab(){
+        loginTab.click();
+    }
+    public void click_signUp_tab(){
+        signUpTab.click();
+    }
 }
