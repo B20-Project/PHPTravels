@@ -119,5 +119,40 @@ public class TestHomePage extends com.Draft.Tests.AbstractTestBase {
         Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
     }
 
+    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+
+    public void User_Story_1_AC5() {
+        WebElement currency = driver.findElement(By.xpath(homepage.currencyTextXpath));
+        Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
+
+    }
+
+
+
+    @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
+    public void currency_dropdown (){
+
+        WebElement currencyBar = driver.findElement(By.xpath(homepage.currencyDropdownXPath));
+        currencyBar.click();
+
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        String [] expectedCurrencyList = {"USD", "GBP","SAR","EUR","PKR","KWD","JPY","INR","CNY","TRY","RUB"};
+
+        int index=0;
+        List<WebElement> listOfCurrencies =driver.findElements(By.xpath(homepage.currencyDropdownList));
+        for(WebElement eachCurrency : listOfCurrencies){
+            Assert.assertEquals(eachCurrency.getText(),expectedCurrencyList[index]);
+            index++;
+        }
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        int sizeOfExpectedCurrencyList = expectedCurrencyList.length;
+        int sizeOfListOfCurrencies = listOfCurrencies.size();
+
+        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
+    }
+
 
 }

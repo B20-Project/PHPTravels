@@ -14,11 +14,13 @@ public class HomePage {
     public String contact_US_Url = "https://www.phptravels.net/contact-us";
     public String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
 
+
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
     public String languageBarXpath = "//a[@id='dropdownLangauge']";
     public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
-    String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
-    String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+    public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
+    public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+    public String currencyTextXpath = "//a[contains(.,'USD   ')]";
 
     //My Account Dropdown tabs
     String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
