@@ -1,4 +1,4 @@
-package com.Draft.Tests;
+package com.Draft.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,13 +10,13 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.Draft.Pages.*;
+
 
 
 
 public class TestHomePage extends com.Draft.Tests.AbstractTestBase {
 
-    HomePage homepage = new HomePage();
+    com.Draft.Pages.HomePage homepage = new com.Draft.Pages.HomePage();
 
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
     public void homeTab_Verification() {

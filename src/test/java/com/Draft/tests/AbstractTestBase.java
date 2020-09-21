@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class  AbstractTestBase {
 
-    WebDriver driver;
+    public WebDriver driver;
     String browserType = "chrome";
     String URL = "https://www.phptravels.net/";
 
