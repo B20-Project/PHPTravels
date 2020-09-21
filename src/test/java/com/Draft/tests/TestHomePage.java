@@ -63,15 +63,15 @@ public class TestHomePage extends AbstractTestBase {
 //    }
 //
     @Test //AC#9 Dilyar
-    public void account_tab() {
+    public void account_tab_Verification() {
 
         homepage.click_account_tab();
-
         String expected = "MY ACCOUNT";
         String actual = homepage.get_account_text();
-
         Assert.assertEquals(actual, expected, "default text does not match");
+
     }
+
 //
 //    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
 //    public void User_Story_3_AC2()  {
