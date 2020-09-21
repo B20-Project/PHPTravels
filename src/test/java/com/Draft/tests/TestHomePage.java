@@ -71,7 +71,7 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
-//
+
 //    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
 //    public void User_Story_3_AC2()  {
 //        List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
