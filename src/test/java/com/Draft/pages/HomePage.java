@@ -37,9 +37,19 @@ public class HomePage extends AbstractPageBase{
     public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
-    public  String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
-    public  String EnterEmailXpath = "//input[contains(@type,'email')]";
-    public  String SubscribedSuccessfully = "//ul[@class='nav navbar-nav']";
+
+    @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
+    private WebElement SubscribeButton;
+
+    @FindBy(xpath = "//input[contains(@type,'email')]")
+    private WebElement EnterEmail;
+
+    @FindBy(xpath = "//ul[@class='nav navbar-nav']")
+    private WebElement SubscribedSuccessfully;
+
+   // public  String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
+   // public  String EnterEmailXpath = "//input[contains(@type,'email')]";
+   // public  String SubscribedSuccessfully = "//ul[@class='nav navbar-nav']";
 
     // Arpat
     /////////////////////////////////////////////////////////////////////////////
