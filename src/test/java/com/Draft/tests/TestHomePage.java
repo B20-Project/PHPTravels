@@ -1,6 +1,7 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -70,8 +71,25 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual, expected, "default text does not match");
 
     }
-
-
+//
+//    @Test  //UserStory#1(BTOR-9) AC#7 - verify phoneNumber is visible & correct (+1-234-56789) (Ahmet)
+//    public void User_Story_1_AC7() {
+//
+//        //NOTE: The WebElement always involved a phone text and not just a phone number, so I had to add phone to my expected result.
+//        String expected = "phone +1-234-56789";
+//        String actual = driver.findElement(By.xpath(phoneNumber)).getText().trim();
+//
+//        Assert.assertTrue(driver.findElement(By.xpath(phoneNumber)).isDisplayed(), "Phone number is not visible");
+//        Assert.assertEquals(actual, expected, "phone number does not match");
+//    }
+//
+//    @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
+//    public void User_Story_1_AC8() {
+//
+//        Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
+//    }
+//
+//
 //    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
 //    public void User_Story_3_AC2()  {
 //        List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));

@@ -21,6 +21,7 @@ public class MainHeader {
     private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
 
     private String phoneNumber = "//span[contains(@class,'d-block footer-phone text-white')]";
+    private String phoneIcon = "//i[contains(@class,'material-icons')]";
 
 
     @BeforeMethod
@@ -86,8 +87,8 @@ public class MainHeader {
 
     @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
     public void User_Story_1_AC8() {
-        WebElement phoneIcon = driver.findElement(By.xpath("//i[contains(@class,'material-icons')]"));
-        Assert.assertTrue(phoneIcon.isDisplayed(), "Login tab is not displayed");
+
+        Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
     }
 
     @Test //AC#5 verify currency is visible and default selected
