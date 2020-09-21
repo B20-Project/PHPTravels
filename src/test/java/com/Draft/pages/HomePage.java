@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
     String URL = "https://www.phptravels.net/";
     public String loginTabXpath = "//div[contains(@class,'dropdown dropdown-login')]/a";

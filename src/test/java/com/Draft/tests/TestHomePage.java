@@ -10,10 +10,6 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
-
-
-
 public class TestHomePage extends AbstractTestBase {
 
     HomePage homepage = new HomePage();
@@ -71,7 +67,7 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
     }
 
-    @Test //AC#9
+    @Test //AC#9 Dilyar
     public void account_tab() {
 
         WebElement loginTab = driver.findElement(By.xpath(homepage.loginTabXpath));
@@ -155,7 +151,6 @@ public class TestHomePage extends AbstractTestBase {
     }
 
     @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
-
     public void User_Story_1_AC5() {
         WebElement currency = driver.findElement(By.xpath(homepage.currencyTextXpath));
         Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
@@ -187,7 +182,7 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
     }
 
-    @Test
+    @Test //Dilyar
     public void login_Tab(){
         driver.findElement(By.xpath(homepage.myAccountXpath)).click();
         driver.findElement(By.xpath(homepage.loginTabXpath)).click();
@@ -197,7 +192,7 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual,expected,"page title does not match");
     }
 
-    @Test
+    @Test //Dilyar
     public void signUp_tab(){
         driver.findElement(By.xpath(homepage.myAccountXpath)).click();
         driver.findElement(By.xpath(homepage.signupTabXpath)).click();
