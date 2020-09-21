@@ -196,8 +196,19 @@ public class TestHomePage extends AbstractTestBase {
         homepage.navigateTo("company","About Us");
         homepage.navigateToHome();
         BrowserUtils.waitForLoad();
+    }
+
+    @Test //practice
+    public void TestsearchFor(){
+
+        BrowserUtils.wait(3);
         homepage.searchFor("flights");
-        BrowserUtils.wait(2000);
+        BrowserUtils.wait(3);
+        homepage.searchFor("cars");
+        BrowserUtils.wait(3);
+        homepage.searchFor("boats");
+        BrowserUtils.wait(3);
+
     }
 
 }
