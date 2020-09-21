@@ -1,5 +1,6 @@
 package com.Draft.tests;
 
+import com.Draft.Utility.BrowserUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -173,8 +174,8 @@ public class TestHomePage extends AbstractTestBase {
 //
 //        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
 //    }
-//
-    @Test //Dilyar //manaul
+
+    @Test //Dilyar //manual
     public void login_Tab(){
         homepage.click_login_tab();
         String expected = "Login";
@@ -194,6 +195,9 @@ public class TestHomePage extends AbstractTestBase {
     public void TestNavigateToMethod(){
         homepage.navigateTo("company","About Us");
         homepage.navigateToHome();
+        BrowserUtils.waitForLoad();
+        homepage.searchFor("flights");
+        BrowserUtils.wait(2000);
     }
 
 }

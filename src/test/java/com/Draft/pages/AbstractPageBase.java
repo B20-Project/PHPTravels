@@ -1,7 +1,6 @@
 package com.Draft.pages;
 
 
-import com.Draft.Utility.BrowserUtils;
 import com.Draft.Utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +25,7 @@ public class AbstractPageBase {
     }
     /**
      *
-     * @param tabName currency, language, account
+     * @param tabName currency, language, account, company
      * @param moduleName Login, Sign Up, Vietnamese, Russian, English, Arabic, Farsi
      *                                   Turkish, French, Spanish, German
      *                                   USD, GBP, SAR, EUR, PKR, KWD, JPY,

@@ -32,7 +32,6 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//div[contains(@class,'dropdown dropdown-login')]/a")
     private WebElement loginTab;
 
-
     //Company tab
     public String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
     public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
@@ -84,4 +83,11 @@ public class HomePage extends AbstractPageBase{
     public void click_signUp_tab(){
         signUpTab.click();
     }
+
+    public void searchFor(String name){
+
+        driver.findElement(By.xpath("//a[@data-name='"+name+"']")).click();
+
+    }
+
 }
