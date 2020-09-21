@@ -1,4 +1,4 @@
-package com.Draft.Tests;
+package com.Draft.tests;
 
 import com.phptravels.Util.WebDriverFactory;
 import org.openqa.selenium.WebDriver;

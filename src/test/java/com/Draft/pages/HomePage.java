@@ -23,9 +23,9 @@ public class HomePage {
     public String currencyTextXpath = "//a[contains(.,'USD   ')]";
 
     //My Account Dropdown tabs
-    String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
+    public String myAccountXpath = "//div[@class='mini-menu']/ul/li[3]/div/a";
     // String loginTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[1]";
-    String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
+    public String signupTabXpath = "//div[@class='mini-menu']/ul/li[3]/div/div//a[2]";
 
     //Company tab
     public String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";

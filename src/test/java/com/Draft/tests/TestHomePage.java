@@ -71,9 +71,8 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
     }
 
-
     @Test //AC#9
-    public void login_tab() {
+    public void account_tab() {
 
         WebElement loginTab = driver.findElement(By.xpath(homepage.loginTabXpath));
         Assert.assertTrue(loginTab.isDisplayed(), "Login tab is not displayed");
@@ -83,8 +82,6 @@ public class TestHomePage extends AbstractTestBase {
 
         Assert.assertEquals(actual, expected, "default text does not match");
     }
-
-
 
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
     public void User_Story_3_AC2()  {
@@ -165,8 +162,6 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
-
-
     @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
     public void currency_dropdown (){
 
@@ -190,6 +185,26 @@ public class TestHomePage extends AbstractTestBase {
         int sizeOfListOfCurrencies = listOfCurrencies.size();
 
         Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
+    }
+
+    @Test
+    public void login_Tab(){
+        driver.findElement(By.xpath(homepage.myAccountXpath)).click();
+        driver.findElement(By.xpath(homepage.loginTabXpath)).click();
+
+        String expected = "Login";
+        String actual = driver.getTitle();
+        Assert.assertEquals(actual,expected,"page title does not match");
+    }
+
+    @Test
+    public void signUp_tab(){
+        driver.findElement(By.xpath(homepage.myAccountXpath)).click();
+        driver.findElement(By.xpath(homepage.signupTabXpath)).click();
+
+        String expected = "Register";
+        String actual = driver.getTitle();
+        Assert.assertEquals(actual,expected,"page title does not match");
     }
 
 
