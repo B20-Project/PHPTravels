@@ -37,7 +37,7 @@ public class TestHomePage extends AbstractTestBase {
 //        String expected_Style_Value = "display: block;";
 //        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
 //    }
-//
+
 //    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
 //    @Test
 //    public void company_DropDown_SubMenu_Verification() throws InterruptedException {
