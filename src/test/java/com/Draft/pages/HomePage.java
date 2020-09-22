@@ -1,6 +1,8 @@
 package com.Draft.pages;
 ;
+import com.Draft.Utility.BrowserUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +18,9 @@ public class HomePage extends AbstractPageBase{
     private WebElement homeTab;
 
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
-    public String languageBarXpath = "//a[@id='dropdownLangauge']";
+    @FindBy(xpath = "//a[@id='dropdownLangauge']")
+    private WebElement languageBar;
+
     public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
     public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
     public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
@@ -37,9 +41,13 @@ public class HomePage extends AbstractPageBase{
     public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
-    public  String SubscribeButtonXpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]";
-    public  String EnterEmailXpath = "//input[contains(@type,'email')]";
-    public  String SubscribedSuccessfully = "//ul[@class='nav navbar-nav']";
+
+    @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
+    private WebElement SubscribeButton;
+    @FindBy(xpath = "//input[contains(@type,'email')]")
+    private WebElement EnterEmail;
+    @FindBy(xpath = "//ul[@class='nav navbar-nav']")
+    private WebElement SubscribedSuccessfully;
 
     // Arpat
     /////////////////////////////////////////////////////////////////////////////
@@ -82,6 +90,23 @@ public class HomePage extends AbstractPageBase{
     }
     public void click_signUp_tab(){
         signUpTab.click();
+    }
+
+    //Language bar
+    public String verify_default_language(){
+        String actual = languageBar.getText();
+        return actual;
+    }
+
+    //Subscription bar
+    public void subscribe(String email){
+        EnterEmail.sendKeys(email, Keys.ENTER);
+        SubscribeButton.click();
+    }
+
+    public String verify_subscribe(){
+        BrowserUtils.wait(1);
+       return SubscribedSuccessfully.getText().trim();
     }
 
     public void searchFor(String name){

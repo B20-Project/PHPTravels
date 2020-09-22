@@ -91,37 +91,29 @@ public class TestHomePage extends AbstractTestBase {
 //
 //    }
 //
-//    @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
-//    public void User_Story_3_AC3() throws InterruptedException {
+    @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
+    public void User_Story_3_AC3() throws InterruptedException {
+
+        int randomNumber = (int) (Math.random() * 1000);
+        //System.out.println("randomNumber = " + randomNumber); //testing random #
+        String firstTime = "test" + randomNumber + "@gmail.com";
+        System.out.println(firstTime);
+        String inValid = "@gmail.com";
+        String secondTime = "test";
+
+        homepage.subscribe(firstTime);
+        String actual = homepage.verify_subscribe();
+        String expected = "Subscribed Successfully";
+
+        Assert.assertEquals(actual,expected,"default text does not match");
+    }
 //
-//        int randomNumber = (int) (Math.random() * 1000);
-//        //System.out.println("randomNumber = " + randomNumber); //testing random #
-//        String firstTime = "test" + randomNumber + "@gmail.com";
-//        System.out.println(firstTime);
-//        String inValid = "@gmail.com";
-//        String secondTime = "test";
-//
-//        driver.findElement(By.xpath(homepage.EnterEmailXpath)).sendKeys(firstTime + Keys.ENTER);
-//        Thread.sleep(3000);
-//
-//        driver.findElement(By.xpath(homepage.SubscribeButtonXpath)).click();
-//        Thread.sleep(1000);
-//
-//        String expected = "Subscribed Successfully";
-//        String actual = driver.findElement(By.xpath(homepage.SubscribedSuccessfully)).getText().trim();
-//
-//        Assert.assertEquals(actual,expected,"default text does not match");
-//    }
-//
-//    @Test// User story#1(BTOR-1) AC#6-Verify language bar visible & default language selected "ENGLISH" (Elvira)
-//    public void global_language_bar() {
-//        WebElement languageBar = driver.findElement(By.xpath(homepage.languageBarXpath));
-//        Assert.assertTrue(languageBar.isDisplayed());
-//
-//        String defaultSelectedLanguage = "ENGLISH";
-//        String actualSelectedLanguage = languageBar.getText();
-//        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
-//    }
+    @Test// User story#1(BTOR-1) AC#6-Verify language bar visible & default language selected "ENGLISH" (Elvira)
+    public void global_language_bar() {
+        String defaultSelectedLanguage = "ENGLISH";
+        String actualSelectedLanguage = homepage.verify_default_language();
+        Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
+    }
 //
 //    @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
 //    public void language_dropDown(){
@@ -193,7 +185,8 @@ public class TestHomePage extends AbstractTestBase {
 
     @Test //practice
     public void TestNavigateToMethod(){
-        homepage.navigateTo("company","About Us");
+        homepage.navigateTo("language","Russian");
+        BrowserUtils.wait(2);
         homepage.navigateToHome();
         BrowserUtils.waitForLoad();
     }
