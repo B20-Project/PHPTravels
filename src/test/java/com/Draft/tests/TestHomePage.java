@@ -93,7 +93,7 @@ public class TestHomePage extends AbstractTestBase {
 //    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
 //    public void User_Story_3_AC2()  {
 //        List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-//
+
 //        System.out.println("===================================");
 //        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
 //                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
