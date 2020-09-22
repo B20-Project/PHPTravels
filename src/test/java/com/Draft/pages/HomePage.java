@@ -34,7 +34,7 @@ public class HomePage extends AbstractPageBase{
     private WebElement phoneIcon;
 
     @FindBy(xpath = "//footer[@id='footer']")
-    private WebElement actualFooterTexts;
+    private List <WebElement> actualFooterTexts;
 
 
     //My account Tab
@@ -132,8 +132,8 @@ public class HomePage extends AbstractPageBase{
     }
 
     //Footer Texts
-    public String verifyFooterTexts (){ //need to fix
-        return actualFooterTexts.getText();
+    public List<WebElement> verifyFooterTexts (){ //need to fix
+        return actualFooterTexts;
     }
 
     public void searchFor(String name){
