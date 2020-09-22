@@ -140,6 +140,7 @@ public class TestHomePage extends AbstractTestBase {
 //
 //        String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
 //
+    //TEST TEST TEST TEST TEST
 //        int i = 0;
 //        List<WebElement> listOfLanguages = driver.findElements(By.xpath(homepage.listOfLanguagesXpath));
 //        for(WebElement each : listOfLanguages){
