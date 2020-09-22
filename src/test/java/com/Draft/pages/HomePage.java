@@ -43,6 +43,7 @@ public class HomePage extends AbstractPageBase{
     public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
+    //GIT COMMAND PRACTICE
 
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
     private WebElement SubscribeButton;
