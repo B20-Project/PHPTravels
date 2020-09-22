@@ -20,6 +20,9 @@ public class MainHeader {
     private String contact_US_Url = "https://www.phptravels.net/contact-us";
     private String homeTabXpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a";
 
+    private String phoneNumber = "//span[contains(@class,'d-block footer-phone text-white')]";
+    private String phoneIcon = "//i[contains(@class,'material-icons')]";
+
 
     @BeforeMethod
     public void setUp() {
@@ -74,22 +77,18 @@ public class MainHeader {
     @Test  //UserStory#1(BTOR-9) AC#7 - verify phoneNumber is visible & correct (+1-234-56789) (Ahmet)
     public void User_Story_1_AC7() {
 
-        WebElement phoneNumber = driver.findElement(By.xpath("//span[contains(@class,'d-block footer-phone text-white')]"));
-        String text = phoneNumber.getText();
-        System.out.println(text); //Testing to see the actual result the web element is giving "phone +1-234-56789"
-
         //NOTE: The WebElement always involved a phone text and not just a phone number, so I had to add phone to my expected result.
         String expected = "phone +1-234-56789";
-        String actual = phoneNumber.getText().trim();
+        String actual = driver.findElement(By.xpath(phoneNumber)).getText().trim();
 
-        Assert.assertTrue(phoneNumber.isDisplayed(), "Login tab is not displayed");
-        Assert.assertEquals(actual, expected, "default text does not match");
+        Assert.assertTrue(driver.findElement(By.xpath(phoneNumber)).isDisplayed(), "Phone number is not visible");
+        Assert.assertEquals(actual, expected, "phone number does not match");
     }
 
     @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
     public void User_Story_1_AC8() {
-        WebElement phoneIcon = driver.findElement(By.xpath("//i[contains(@class,'material-icons')]"));
-        Assert.assertTrue(phoneIcon.isDisplayed(), "Login tab is not displayed");
+
+        Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
     }
 
     @Test //AC#5 verify currency is visible and default selected
