@@ -11,7 +11,6 @@ import java.util.List;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
-
     private String contact_US_Url = "https://www.phptravels.net/contact-us";
 
     @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a")
