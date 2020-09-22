@@ -20,7 +20,7 @@ public class AbstractPageBase {
 
     public void navigateToHome(){
 
-        driver.findElement(By.xpath("//a[.='Home']")).click();
+        driver.findElement(By.xpath("//a[@title='home']")).click();
 
     }
     /**
