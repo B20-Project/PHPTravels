@@ -23,9 +23,19 @@ public class HomePage extends AbstractPageBase{
     @FindBy (xpath= "//div[@class='dropdown dropdown-currency']")
     private WebElement listOfLanguages;
     //public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
-    public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
-    public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
-    public String currencyTextXpath = "//a[contains(.,'USD   ')]";
+
+    @FindBy (xpath ="//div[@class='dropdown dropdown-currency']" )
+    private WebElement currencyDropdown;
+//public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
+
+    @FindBy (xpath ="//div[@class='dropdown-menu dropdown-menu-right show']/div/a" )
+    private WebElement currencyDropdownList;
+//public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+
+    @FindBy (xpath ="//a[contains(.,'USD   ')]")
+    private WebElement currencyText;
+//public String currencyTextXpath = "//a[contains(.,'USD   ')]";
+
 
     @FindBy(xpath = "//span[contains(@class,'d-block footer-phone text-white')]")
     private WebElement phoneNumber;
@@ -141,5 +151,13 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath("//a[@data-name='"+name+"']")).click();
 
     }
+
+    //Currency bar
+
+    public String verify_default_currency(){
+        String actualText = currencyText.getText();
+        return actualText;
+    }
+
 
 }

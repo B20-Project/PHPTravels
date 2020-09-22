@@ -39,7 +39,7 @@ public class TestHomePage extends AbstractTestBase {
 //        String expected_Style_Value = "display: block;";
 //        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
 //    }
-//
+
 //    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
 //    @Test
 //    public void company_DropDown_SubMenu_Verification() throws InterruptedException {
@@ -159,13 +159,14 @@ public class TestHomePage extends AbstractTestBase {
 //        Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
 //    }
 //
-//    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
-//    public void User_Story_1_AC5() {
-//        WebElement currency = driver.findElement(By.xpath(homepage.currencyTextXpath));
-//        Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
-//
-//    }
-//
+        @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+
+        public void global_currency_bar() {
+            String defaultSelectedCurrency = "USD";
+            String actualSelectedCurrency = homepage.verify_default_currency();
+            Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
+                }
+
 //    @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
 //    public void currency_dropdown (){
 //
