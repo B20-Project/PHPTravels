@@ -31,7 +31,7 @@ public class FooterLinks_Features {
         driver.get(URL);
     }
     
-        @Test //AC#1 - verify all footer anchor links (Arpat)
+    @Test //AC#1 - verify all footer anchor links (Arpat)
     public void User_Story_3_AC1() throws InterruptedException {
         //SUPPLIER
         String[]supplierExpected = {"supplier Registration","Supplier Login"};
