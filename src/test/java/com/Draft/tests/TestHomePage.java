@@ -74,35 +74,38 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
-//   @Test  //UserStory#1(BTOR-9) AC#7 - verify phoneNumber is visible & correct (+1-234-56789) (Ahmet)
-//    public void User_Story_1_AC7() {
-//
-//        //NOTE: The WebElement always involved a phone text and not just a phone number, so I had to add phone to my expected result.
-//        String expected = "phone +1-234-56789";
-//        String actual = driver.findElement(By.xpath(phoneNumber)).getText().trim();
-//
-//        Assert.assertTrue(driver.findElement(By.xpath(phoneNumber)).isDisplayed(), "Phone number is not visible");
-//        Assert.assertEquals(actual, expected, "phone number does not match");
-//    }
-//
-//    @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
-//    public void User_Story_1_AC8() {
-//
-//        Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
-//    }
-//
-//
+    @Test  //UserStory#1(BTOR-9) AC#7 - verify phoneNumber is visible & correct (+1-234-56789) (Ahmet)
+    public void User_Story_1_AC7() {
+
+        //NOTE: The WebElement always involved a phone text and not just a phone number, so I had to add phone to my expected result.
+        String actual = homepage.verify_number();
+        String expected = "phone +1-234-56789";
+
+       // Assert.assertTrue(driver.findElement(By.xpath(phoneNumber)).isDisplayed(), "Phone number is not visible");
+        Assert.assertEquals(actual, expected, "phone number does not match");
+    }
+
+    @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
+    public void User_Story_1_AC8() {
+
+      //  String actual = homepage.verify_phoneIcon();
+
+      //  Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
+    }
+
+
 //    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
 //    public void User_Story_3_AC2()  {
-//        List<WebElement> actualListOfFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-//
+//        //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
+//       // List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+
 //        System.out.println("===================================");
 //        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
 //                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
 //                "NEWSLETTER\n" + "Subsribe to get our latest updates and oeffers\n" + "SUBSCRIBE\n" + "Powered by PHPTRAVELS\n" + "© All Rights Reserved by PHPTRAVELS"};
 //
 //        int i = 0;
-//        for (WebElement eachElement : actualListOfFooterTexts) {
+//        for (WebElement eachElement : actualFooterTexts) {
 //            System.out.println(eachElement.getText());
 //            Assert.assertEquals(expectedList [i],eachElement.getText(), "Actual List of Footer Texts do not match expected list of footer lists" );
 //            i++;
@@ -110,7 +113,7 @@ public class TestHomePage extends AbstractTestBase {
 //        System.out.println("===================================");
 //
 //    }
-//
+
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
     public void User_Story_3_AC3() throws InterruptedException {
 

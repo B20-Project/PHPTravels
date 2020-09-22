@@ -29,6 +29,16 @@ public class HomePage extends AbstractPageBase{
     public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
     public String currencyTextXpath = "//a[contains(.,'USD   ')]";
 
+    @FindBy(xpath = "//span[contains(@class,'d-block footer-phone text-white')]")
+    private WebElement phoneNumber;
+
+    @FindBy(xpath = "//i[contains(@class,'material-icons')]")
+    private WebElement phoneIcon;
+
+    @FindBy(xpath = "//footer[@id='footer']")
+    private WebElement actualFooterTexts;
+
+
     //My account Tab
     @FindBy(xpath = "//div[@class='mini-menu']/ul/li[3]/div/a")
     private WebElement accountTab;
@@ -44,6 +54,8 @@ public class HomePage extends AbstractPageBase{
     public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
+    //GIT COMMAND PRACTICE
+    //GIT PRACTICE AGAIN
 
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
     private WebElement SubscribeButton;
@@ -118,6 +130,20 @@ public class HomePage extends AbstractPageBase{
     public String verify_subscribe(){
         BrowserUtils.wait(1);
        return SubscribedSuccessfully.getText().trim();
+    }
+
+    //Phone number
+    public String verify_number (){
+        return phoneNumber.getText().trim();
+    }
+
+    public void verify_phoneIcon (){ //need to fix
+        phoneIcon.isDisplayed();
+    }
+
+    //Footer Texts
+    public String verifyFooterTexts (){ //need to fix
+        return actualFooterTexts.getText();
     }
 
     public void searchFor(String name){
