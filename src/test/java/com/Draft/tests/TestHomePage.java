@@ -39,7 +39,7 @@ public class TestHomePage extends AbstractTestBase {
 //        String expected_Style_Value = "display: block;";
 //        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
 //    }
-//
+
 //    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
 //    @Test
 //    public void company_DropDown_SubMenu_Verification() throws InterruptedException {
@@ -94,25 +94,25 @@ public class TestHomePage extends AbstractTestBase {
     }
 
 
-//    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
-//    public void User_Story_3_AC2()  {
-//        //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-//       // List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
+    public void User_Story_3_AC2()  {
+        //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
+        List <WebElement> actualFooterTexts = homepage.verifyFooterTexts();
 
-//        System.out.println("===================================");
-//        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
-//                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
-//                "NEWSLETTER\n" + "Subsribe to get our latest updates and oeffers\n" + "SUBSCRIBE\n" + "Powered by PHPTRAVELS\n" + "© All Rights Reserved by PHPTRAVELS"};
-//
-//        int i = 0;
-//        for (WebElement eachElement : actualFooterTexts) {
-//            System.out.println(eachElement.getText());
-//            Assert.assertEquals(expectedList [i],eachElement.getText(), "Actual List of Footer Texts do not match expected list of footer lists" );
-//            i++;
-//        }
-//        System.out.println("===================================");
-//
-//    }
+        System.out.println("===================================");
+        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
+                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
+                "NEWSLETTER\n" + "Subsribe to get our latest updates and oeffers\n" + "SUBSCRIBE\n" + "Powered by PHPTRAVELS\n" + "© All Rights Reserved by PHPTRAVELS"};
+
+        int i = 0;
+        for (WebElement eachElement : actualFooterTexts) {
+            System.out.println(eachElement.getText());
+            Assert.assertEquals(expectedList [i],eachElement.getText(), "Actual List of Footer Texts do not match expected list of footer lists" );
+            i++;
+        }
+        System.out.println("===================================");
+
+    }
 
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
     public void User_Story_3_AC3() throws InterruptedException {
@@ -156,13 +156,14 @@ public class TestHomePage extends AbstractTestBase {
       Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
    }
 //
-//    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
-//    public void User_Story_1_AC5() {
-//        WebElement currency = driver.findElement(By.xpath(homepage.currencyTextXpath));
-//        Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
-//
-//    }
-//
+        @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+
+        public void global_currency_bar() {
+            String defaultSelectedCurrency = "USD";
+            String actualSelectedCurrency = homepage.verify_default_currency();
+            Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
+                }
+
 //    @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
 //    public void currency_dropdown (){
 //

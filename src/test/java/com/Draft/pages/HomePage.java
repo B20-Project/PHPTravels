@@ -11,7 +11,6 @@ import java.util.List;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
-
     private String contact_US_Url = "https://www.phptravels.net/contact-us";
 
     @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a")
@@ -21,13 +20,22 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
     private WebElement languageBar;
 
-    @FindBy(xpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a")
-    private List<WebElement> languageDropdownList;
+    @FindBy (xpath= "//div[@class='dropdown dropdown-currency']")
+    private WebElement listOfLanguages;
+    //public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
 
+    @FindBy (xpath ="//div[@class='dropdown dropdown-currency']" )
+    private WebElement currencyDropdown;
+//public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
 
-    public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
-    public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
-    public String currencyTextXpath = "//a[contains(.,'USD   ')]";
+    @FindBy (xpath ="//div[@class='dropdown-menu dropdown-menu-right show']/div/a" )
+    private WebElement currencyDropdownList;
+//public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+
+    @FindBy (xpath ="//a[contains(.,'USD   ')]")
+    private WebElement currencyText;
+//public String currencyTextXpath = "//a[contains(.,'USD   ')]";
+
 
     @FindBy(xpath = "//span[contains(@class,'d-block footer-phone text-white')]")
     private WebElement phoneNumber;
@@ -36,7 +44,7 @@ public class HomePage extends AbstractPageBase{
     private WebElement phoneIcon;
 
     @FindBy(xpath = "//footer[@id='footer']")
-    private WebElement actualFooterTexts;
+    private List <WebElement> actualFooterTexts;
 
 
     //My account Tab
@@ -142,8 +150,8 @@ public class HomePage extends AbstractPageBase{
     }
 
     //Footer Texts
-    public String verifyFooterTexts (){ //need to fix
-        return actualFooterTexts.getText();
+    public List<WebElement> verifyFooterTexts (){ //need to fix
+        return actualFooterTexts;
     }
 
     public void searchFor(String name){
@@ -151,5 +159,13 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath("//a[@data-name='"+name+"']")).click();
 
     }
+
+    //Currency bar
+
+    public String verify_default_currency(){
+        String actualText = currencyText.getText();
+        return actualText;
+    }
+
 
 }
