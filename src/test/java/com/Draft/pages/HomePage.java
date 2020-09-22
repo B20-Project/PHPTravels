@@ -21,7 +21,10 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
     private WebElement languageBar;
 
-    public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+    @FindBy(xpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a")
+    private List<WebElement> languageDropdownList;
+
+
     public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
     public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
     public String currencyTextXpath = "//a[contains(.,'USD   ')]";
@@ -96,6 +99,14 @@ public class HomePage extends AbstractPageBase{
     public String verify_default_language(){
         String actual = languageBar.getText();
         return actual;
+    }
+
+    public List<WebElement> verify_each_language(){
+        return languageDropdownList;
+    }
+
+    public void click_language_bar(){
+        languageBar.click();
     }
 
     //Subscription bar
