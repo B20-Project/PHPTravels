@@ -114,9 +114,6 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
-    public void verify_each_currency(){
-
-    }
 
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
     public void User_Story_3_AC3() throws InterruptedException {
