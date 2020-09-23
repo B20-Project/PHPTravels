@@ -1,7 +1,6 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -97,7 +96,7 @@ public class TestHomePage extends AbstractTestBase {
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
     public void User_Story_3_AC2()  {
         //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-        List <WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+        List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
 
         System.out.println("===================================");
         String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
@@ -188,6 +187,14 @@ public class TestHomePage extends AbstractTestBase {
 //
 //        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
 //    }
+
+
+    @Test//Arpat --> User Story #3 AC#1 Verify all footer Links
+    public void footerLinks() {
+        String expected = "supplier Registration";
+        String actual= homepage.click_footer_links("Supplier Sign Up");
+        Assert.assertEquals(expected,actual);
+    }
 
     @Test //Dilyar //manual
     public void login_Tab(){

@@ -7,7 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
@@ -64,34 +66,62 @@ public class HomePage extends AbstractPageBase{
     //FOOTER LINKS FEATURES WEB ELEMENTS
     //GIT COMMAND PRACTICE
     //GIT PRACTICE AGAIN
-
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
-    private WebElement SubscribeButton;
+    private WebElement SubscribeButton ;
     @FindBy(xpath = "//input[contains(@type,'email')]")
     private WebElement EnterEmail;
     @FindBy(xpath = "//ul[@class='nav navbar-nav']")
     private WebElement SubscribedSuccessfully;
 
-    // Arpat
-    /////////////////////////////////////////////////////////////////////////////
-    private static List<WebElement> supplierList=null;
-    public static  List<WebElement> footer_ListOf_supplier_Sign_Up(WebDriver driver){
-        supplierList= driver.findElements(By.xpath("//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li"));
-        return supplierList;
-    }
 
-    private static List<WebElement>companyList=null;
-    public static List<WebElement> companyList(WebElement driver){
-        companyList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li"));// it should give me 4 result
-        return companyList;
-    }
 
-    private static List<WebElement> supportList=null;
-    public static List<WebElement>supportExpected(WebDriver driver){
-        supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
-        return supportList;
-    }
+//    // Arpat
+//    /////////////////////////////////////////////////////////////////////////////
+//    private static List<WebElement> supplierList=null;
+//    public static  List<WebElement> footer_ListOf_supplier_Sign_Up(WebDriver driver){
+//        supplierList= driver.findElements(By.xpath("//footer[@id='footer']//div//div//div//ul[@class='footer-menu go-right go-text-right']/li"));
+//        return supplierList;
+//    }
+//
+//    private static List<WebElement>companyList=null;
+//    public static List<WebElement> companyList(WebElement driver){
+//        companyList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[1][@class='text-center']//ul//li"));// it should give me 4 result
+//        return companyList;
+//    }
+//
+//    private static List<WebElement> supportList=null;
+//    public static List<WebElement>supportExpected(WebDriver driver){
+//        supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
+//        return supportList;
+//    }
     //Home tab method
+
+    //FooterLinks -- > Arpat
+    public String click_footer_links(String linkName)  {
+        String homePageTitle = driver.getTitle();
+
+        WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
+        target.click();
+
+        String targetPageTitle =driver.getTitle();
+
+        if (homePageTitle.equals(targetPageTitle)){
+            Set<String> windowsIds = driver.getWindowHandles();
+            Iterator<String> itera = windowsIds.iterator();
+
+            String mainWindow = itera.next();
+            String childWindow = itera.next();
+            driver.switchTo().window(childWindow);
+            targetPageTitle =driver.getTitle();
+            driver.close();
+
+            driver.switchTo().window(mainWindow);
+        }
+
+        return targetPageTitle;
+
+    }
+
     public void click_home_tab(){
         driver.get(contact_US_Url);
         homeTab.click();
