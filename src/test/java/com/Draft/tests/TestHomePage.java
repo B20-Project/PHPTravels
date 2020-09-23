@@ -85,12 +85,11 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual, expected, "phone number does not match");
     }
 
-    @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
+    @Test
     public void User_Story_1_AC8() {
-
-      //  String actual = homepage.verify_phoneIcon();
-
-      //  Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
+        String actual = this.homepage.verify_phoneIcon();
+        String expected = "phone";
+        Assert.assertEquals(actual, expected, "Phone icon is not displayed");
     }
 
 
