@@ -58,7 +58,7 @@ public class HomePage extends AbstractPageBase{
     //GIT PRACTICE AGAIN
 
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
-    private WebElement SubscribeButton;
+    private WebElement SubscribeButton ;
     @FindBy(xpath = "//input[contains(@type,'email')]")
     private WebElement EnterEmail;
     @FindBy(xpath = "//ul[@class='nav navbar-nav']")
@@ -90,9 +90,10 @@ public class HomePage extends AbstractPageBase{
     //FooterLinks -- > Arpat
     public String click_footer_links(String linkName)  {
         String homePageTitle = driver.getTitle();
-        WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
 
+        WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
         target.click();
+
         String targetPageTitle =driver.getTitle();
 
         if (homePageTitle.equals(targetPageTitle)){

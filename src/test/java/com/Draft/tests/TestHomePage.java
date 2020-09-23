@@ -197,7 +197,6 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(expected,actual);
     }
 
-
     @Test //Dilyar //manual
     public void login_Tab(){
         homepage.click_login_tab();
