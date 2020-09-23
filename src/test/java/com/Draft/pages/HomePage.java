@@ -145,8 +145,8 @@ public class HomePage extends AbstractPageBase{
         return phoneNumber.getText().trim();
     }
 
-    public void verify_phoneIcon (){ //need to fix
-        phoneIcon.isDisplayed();
+    public String verify_phoneIcon() {
+        return this.phoneIcon.getText();
     }
 
     //Footer Texts
