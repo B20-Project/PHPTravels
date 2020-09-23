@@ -98,16 +98,7 @@ public class HomePage extends AbstractPageBase{
         supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
         return supportList;
     }
-    //Home tab method
-    public void click_home_tab(){
-        driver.get(contact_US_Url);
-        homeTab.click();
-    }
-    public String getTitle(){
-        String actualTitle = driver.getTitle();
 
-        return actualTitle;
-    }
     //My Account tab methods
     public void click_account_tab() {
         accountTab.click();
