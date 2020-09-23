@@ -42,8 +42,11 @@ public class HomePage extends AbstractPageBase{
     @FindBy (xpath ="//div[@class='dropdown-menu dropdown-menu-right show']/div/a" )
     private List <WebElement> currencyDropdownList;
 
+
     @FindBy (xpath ="//a[contains(.,'USD   ')]")
     private WebElement currencyText;
+
+
 
     @FindBy(xpath = "//span[contains(@class,'d-block footer-phone text-white')]")
     private WebElement phoneNumber;

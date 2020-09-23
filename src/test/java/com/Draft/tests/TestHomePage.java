@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestHomePage extends AbstractTestBase {
 
+
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
     public void homeTab_Verification() {
         homepage.navigateTo("company","Contact");
@@ -81,7 +82,7 @@ public class TestHomePage extends AbstractTestBase {
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
     public void User_Story_3_AC2()  {
         //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-        List <WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+        List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
 
         System.out.println("===================================");
         String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
@@ -97,7 +98,6 @@ public class TestHomePage extends AbstractTestBase {
         System.out.println("===================================");
 
     }
-
 
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
     public void User_Story_3_AC3() throws InterruptedException {
@@ -168,6 +168,14 @@ public class TestHomePage extends AbstractTestBase {
         int sizeOfActualCurrencyList = actualCurrencyList.size();
 
         Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfActualCurrencyList);
+    }
+
+
+    @Test//Arpat --> User Story #3 AC#1 Verify all footer Links
+    public void footerLinks() {
+        String expected = "supplier Registration";
+        String actual= homepage.click_footer_links("Supplier Sign Up");
+        Assert.assertEquals(expected,actual);
     }
 
     @Test //Dilyar //manual
