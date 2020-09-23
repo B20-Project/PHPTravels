@@ -1,69 +1,54 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
+import com.google.common.base.Verify;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class TestHomePage extends AbstractTestBase {
 
-
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
     public void homeTab_Verification() {
-
+        homepage.navigateTo("company","Contact");
         homepage.click_home_tab();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-        }
-
+        BrowserUtils.wait(1);
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = homepage.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
     }
 
     // BTOR-1_AC#4 Verify company tab is functional (abdu)
-//    @Test
-//    public void company_DropDown_Verification() throws InterruptedException {
-//        driver.findElement(By.xpath(homepage.companyTabXpath)).click();
-//        Thread.sleep(1000);
-//        String actual_Style_Value = driver.findElement(By.xpath(homepage.getCompanyTabStyleXpath)).getAttribute("style");
-//        // System.out.println("actual_Style_Value = " + actual_Style_Value);
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//
-//        String expected_Style_Value = "display: block;";
-//        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
-//    }
+    @Test
+    public void company_DropDown_Verification() {
+        homepage.click_company_tab();
+        BrowserUtils.wait(1);
+        String expected_Style_Value = "display: block;";
+        String actual_Style_Value = homepage.get_companyTab_Style_text();
+        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
+    }
 
-//    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
-//    @Test
-//    public void company_DropDown_SubMenu_Verification() throws InterruptedException {
-//        driver.findElement(By.xpath(homepage.companyTabXpath)).click();
-//        Thread.sleep(1000);
-//        driver.findElement((By.linkText("Contact"))).click();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//
-//        String expected_title_Value = "Contact";
-//        String actual_title_Value = driver.getTitle();
-//        Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
-//
-//        driver.navigate().back();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//
-//        driver.findElement(By.xpath(homepage.companyTabXpath)).click();
-//        Thread.sleep(1000);
-//        driver.findElement((By.linkText("About Us"))).click();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//        String expected_title = "About Us";
-//        String actual_title = driver.getTitle();
-//        Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
-//    }
-//
+    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
+    @Test
+    public void company_DropDown_SubMenu_Verification() {
+        homepage.navigateTo("company","Contact");
+        String expected_title_Value = "Contact";
+        String actual_title_Value = homepage.getTitle();
+        Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
+
+        homepage.navigateToHome();
+        BrowserUtils.wait(1);
+        homepage.navigateTo("company","About Us");
+        String expected_title = "About Us";
+        String actual_title = homepage.getTitle();
+        Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
+    }
+
     @Test //AC#9 Dilyar
     public void account_tab_Verification() {
 

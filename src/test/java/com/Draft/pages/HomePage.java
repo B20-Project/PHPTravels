@@ -13,8 +13,17 @@ public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
     private String contact_US_Url = "https://www.phptravels.net/contact-us";
 
+    // Home tab
     @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a")
     private WebElement homeTab;
+
+    // company tab
+    @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a")
+    private WebElement companyTab;
+
+    @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul")
+    private WebElement companyTabStyle;
+
 
     //HEADER DROPDOWNS MODULE WEB ELEMENTS
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
@@ -57,9 +66,6 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//div[contains(@class,'dropdown dropdown-login')]/a")
     private WebElement loginTab;
 
-    //Company tab
-    public String companyTabXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a";
-    public String getCompanyTabStyleXpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul";
 
     //FOOTER LINKS FEATURES WEB ELEMENTS
     //GIT COMMAND PRACTICE
@@ -91,16 +97,8 @@ public class HomePage extends AbstractPageBase{
         supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
         return supportList;
     }
-    //Home tab method
-    public void click_home_tab(){
-        driver.get(contact_US_Url);
-        homeTab.click();
-    }
-    public String getTitle(){
-        String actualTitle = driver.getTitle();
 
-        return actualTitle;
-    }
+
     //My Account tab methods
     public void click_account_tab() {
         accountTab.click();
@@ -174,6 +172,24 @@ public class HomePage extends AbstractPageBase{
 
     public void currency_dropdown_click(){
         currencyDropdown.click();
+    }
+
+    //Home tab
+    public void click_home_tab(){
+        homeTab.click();
+    }
+    public String getTitle(){
+        String actualTitle = driver.getTitle();
+        return actualTitle;
+    }
+
+    // Company Tab
+    public void click_company_tab(){
+        companyTab.click();
+    }
+
+    public String get_companyTab_Style_text(){
+        return companyTabStyle.getAttribute("Style");
     }
 
 }
