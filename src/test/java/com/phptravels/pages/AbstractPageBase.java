@@ -1,7 +1,7 @@
-package com.Draft.pages;
+package com.phptravels.pages;
 
 
-import com.Draft.Utility.Driver;
+import com.phptravels.Utility.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,6 +1,6 @@
-package com.Draft.tests;
+package com.phptravels.tests;
 
-import com.Draft.Utility.BrowserUtils;
+import com.phptravels.Utility.BrowserUtils;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
