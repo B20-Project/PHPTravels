@@ -1,10 +1,11 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
+import java.util.List;
 
 
 public class TestHomePage extends AbstractTestBase {
@@ -95,7 +96,7 @@ public class TestHomePage extends AbstractTestBase {
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
     public void User_Story_3_AC2()  {
         //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-        List <WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+        List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
 
         System.out.println("===================================");
         String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
