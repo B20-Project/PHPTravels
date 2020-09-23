@@ -2,6 +2,7 @@ package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -191,38 +192,12 @@ public class TestHomePage extends AbstractTestBase {
 //    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Test//User Story #3 AC#1 Verify all footer Links
-    public void footerLinks(){
-        homepage.click_footer_links("Contact");
-
+    @Test//Arpat --> User Story #3 AC#1 Verify all footer Links
+    public void footerLinks() {
+        String expected = "supplier Registration";
+        String actual= homepage.click_footer_links("Supplier Sign Up");
+        Assert.assertEquals(expected,actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Test //Dilyar //manual

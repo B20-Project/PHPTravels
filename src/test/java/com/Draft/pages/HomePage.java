@@ -7,7 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
@@ -85,29 +87,33 @@ public class HomePage extends AbstractPageBase{
 //    }
     //Home tab method
 
-    //FooterLinks
-    public void click_footer_links(String linkName){
-        driver.get(contact_US_Url);
-        driver.findElements(By.xpath("//a[.='"+linkName+"']")).clear();
+    //FooterLinks -- > Arpat
+    public String click_footer_links(String linkName)  {
+
+
+        String homePageTitle = driver.getTitle();
+        WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
+
+
+        target.click();
+        String targetPageTitle =driver.getTitle();
+
+        if (homePageTitle.equals(targetPageTitle)){
+            Set<String> windowsIds = driver.getWindowHandles();
+            Iterator<String> itera = windowsIds.iterator();
+
+            String mainWindow = itera.next();
+            String childWindow = itera.next();
+            driver.switchTo().window(childWindow);
+            targetPageTitle =driver.getTitle();
+            driver.close();
+
+            driver.switchTo().window(mainWindow);
+        }
+
+        return targetPageTitle;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public void click_home_tab(){
         driver.get(contact_US_Url);
