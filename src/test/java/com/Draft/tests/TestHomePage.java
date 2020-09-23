@@ -1,18 +1,13 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
-import com.google.common.base.Verify;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
 
 public class TestHomePage extends AbstractTestBase {
-
 
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
     public void homeTab_Verification() {
@@ -78,7 +73,6 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual, expected, "Phone icon is not displayed");
     }
 
-
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
     public void User_Story_3_AC2()  {
         //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
@@ -100,7 +94,7 @@ public class TestHomePage extends AbstractTestBase {
     }
 
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
-    public void User_Story_3_AC3() throws InterruptedException {
+    public void User_Story_3_AC3() {
 
         int randomNumber = (int) (Math.random() * 1000);
         //System.out.println("randomNumber = " + randomNumber); //testing random #
@@ -169,7 +163,6 @@ public class TestHomePage extends AbstractTestBase {
 
         Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfActualCurrencyList);
     }
-
 
     @Test//Arpat --> User Story #3 AC#1 Verify all footer Links
     public void footerLinks() {
