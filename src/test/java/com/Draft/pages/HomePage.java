@@ -7,7 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class HomePage extends AbstractPageBase{
     //MAIN HEADER WEB ELEMENTS
@@ -93,6 +95,32 @@ public class HomePage extends AbstractPageBase{
     public static List<WebElement>supportExpected(WebDriver driver){
         supportList = driver.findElements(By.xpath("//footer[@id='footer']//div//div//div[@class='col-12 col-lg-9']//div//div//div[@class='footer_menu col-12 col-md-6']//ul[@class='main-nav']//li[2][@class='text-center']//ul//li"));// it should give me 4 result
         return supportList;
+    }
+
+    //FooterLinks -- > Arpat
+    public String click_footer_links(String linkName)  {
+        String homePageTitle = driver.getTitle();
+
+        WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
+        target.click();
+
+        String targetPageTitle =driver.getTitle();
+
+        if (homePageTitle.equals(targetPageTitle)){
+            Set<String> windowsIds = driver.getWindowHandles();
+            Iterator<String> itera = windowsIds.iterator();
+
+            String mainWindow = itera.next();
+            String childWindow = itera.next();
+            driver.switchTo().window(childWindow);
+            targetPageTitle =driver.getTitle();
+            driver.close();
+
+            driver.switchTo().window(mainWindow);
+        }
+
+        return targetPageTitle;
+
     }
 
 
