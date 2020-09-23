@@ -56,7 +56,6 @@ public class HomePage extends AbstractPageBase{
     //FOOTER LINKS FEATURES WEB ELEMENTS
     //GIT COMMAND PRACTICE
     //GIT PRACTICE AGAIN
-
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
     private WebElement SubscribeButton ;
     @FindBy(xpath = "//input[contains(@type,'email')]")
