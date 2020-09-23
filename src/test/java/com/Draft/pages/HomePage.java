@@ -20,9 +20,9 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
     private WebElement languageBar;
 
-    @FindBy (xpath= "//div[@class='dropdown dropdown-currency']")
+    @FindBy (xpath= "//div[@class='dropdown-menu dropdown-menu-right show']/div/a")
     private List<WebElement> languageDropdownList;
-    //public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+
 
     @FindBy (xpath ="//div[@class='dropdown dropdown-currency']" )
     private WebElement currencyDropdown;
