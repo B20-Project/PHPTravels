@@ -180,7 +180,9 @@ public class TestHomePage extends AbstractTestBase {
 
     @Test //Dilyar
     public void verify_signUp_tab(){
+        homepage.click_account_tab();
         homepage.click_signUp_tab();
+        BrowserUtils.wait(1);
         String expected = "Register";
         String actual = homepage.getTitle();
         Assert.assertTrue(actual.equals(expected),"Page title does not match");

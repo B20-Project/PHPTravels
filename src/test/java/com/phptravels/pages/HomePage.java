@@ -56,7 +56,7 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//div[@class='mini-menu']/ul/li[3]/div/a")
     private WebElement accountTab;
 
-    @FindBy(xpath = "/div[@class='mini-menu']/ul/li[3]/div/div//a[2]")
+    @FindBy(xpath = "//a[.='Sign Up']")
     private WebElement signUpTab;
 
     @FindBy(xpath = "//div[contains(@class,'dropdown dropdown-login')]/a")
