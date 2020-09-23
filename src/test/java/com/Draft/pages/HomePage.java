@@ -1,12 +1,10 @@
 package com.Draft.pages;
-;
-import com.Draft.Utility.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -79,29 +77,22 @@ public class HomePage extends AbstractPageBase{
     //FooterLinks -- > Arpat
     public String click_footer_links(String linkName)  {
         String homePageTitle = driver.getTitle();
-
         WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
         target.click();
-
         String targetPageTitle =driver.getTitle();
-
         if (homePageTitle.equals(targetPageTitle)){
             Set<String> windowsIds = driver.getWindowHandles();
             Iterator<String> itera = windowsIds.iterator();
-
             String mainWindow = itera.next();
             String childWindow = itera.next();
             driver.switchTo().window(childWindow);
             targetPageTitle =driver.getTitle();
             driver.close();
-
             driver.switchTo().window(mainWindow);
         }
-
         return targetPageTitle;
 
     }
-
 
     //My Account tab methods
     public void click_account_tab() {
@@ -118,12 +109,12 @@ public class HomePage extends AbstractPageBase{
     }
 
     //Language bar
-    public String verify_default_language(){
+    public String get_default_language(){
         String actual = languageBar.getText();
         return actual;
     }
 
-    public List<WebElement> verify_each_language(){
+    public List<WebElement> get_language_list(){
         return languageDropdownList;
     }
 
@@ -132,28 +123,33 @@ public class HomePage extends AbstractPageBase{
     }
 
     //Subscription bar
-    public void subscribe(String email){
+    public void click_subscribe(String email){
         EnterEmail.sendKeys(email, Keys.ENTER);
         SubscribeButton.click();
     }
 
-    public String verify_subscribe(){
-        BrowserUtils.wait(1);
+    public String get_subscription_text(){
+
        return SubscribedSuccessfully.getText().trim();
     }
 
     //Phone number
-    public String verify_number (){
+    public String get_phone_number(){
         return phoneNumber.getText().trim();
     }
 
-    public String verify_phoneIcon() {
+    public String get_phone_icon_text() {
         return this.phoneIcon.getText();
     }
 
     //Footer Texts
-    public List<WebElement> verifyFooterTexts (){ //need to fix
-        return actualFooterTexts;
+    public ArrayList<String> get_footer_texts (){ //need to fix
+        ArrayList<String> actual = new ArrayList<>();
+        for (WebElement eachElement : actualFooterTexts) {
+            actual.add(eachElement.getText());
+        }
+
+        return actual;
     }
 
     public void searchFor(String name){
@@ -164,17 +160,17 @@ public class HomePage extends AbstractPageBase{
 
     //Currency bar
 
-    public String verify_default_currency(){
+    public String get_default_currency(){
         String actualText = currencyText.getText();
         return actualText;
     }
 
-    public List <WebElement> verify_currency_list(){
+    public List <WebElement> get_currency_list(){
 
         return currencyDropdownList;
     }
 
-    public void currency_dropdown_click(){
+    public void click_currency_tab(){
         currencyDropdown.click();
     }
 
