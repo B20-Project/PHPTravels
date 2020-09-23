@@ -94,25 +94,26 @@ public class TestHomePage extends AbstractTestBase {
     }
 
 
-//    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
-//    public void User_Story_3_AC2()  {
-//        //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-//       // List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+    @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
+    public void User_Story_3_AC2()  {
+        //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
+        List <WebElement> actualFooterTexts = homepage.verifyFooterTexts();
 
-//        System.out.println("===================================");
-//        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
-//                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
-//                "NEWSLETTER\n" + "Subsribe to get our latest updates and oeffers\n" + "SUBSCRIBE\n" + "Powered by PHPTRAVELS\n" + "© All Rights Reserved by PHPTRAVELS"};
-//
-//        int i = 0;
-//        for (WebElement eachElement : actualFooterTexts) {
-//            System.out.println(eachElement.getText());
-//            Assert.assertEquals(expectedList [i],eachElement.getText(), "Actual List of Footer Texts do not match expected list of footer lists" );
-//            i++;
-//        }
-//        System.out.println("===================================");
-//
-//    }
+        System.out.println("===================================");
+        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
+                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
+                "NEWSLETTER\n" + "Subsribe to get our latest updates and oeffers\n" + "SUBSCRIBE\n" + "Powered by PHPTRAVELS\n" + "© All Rights Reserved by PHPTRAVELS"};
+
+        int i = 0;
+        for (WebElement eachElement : actualFooterTexts) {
+            System.out.println(eachElement.getText());
+            Assert.assertEquals(expectedList [i],eachElement.getText(), "Actual List of Footer Texts do not match expected list of footer lists" );
+            i++;
+        }
+        System.out.println("===================================");
+
+    }
+
 
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
     public void User_Story_3_AC3() throws InterruptedException {
@@ -132,64 +133,58 @@ public class TestHomePage extends AbstractTestBase {
     }
 //
     @Test// User story#1(BTOR-1) AC#6-Verify language bar visible & default language selected "ENGLISH" (Elvira)
-    public void global_language_bar() {
+    public void language_bar() {
         String defaultSelectedLanguage = "ENGLISH";
         String actualSelectedLanguage = homepage.verify_default_language();
         Assert.assertEquals(defaultSelectedLanguage, actualSelectedLanguage, "default language ENGLISH is not selected");
     }
+
+    @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
+    public void language_dropDown() {
+        homepage.click_language_bar();
+        List<WebElement> languageDropdownList = homepage.verify_each_language();
+
+       String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
+        int i = 0;
+        for(WebElement each : languageDropdownList){
+            System.out.println(each.getText());
+
+           Assert.assertEquals(each.getText(), expectedListOfLanguages[i]);
+           i++;
+       }
+        int sizeOfExpectedListOfLanguages = expectedListOfLanguages.length;
+        int sizeOfListOfLanguages = languageDropdownList.size();
+      Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
+   }
 //
-//    @Test //User Story#3(BTOR-12) AC#3 - Language DropDown - verify each language (Elvira)
-//    public void language_dropDown(){
-//        WebElement languageBar = driver.findElement(By.xpath(homepage.languageBarXpath));
-//        languageBar.click();
-//
-//        String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
-//
-    //TEST TEST TEST TEST TEST
-//        int i = 0;
-//        List<WebElement> listOfLanguages = driver.findElements(By.xpath(homepage.listOfLanguagesXpath));
-//        for(WebElement each : listOfLanguages){
-//            //System.out.println(each.getText());
-//            Assert.assertEquals(each.getText(), expectedListOfLanguages[i]);
-//            i++;
-//        }
-//
-//        int sizeOfExpectedListOfLanguages = expectedListOfLanguages.length;
-//        int sizeOfListOfLanguages = listOfLanguages.size();
-//        Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
-//    }
-//
-//    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
-//    public void User_Story_1_AC5() {
-//        WebElement currency = driver.findElement(By.xpath(homepage.currencyTextXpath));
-//        Assert.assertTrue(currency.isDisplayed(), "Currency default USD is not displayed ");
-//
-//    }
-//
-//    @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
-//    public void currency_dropdown (){
-//
-//        WebElement currencyBar = driver.findElement(By.xpath(homepage.currencyDropdownXPath));
-//        currencyBar.click();
-//
-//        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        String [] expectedCurrencyList = {"USD", "GBP","SAR","EUR","PKR","KWD","JPY","INR","CNY","TRY","RUB"};
-//
-//        int index=0;
-//        List<WebElement> listOfCurrencies =driver.findElements(By.xpath(homepage.currencyDropdownList));
-//        for(WebElement eachCurrency : listOfCurrencies){
-//            Assert.assertEquals(eachCurrency.getText(),expectedCurrencyList[index]);
-//            index++;
-//        }
-//
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        int sizeOfExpectedCurrencyList = expectedCurrencyList.length;
-//        int sizeOfListOfCurrencies = listOfCurrencies.size();
-//
-//        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
-//    }
+        @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+
+        public void global_currency_bar() {
+            String defaultSelectedCurrency = "USD";
+            String actualSelectedCurrency = homepage.verify_default_currency();
+            Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
+                }
+
+    @Test //User Story#3(BTOR-12) AC#2 - Currency DropDown - verify each currency(Zeliha)
+    public void currency_dropdown () {
+        homepage.currency_dropdown_click();
+        List<WebElement> actualCurrencyList = homepage.verify_currency_list();
+
+        String[] expectedCurrencyList = {"USD", "GBP", "SAR", "EUR", "PKR", "KWD", "JPY", "INR", "CNY", "TRY", "RUB"};
+
+        int index = 0;
+
+        for (WebElement eachCurrency : actualCurrencyList) {
+            System.out.println(eachCurrency.getText());
+            Assert.assertTrue(expectedCurrencyList[index].equals(eachCurrency.getText()));
+            index++;
+        }
+
+        int sizeOfExpectedCurrencyList = expectedCurrencyList.length;
+        int sizeOfActualCurrencyList = actualCurrencyList.size();
+
+        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfActualCurrencyList);
+    }
 
     @Test //Dilyar //manual
     public void login_Tab(){
