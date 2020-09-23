@@ -157,9 +157,9 @@ public class TestHomePage extends AbstractTestBase {
       Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
    }
 //
-        @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
 
-        public void global_currency_bar() {
+    public void global_currency_bar() {
             String defaultSelectedCurrency = "USD";
             String actualSelectedCurrency = homepage.verify_default_currency();
             Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
