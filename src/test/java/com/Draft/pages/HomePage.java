@@ -23,11 +23,21 @@ public class HomePage extends AbstractPageBase{
     private WebElement languageBar;
 
     @FindBy (xpath= "//div[@class='dropdown dropdown-currency']")
-    private WebElement listOfLanguages;
+    private List<WebElement> languageDropdownList;
     //public String listOfLanguagesXpath = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
-    public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
-    public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
-    public String currencyTextXpath = "//a[contains(.,'USD   ')]";
+
+    @FindBy (xpath ="//div[@class='dropdown dropdown-currency']" )
+    private WebElement currencyDropdown;
+//public String currencyDropdownXPath = "//div[@class='dropdown dropdown-currency']";
+
+    @FindBy (xpath ="//div[@class='dropdown-menu dropdown-menu-right show']/div/a" )
+    private WebElement currencyDropdownList;
+//public String currencyDropdownList = "//div[@class='dropdown-menu dropdown-menu-right show']/div/a";
+
+    @FindBy (xpath ="//a[contains(.,'USD   ')]")
+    private WebElement currencyText;
+//public String currencyTextXpath = "//a[contains(.,'USD   ')]";
+
 
     @FindBy(xpath = "//span[contains(@class,'d-block footer-phone text-white')]")
     private WebElement phoneNumber;
@@ -36,7 +46,7 @@ public class HomePage extends AbstractPageBase{
     private WebElement phoneIcon;
 
     @FindBy(xpath = "//footer[@id='footer']")
-    private WebElement actualFooterTexts;
+    private List <WebElement> actualFooterTexts;
 
 
     //My account Tab
@@ -141,6 +151,14 @@ public class HomePage extends AbstractPageBase{
         return actual;
     }
 
+    public List<WebElement> verify_each_language(){
+        return languageDropdownList;
+    }
+
+    public void click_language_bar(){
+        languageBar.click();
+    }
+
     //Subscription bar
     public void subscribe(String email){
         EnterEmail.sendKeys(email, Keys.ENTER);
@@ -162,8 +180,8 @@ public class HomePage extends AbstractPageBase{
     }
 
     //Footer Texts
-    public String verifyFooterTexts (){ //need to fix
-        return actualFooterTexts.getText();
+    public List<WebElement> verifyFooterTexts (){ //need to fix
+        return actualFooterTexts;
     }
 
     public void searchFor(String name){
@@ -171,5 +189,13 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath("//a[@data-name='"+name+"']")).click();
 
     }
+
+    //Currency bar
+
+    public String verify_default_currency(){
+        String actualText = currencyText.getText();
+        return actualText;
+    }
+
 
 }
