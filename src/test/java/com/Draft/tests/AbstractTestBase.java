@@ -13,7 +13,7 @@ public abstract class  AbstractTestBase {
     public void setUp() {
         String URL = "https://www.phptravels.net/";
         Driver.getDriver().get(URL);
-        Driver.getDriver().manage().window().maximize();
+        //Driver.getDriver().manage().window().maximize();
         homepage = new HomePage();
     }
 

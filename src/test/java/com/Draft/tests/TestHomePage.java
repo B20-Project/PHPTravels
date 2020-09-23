@@ -1,69 +1,50 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-
 public class TestHomePage extends AbstractTestBase {
-
 
     @Test // BTOR-1_AC#3 Verify home tab is functional (abdu)
     public void homeTab_Verification() {
-
+        homepage.navigateTo("company","Contact");
         homepage.click_home_tab();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-        }
-
+        BrowserUtils.wait(1);
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = homepage.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
     }
 
     // BTOR-1_AC#4 Verify company tab is functional (abdu)
-//    @Test
-//    public void company_DropDown_Verification() throws InterruptedException {
-//        driver.findElement(By.xpath(homepage.companyTabXpath)).click();
-//        Thread.sleep(1000);
-//        String actual_Style_Value = driver.findElement(By.xpath(homepage.getCompanyTabStyleXpath)).getAttribute("style");
-//        // System.out.println("actual_Style_Value = " + actual_Style_Value);
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//
-//        String expected_Style_Value = "display: block;";
-//        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
-//    }
+    @Test
+    public void company_DropDown_Verification() {
+        homepage.click_company_tab();
+        BrowserUtils.wait(1);
+        String expected_Style_Value = "display: block;";
+        String actual_Style_Value = homepage.get_companyTab_Style_text();
+        Assert.assertEquals(actual_Style_Value, expected_Style_Value, "style attribute does not match");
+    }
 
-//    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
-//    @Test
-//    public void company_DropDown_SubMenu_Verification() throws InterruptedException {
-//        driver.findElement(By.xpath(homepage.companyTabXpath)).click();
-//        Thread.sleep(1000);
-//        driver.findElement((By.linkText("Contact"))).click();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//
-//        String expected_title_Value = "Contact";
-//        String actual_title_Value = driver.getTitle();
-//        Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
-//
-//        driver.navigate().back();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//
-//        driver.findElement(By.xpath(homepage.companyTabXpath)).click();
-//        Thread.sleep(1000);
-//        driver.findElement((By.linkText("About Us"))).click();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//        String expected_title = "About Us";
-//        String actual_title = driver.getTitle();
-//        Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
-//    }
-//
+    // BTOR-12_AC#1 Company Module - contact & about us tabs (abdu)
+    @Test
+    public void company_DropDown_SubMenu_Verification() {
+        homepage.navigateTo("company","Contact");
+        String expected_title_Value = "Contact";
+        String actual_title_Value = homepage.getTitle();
+        Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
+
+        homepage.navigateToHome();
+        BrowserUtils.wait(1);
+        homepage.navigateTo("company","About Us");
+        String expected_title = "About Us";
+        String actual_title = homepage.getTitle();
+        Assert.assertEquals(actual_title, expected_title, "About US page title does not match");
+    }
+
     @Test //AC#9 Dilyar
     public void account_tab_Verification() {
 
@@ -85,19 +66,17 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual, expected, "phone number does not match");
     }
 
-    @Test //UserStory#1(BTOR-10) AC#8 - verify phone icon visible (Ahmet)
+    @Test
     public void User_Story_1_AC8() {
-
-      //  String actual = homepage.verify_phoneIcon();
-
-      //  Assert.assertTrue(driver.findElement(By.xpath(phoneIcon)).isDisplayed(), "Phone icon is not displayed");
+        String actual = this.homepage.verify_phoneIcon();
+        String expected = "phone";
+        Assert.assertEquals(actual, expected, "Phone icon is not displayed");
     }
-
 
     @Test //UserStory#3(BTOR-21) AC#2 - Verify all footer texts - (Ahmet)
     public void User_Story_3_AC2()  {
         //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-        List <WebElement> actualFooterTexts = homepage.verifyFooterTexts();
+        List<WebElement> actualFooterTexts = homepage.verifyFooterTexts();
 
         System.out.println("===================================");
         String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
@@ -114,9 +93,8 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
-
     @Test //UserStory#3(BTOR-22) AC#3 - verify subscription function with valid email - (Ahmet)
-    public void User_Story_3_AC3() throws InterruptedException {
+    public void User_Story_3_AC3() {
 
         int randomNumber = (int) (Math.random() * 1000);
         //System.out.println("randomNumber = " + randomNumber); //testing random #
@@ -157,9 +135,9 @@ public class TestHomePage extends AbstractTestBase {
       Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
    }
 //
-        @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
+    @Test //User Story#1 (BTOR-1) //AC#5 verify currency is visible and default selected (Zeliha)
 
-        public void global_currency_bar() {
+    public void global_currency_bar() {
             String defaultSelectedCurrency = "USD";
             String actualSelectedCurrency = homepage.verify_default_currency();
             Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
@@ -184,6 +162,13 @@ public class TestHomePage extends AbstractTestBase {
         int sizeOfActualCurrencyList = actualCurrencyList.size();
 
         Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfActualCurrencyList);
+    }
+
+    @Test//Arpat --> User Story #3 AC#1 Verify all footer Links
+    public void footerLinks() {
+        String expected = "supplier Registration";
+        String actual= homepage.click_footer_links("Supplier Sign Up");
+        Assert.assertEquals(expected,actual);
     }
 
     @Test //Dilyar //manual
