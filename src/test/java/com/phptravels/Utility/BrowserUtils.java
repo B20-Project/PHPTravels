@@ -1,4 +1,4 @@
-package com.Draft.Utility;
+package com.phptravels.Utility;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;

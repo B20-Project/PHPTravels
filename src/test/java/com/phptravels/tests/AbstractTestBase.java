@@ -1,7 +1,7 @@
-package com.Draft.tests;
+package com.phptravels.tests;
 
-import com.Draft.Utility.Driver;
-import com.Draft.pages.HomePage;
+import com.phptravels.Utility.Driver;
+import com.phptravels.pages.HomePage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
