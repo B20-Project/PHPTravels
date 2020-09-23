@@ -1,12 +1,10 @@
 package com.Draft.tests;
 
 import com.Draft.Utility.BrowserUtils;
-
-import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.List;
+
 
 
 public class TestHomePage extends AbstractTestBase {

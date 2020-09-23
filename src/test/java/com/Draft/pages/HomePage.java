@@ -89,11 +89,8 @@ public class HomePage extends AbstractPageBase{
 
     //FooterLinks -- > Arpat
     public String click_footer_links(String linkName)  {
-
-
         String homePageTitle = driver.getTitle();
         WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
-
 
         target.click();
         String targetPageTitle =driver.getTitle();
