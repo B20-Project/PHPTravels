@@ -190,6 +190,41 @@ public class TestHomePage extends AbstractTestBase {
 //        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfListOfCurrencies);
 //    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test//User Story #3 AC#1 Verify all footer Links
+    public void footerLinks(){
+        homepage.click_footer_links("Contact");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Test //Dilyar //manual
     public void login_Tab(){
         homepage.click_login_tab();
