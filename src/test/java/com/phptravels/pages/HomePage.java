@@ -62,8 +62,12 @@ public class HomePage extends AbstractPageBase{
         String actual = languageBar.getText();
         return actual;
     }
-    public List<WebElement> get_language_list(){
-        return languageDropdownList;
+    public ArrayList<String> get_language_list(){
+        ArrayList<String> actual = new ArrayList<>();
+        for(WebElement eachLanguage : languageDropdownList) {
+            actual.add(eachLanguage.getText());
+        }
+        return actual;
     }
     public void click_language_bar(){
         languageBar.click();

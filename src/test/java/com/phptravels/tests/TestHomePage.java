@@ -29,20 +29,20 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_each_language() {
-        homepage.click_language_bar();
-        List<WebElement> languageDropdownList = homepage.get_language_list();
-
         String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
-        int i = 0;
-        for(WebElement each : languageDropdownList){
-            System.out.println(each.getText());
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedListOfLanguages));
+        homepage.click_language_bar();
+        ArrayList<String> actual = homepage.get_language_list();
 
-            Assert.assertEquals(each.getText(), expectedListOfLanguages[i]);
-            i++;
+        if (expected.size()!=actual.size()){
+            throw new RuntimeException("expected size does not match actual size");
         }
-        int sizeOfExpectedListOfLanguages = expectedListOfLanguages.length;
-        int sizeOfListOfLanguages = languageDropdownList.size();
-        Assert.assertTrue(sizeOfExpectedListOfLanguages == sizeOfListOfLanguages);
+
+        for(int i = 0; i < expected.size(); i++){
+            Assert.assertEquals(actual.get(i), expected.get(i), actual.get(i)+" does not match with expected");
+        }
+
+
     }
     @Test
     public void verify_default_currency() {
