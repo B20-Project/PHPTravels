@@ -50,7 +50,6 @@ public class TestHomePage extends AbstractTestBase {
         String actualSelectedCurrency = homepage.get_default_currency();
         Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
     }
-
     @Test
     public void verify_each_currency () {
         String[] expectedCurrencyList = {"USD", "GBP", "SAR", "EUR", "PKR", "KWD", "JPY", "INR", "CNY", "TRY", "RUB"};
@@ -142,17 +141,10 @@ public class TestHomePage extends AbstractTestBase {
         System.out.println("===================================");
 
     }
-
-    /**
-     * we will be utilizing an excel sheet that has all the expected
-     * text you need to test this method with.
-     */
     @Test
     public void verify_footer_links() {
         String expected = "supplier Registration";
         String actual= homepage.click_footer_links("Supplier Sign Up");
         Assert.assertEquals(expected,actual);
     }
-
-
 }
