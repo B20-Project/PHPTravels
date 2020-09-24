@@ -37,6 +37,7 @@ public class AbstractPageBase {
      *                   company - About Us, Contact
      *                   "//button[contains(text(),'%s')]" //dynamic xpath
      */
+
     public void navigateTo(String tabName,String moduleName){
 
         String tabNameXpath="";

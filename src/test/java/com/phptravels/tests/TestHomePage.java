@@ -146,6 +146,4 @@ public class TestHomePage extends AbstractTestBase {
         String actual= homepage.click_footer_links("Supplier Sign Up");
         Assert.assertEquals(expected,actual);
     }
-
-
 }
