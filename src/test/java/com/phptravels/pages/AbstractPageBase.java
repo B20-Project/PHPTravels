@@ -23,7 +23,11 @@ public class AbstractPageBase {
         driver.findElement(By.xpath("//a[@title='home']")).click();
 
     }
-    /**
+
+    public String getTitle(){
+        return driver.getTitle();
+    }
+    /**NavigateTo
      *
      * @param tabName currency, language, account, company
      * @param moduleName Login, Sign Up, Vietnamese, Russian, English, Arabic, Farsi

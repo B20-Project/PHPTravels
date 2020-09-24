@@ -50,25 +50,22 @@ public class TestHomePage extends AbstractTestBase {
         String actualSelectedCurrency = homepage.get_default_currency();
         Assert.assertTrue(defaultSelectedCurrency.equals(actualSelectedCurrency), "Currency default USD is not displayed ");
     }
+
     @Test
     public void verify_each_currency () {
-        homepage.click_currency_tab();
-        List<WebElement> actualCurrencyList = homepage.get_currency_list();
-
         String[] expectedCurrencyList = {"USD", "GBP", "SAR", "EUR", "PKR", "KWD", "JPY", "INR", "CNY", "TRY", "RUB"};
 
-        int index = 0;
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedCurrencyList));
+        homepage.click_currency_tab();
+        ArrayList<String> actual = homepage.get_currency_List();
 
-        for (WebElement eachCurrency : actualCurrencyList) {
-            System.out.println(eachCurrency.getText());
-            Assert.assertTrue(expectedCurrencyList[index].equals(eachCurrency.getText()));
-            index++;
+        if (expected.size()!=actual.size()){
+            throw new RuntimeException("expected size does not match actual size");
         }
 
-        int sizeOfExpectedCurrencyList = expectedCurrencyList.length;
-        int sizeOfActualCurrencyList = actualCurrencyList.size();
-
-        Assert.assertTrue(sizeOfExpectedCurrencyList == sizeOfActualCurrencyList);
+        for (int i = 0; i < expected.size(); i++) {
+            Assert.assertEquals(actual.get(i),expected.get(i),actual.get(i)+" does not match with expected");
+        }
     }
     @Test
     public void verify_account_tab() {
@@ -119,11 +116,8 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_phone_number() {
-        //NOTE: The WebElement always involved a phone text and not just a phone number, so I had to add phone to my expected result.
         String actual = homepage.get_phone_number();
         String expected = "phone +1-234-56789";
-
-       // Assert.assertTrue(driver.findElement(By.xpath(phoneNumber)).isDisplayed(), "Phone number is not visible");
         Assert.assertEquals(actual, expected, "phone number does not match");
     }
     @Test
@@ -133,7 +127,7 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual, expected, "Phone icon is not displayed");
     }
     @Test
-    public void verify_footer_texts()  {
+    public void verify_eachText_footer()  {
         //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
 
         System.out.println("===================================");
@@ -148,6 +142,11 @@ public class TestHomePage extends AbstractTestBase {
         System.out.println("===================================");
 
     }
+
+    /**
+     * we will be utilizing an excel sheet that has all the expected
+     * text you need to test this method with.
+     */
     @Test
     public void verify_footer_links() {
         String expected = "supplier Registration";

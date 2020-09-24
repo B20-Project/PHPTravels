@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,12 +54,8 @@ public class HomePage extends AbstractPageBase{
     private WebElement SubscribedSuccessfully;
 
     //Home
-    public void click_home_tab(){
+    public void click_home_tab() {
         homeTab.click();
-    }
-    public String getTitle(){
-        String actualTitle = driver.getTitle();
-        return actualTitle;
     }
 
     //Language
@@ -78,9 +75,14 @@ public class HomePage extends AbstractPageBase{
         String actualText = currencyText.getText();
         return actualText;
     }
-    public List <WebElement> get_currency_list(){
+    public ArrayList<String> get_currency_List(){
 
-        return currencyDropdownList;
+        ArrayList<String> actual = new ArrayList<>();
+        for (WebElement eachCurrency : currencyDropdownList) {
+            actual.add(eachCurrency.getText());
+        }
+
+        return actual;
     }
     public void click_currency_tab(){
         currencyDropdown.click();
@@ -108,7 +110,10 @@ public class HomePage extends AbstractPageBase{
         return companyTabStyle.getAttribute("Style");
     }
 
-    //Phone #
+    /**phone#
+     *
+     * @return
+     */
     public String get_phone_number(){
         return phoneNumber.getText().trim();
     }
@@ -116,7 +121,11 @@ public class HomePage extends AbstractPageBase{
         return this.phoneIcon.getText();
     }
 
-    //Footer
+    /**Footer
+     *
+     * @param linkName
+     * @return
+     */
     public String click_footer_links(String linkName)  {
         String homePageTitle = driver.getTitle();
         WebElement target  = driver.findElement(By.xpath("//a[.='"+linkName+"']"));
