@@ -44,7 +44,7 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//i[contains(@class,'material-icons')]")
     private WebElement phoneIcon;
     //FOOTER
-    @FindBy(xpath = "//footer[@id='footer']")
+    @FindBy(xpath = "//footer[@id='footer']//a")
     private List <WebElement> actualFooterTexts;
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
     private WebElement SubscribeButton;
