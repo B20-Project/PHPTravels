@@ -155,14 +155,14 @@ public class HomePage extends AbstractPageBase{
 
        return SubscribedSuccessfully.getText().trim();
     }
-    public ArrayList<String> get_footer_texts (){ //need to fix
+    public ArrayList<String> get_footer_texts (){
         ArrayList<String> actual = new ArrayList<>();
         for (WebElement eachElement : actualFooterTexts) {
             actual.add(eachElement.getText());
         }
-
         return actual;
     }
+
 
     //search module
     public void searchFor(String name){
