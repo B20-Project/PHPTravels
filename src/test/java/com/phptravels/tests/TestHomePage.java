@@ -134,8 +134,6 @@ public class TestHomePage extends AbstractTestBase {
 
         Assert.assertEquals(actual, expected, "footer texts does not match");
     }
-
-
     /**
      * we will be utilizing an excel sheet that has all the expected
      * text you need to test this method with.

@@ -162,7 +162,6 @@ public class HomePage extends AbstractPageBase{
         return actual;
     }
 
-
     //search module
     public void searchFor(String name){
 
