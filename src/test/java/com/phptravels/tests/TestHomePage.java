@@ -119,7 +119,6 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_phone_number() {
-
         //NOTE: The WebElement always involved a phone text and not just a phone number, so I had to add phone to my expected result.
         String actual = homepage.get_phone_number();
         String expected = "phone +1-234-56789";
