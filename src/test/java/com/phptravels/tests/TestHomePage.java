@@ -127,20 +127,19 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_eachText_footer()  {
-        //List<WebElement> actualFooterTexts = driver.findElements(By.xpath("//footer[@id='footer']"));
-
-        System.out.println("===================================");
-        String [] expectedList = {"phone +1-234-56789\n" + "INFO@TRAVELAGENCY.COM\n" + "SUPPLIER\n" + "Supplier Sign Up\n" + "Supplier Login\n" + "COMPANY\n" +
-                "Contact\n" + "How to Book\n" + "Booking Tips\n" + "About Us\n" + "SUPPORT\n" + "FAQ\n" + "Our Partners\n" + "Privacy Policy\n" + "Terms of Use\n" +
-                "NEWSLETTER\n" + "Subsribe to get our latest updates and oeffers\n" + "SUBSCRIBE\n" + "Powered by PHPTRAVELS\n" + "© All Rights Reserved by PHPTRAVELS"};
-
+        String [] expectedList = {"INFO@TRAVELAGENCY.COM", "SUPPLIER" , "Supplier Sign Up", "Supplier Login", "COMPANY", "Contact", "How to Book", "Booking Tips", "About Us", "SUPPORT", "FAQ", "Our Partners", "Privacy Policy", "Terms of Use","" ,"" ,"" ,"" ,"" ,"" ,"" , "PHPTRAVELS"};
+        System.out.println(homepage.get_footer_texts());
         ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedList));
         ArrayList<String> actual = homepage.get_footer_texts();
 
-
-        System.out.println("===================================");
-
+        Assert.assertEquals(actual, expected, "footer texts does not match");
     }
+
+
+    /**
+     * we will be utilizing an excel sheet that has all the expected
+     * text you need to test this method with.
+     */
     @Test
     public void verify_footer_links() {
         String expected = "supplier Registration";

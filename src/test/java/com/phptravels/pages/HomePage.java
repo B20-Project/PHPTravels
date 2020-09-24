@@ -43,7 +43,7 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//i[contains(@class,'material-icons')]")
     private WebElement phoneIcon;
     //FOOTER
-    @FindBy(xpath = "//footer[@id='footer']")
+    @FindBy(xpath = "//footer[@id='footer']//a")
     private List <WebElement> actualFooterTexts;
     @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
     private WebElement SubscribeButton;
@@ -154,14 +154,14 @@ public class HomePage extends AbstractPageBase{
 
        return SubscribedSuccessfully.getText().trim();
     }
-    public ArrayList<String> get_footer_texts (){ //need to fix
+    public ArrayList<String> get_footer_texts (){
         ArrayList<String> actual = new ArrayList<>();
         for (WebElement eachElement : actualFooterTexts) {
             actual.add(eachElement.getText());
         }
-
         return actual;
     }
+
 
     //search module
     public void searchFor(String name){
