@@ -31,6 +31,7 @@ public class AbstractPageBase {
      *                                   USD, GBP, SAR, EUR, PKR, KWD, JPY,
      *                                   INR, CNY, TRY, RUB
      *                   company - About Us, Contact
+     *                   "//button[contains(text(),'%s')]" //dynamic xpath
      */
     public void navigateTo(String tabName,String moduleName){
 
