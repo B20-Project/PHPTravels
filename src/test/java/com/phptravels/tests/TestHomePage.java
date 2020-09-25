@@ -14,7 +14,6 @@ public class TestHomePage extends AbstractTestBase {
         //navigate to anypage
         homepage.navigateTo("company","Contact");
         homepage.navigateTo("Home");
-        BrowserUtils.wait(1);
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = homepage.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle, "Titles does not match");
@@ -101,7 +100,6 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
 
         homepage.navigateTo("Home");
-        BrowserUtils.wait(1);
         homepage.navigateTo("company","About Us");
         String expected_title = "About Us";
         String actual_title = homepage.getTitle();
@@ -138,4 +136,5 @@ public class TestHomePage extends AbstractTestBase {
         String actual= homepage.click_footer_links("Supplier Sign Up");
         Assert.assertEquals(expected,actual);
     }
+
 }

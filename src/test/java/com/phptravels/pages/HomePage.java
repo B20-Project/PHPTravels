@@ -132,6 +132,8 @@ public class HomePage extends AbstractPageBase{
         return actual;
     }
 
+
+
     /**Search
      *
      * @param name Hotels, Flights, Boats, Rentals, Tours, Cars, Visa

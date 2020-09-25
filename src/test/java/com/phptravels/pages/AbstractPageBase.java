@@ -75,15 +75,18 @@ public abstract class AbstractPageBase {
      */
     public void navigateTo(String tabName){
         String tabNameXpath="";
+        if (tabName.equals("Home")){
+            tabNameXpath=String.format("//a[.='%s']",tabName);
+        }else {
+            if (!tabName.equals("company")) {
+                if (tabName.equals("account")) {
+                    tabName = "login dropdown-tab";
+                }
+                tabNameXpath = String.format("//div[@class='dropdown dropdown-%s']", tabName);
 
-        if (!tabName.equals("company")) {
-            if (tabName.equals("account")) {
-                tabName = "login dropdown-tab";
+            } else {
+                tabNameXpath = String.format("//a[.='%s']", tabName);
             }
-            tabNameXpath = String.format("//div[@class='dropdown dropdown-%s']",tabName);
-
-        }else{
-            tabNameXpath = String.format("//a[.='%s']",tabName);
         }
 
         WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));

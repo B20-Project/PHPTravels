@@ -5,6 +5,8 @@ import com.phptravels.pages.HomePage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.util.concurrent.TimeUnit;
+
 public abstract class  AbstractTestBase {
 
     HomePage homepage;
@@ -13,7 +15,7 @@ public abstract class  AbstractTestBase {
     public void setUp() {
         String URL = "https://www.phptravels.net/";
         Driver.getDriver().get(URL);
-        //Driver.getDriver().manage().window().maximize();
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         homepage = new HomePage();
     }
 
