@@ -1,4 +1,5 @@
 package com.phptravels.pages;
+import com.phptravels.Utility.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -162,17 +163,39 @@ public class HomePage extends AbstractPageBase{
         return actual;
     }
 
-    //search module
+    /**Search
+     *
+     * @param name Hotels, Flights, Boats, Rentals, Tours, Cars, Visa
+     */
     public void searchFor(String name){
 
-        driver.findElement(By.xpath("//a[@data-name='"+name+"']")).click();
+        String search = String.format("//a[contains(text(),'%s')]",name);
+        driver.findElement(By.xpath(search)).click();
 
     }
 
+    /**Latest Blog
+     *
+     * @param num 1-2-3
+     */
+    public void navigate_to_blog(int num){
+
+        String blog = String.format("//div[@class='mt-30 mb-40']//div[@class='col'][%s]//a",num);
+
+        driver.findElement(By.xpath(blog)).click();
+    }
 
 
+    /**Featured Items
+     *
+     * @param item | Hotels | Flights | Tours | Rentals | Boats | Offers |
+     * @param num  |  1-8   |  1-12   |  1-8  |   1-8   |  1-8  |   1    |
+     */
+    public void navigate_to_featured(String item, int num){
+        String featured = String.format("//h2[contains(text(),'Featured %s')]/.." +
+                                        "/following-sibling::div//div[%s]//a",item,num);
 
+        driver.findElement(By.xpath(featured)).click();
 
-
-
+    }
 }

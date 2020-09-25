@@ -1,13 +1,11 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TestHomePage extends AbstractTestBase {
 

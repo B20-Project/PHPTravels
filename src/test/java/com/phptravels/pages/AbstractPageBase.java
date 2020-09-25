@@ -27,6 +27,7 @@ public class AbstractPageBase {
     public String getTitle(){
         return driver.getTitle();
     }
+
     /**NavigateTo
      *
      * @param tabName currency, language, account, company
@@ -49,12 +50,12 @@ public class AbstractPageBase {
                 moduleName = " " + moduleName;
             }
 
-            tabNameXpath = "//div[@class='dropdown dropdown-" + tabName + "']";
-            moduleXpath = "//a[.='" + moduleName + "']";
+            tabNameXpath = String.format("//div[@class='dropdown dropdown-%s']",tabName);
+            moduleXpath = String.format("//a[.='%s']",moduleName);
 
         }else{
-            tabNameXpath = "//a[.='"+tabName+"']";
-            moduleXpath = "//a[.='"+moduleName+"']";
+            tabNameXpath = String.format("//a[.='%s']",tabName);
+            moduleXpath = String.format("//a[.='%s']",moduleName);
         }
 
         WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
