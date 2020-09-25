@@ -18,16 +18,6 @@ public class AbstractPageBase {
         PageFactory.initElements(driver, this);
     }
 
-
-    /**NavigateToHome
-     *
-     */
-    public void navigateToHome(){
-
-        driver.findElement(By.xpath("//a[@title='home']")).click();
-
-    }
-
     /**Get Current Title
      *
      * @return
@@ -81,7 +71,7 @@ public class AbstractPageBase {
 
     /**NavigateTotab
      *
-     * @param tabName currency, language, account, company
+     * @param tabName home, currency, language, account, company
      */
     public void navigateTo(String tabName){
         String tabNameXpath="";

@@ -13,7 +13,7 @@ public class TestHomePage extends AbstractTestBase {
     public void verify_home_tab() {
         //navigate to anypage
         homepage.navigateTo("company","Contact");
-        homepage.navigateToHome();
+        homepage.navigateTo("Home");
         BrowserUtils.wait(1);
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = homepage.getTitle();
@@ -100,7 +100,7 @@ public class TestHomePage extends AbstractTestBase {
         String actual_title_Value = homepage.getTitle();
         Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
 
-        homepage.navigateToHome();
+        homepage.navigateTo("Home");
         BrowserUtils.wait(1);
         homepage.navigateTo("company","About Us");
         String expected_title = "About Us";
