@@ -13,7 +13,7 @@ public class TestHomePage extends AbstractTestBase {
     public void verify_home_tab() {
         //navigate to anypage
         homepage.navigateTo("company","Contact");
-        homepage.click_home_tab();
+        homepage.navigateToHome();
         BrowserUtils.wait(1);
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = homepage.getTitle();
@@ -29,18 +29,15 @@ public class TestHomePage extends AbstractTestBase {
     public void verify_each_language() {
         String[] expectedListOfLanguages = {"Vietnamese","Russian","English","Arabic","Farsi","Turkish","French","Spanish","German"};
         ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedListOfLanguages));
-        homepage.click_language_bar();
+        homepage.navigateTo("language");
         ArrayList<String> actual = homepage.get_language_list();
 
         if (expected.size()!=actual.size()){
             throw new RuntimeException("expected size does not match actual size");
         }
-
         for(int i = 0; i < expected.size(); i++){
             Assert.assertEquals(actual.get(i), expected.get(i), actual.get(i)+" does not match with expected");
         }
-
-
     }
     @Test
     public void verify_default_currency() {
@@ -53,13 +50,12 @@ public class TestHomePage extends AbstractTestBase {
         String[] expectedCurrencyList = {"USD", "GBP", "SAR", "EUR", "PKR", "KWD", "JPY", "INR", "CNY", "TRY", "RUB"};
 
         ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedCurrencyList));
-        homepage.click_currency_tab();
+        homepage.navigateTo("currency");
         ArrayList<String> actual = homepage.get_currency_List();
 
         if (expected.size()!=actual.size()){
             throw new RuntimeException("expected size does not match actual size");
         }
-
         for (int i = 0; i < expected.size(); i++) {
             Assert.assertEquals(actual.get(i),expected.get(i),actual.get(i)+" does not match with expected");
         }
@@ -67,7 +63,7 @@ public class TestHomePage extends AbstractTestBase {
     @Test
     public void verify_account_tab() {
 
-        homepage.click_account_tab();
+        homepage.navigateTo("account");
         String expected = "MY ACCOUNT";
         String actual = homepage.get_account_text();
         Assert.assertEquals(actual, expected, "default text does not match");
@@ -75,15 +71,15 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_login_Tab(){
-        homepage.click_login_tab();
+        homepage.navigateTo("account","Login");
         String expected = "Login";
+        BrowserUtils.wait(1);
         String actual = homepage.getTitle();
         Assert.assertTrue(!actual.equals(expected),"Page title does not match");
     }
     @Test
     public void verify_signUp_tab(){
-        homepage.click_account_tab();
-        homepage.click_signUp_tab();
+        homepage.navigateTo("account","Sign up");
         BrowserUtils.wait(1);
         String expected = "Register";
         String actual = homepage.getTitle();
@@ -91,7 +87,7 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_company_tab() {
-        homepage.click_company_tab();
+        homepage.navigateTo("company");
         BrowserUtils.wait(1);
         String expected_Style_Value = "display: block;";
         String actual_Style_Value = homepage.get_companyTab_Style_text();

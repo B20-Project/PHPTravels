@@ -18,12 +18,20 @@ public class AbstractPageBase {
         PageFactory.initElements(driver, this);
     }
 
+
+    /**NavigateToHome
+     *
+     */
     public void navigateToHome(){
 
         driver.findElement(By.xpath("//a[@title='home']")).click();
 
     }
 
+    /**Get Current Title
+     *
+     * @return
+     */
     public String getTitle(){
         return driver.getTitle();
     }
@@ -38,7 +46,6 @@ public class AbstractPageBase {
      *                   company - About Us, Contact
      *                   "//button[contains(text(),'%s')]" //dynamic xpath
      */
-
     public void navigateTo(String tabName,String moduleName){
 
         String tabNameXpath="";
@@ -70,6 +77,33 @@ public class AbstractPageBase {
                 click(moduleElement).
                 build().perform();
 
+    }
+
+    /**NavigateTotab
+     *
+     * @param tabName currency, language, account, company
+     */
+    public void navigateTo(String tabName){
+        String tabNameXpath="";
+
+        if (!tabName.equals("company")) {
+            if (tabName.equals("account")) {
+                tabName = "login dropdown-tab";
+            }
+            tabNameXpath = String.format("//div[@class='dropdown dropdown-%s']",tabName);
+
+        }else{
+            tabNameXpath = String.format("//a[.='%s']",tabName);
+        }
+
+        WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
+
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(tabElement).
+                pause(1000).
+                click(tabElement).
+                build().perform();
     }
 
 }

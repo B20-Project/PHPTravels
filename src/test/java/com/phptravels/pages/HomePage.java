@@ -1,5 +1,4 @@
 package com.phptravels.pages;
-import com.phptravels.Utility.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -11,17 +10,13 @@ import java.util.List;
 import java.util.Set;
 
 public class HomePage extends AbstractPageBase{
-    // Home
-    @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[1]/li/a")
-    private WebElement homeTab;
+
     //language
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
     private WebElement languageBar;
     @FindBy (xpath= "//div[@class='dropdown-menu dropdown-menu-right show']/div/a")
     private List<WebElement> languageDropdownList;
     //currency
-    @FindBy (xpath ="//div[@class='dropdown dropdown-currency']" )
-    private WebElement currencyDropdown;
     @FindBy (xpath ="//div[@class='dropdown-menu dropdown-menu-right show']/div/a" )
     private List <WebElement> currencyDropdownList;
     @FindBy (xpath ="//a[contains(.,'USD   ')]")
@@ -29,13 +24,7 @@ public class HomePage extends AbstractPageBase{
     //account
     @FindBy(xpath = "//div[@class='mini-menu']/ul/li[3]/div/a")
     private WebElement accountTab;
-    @FindBy(xpath = "//a[.='Sign Up']")
-    private WebElement signUpTab;
-    @FindBy(xpath = "//div[contains(@class,'dropdown dropdown-login')]/a")
-    private WebElement loginTab;
     // company
-    @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/a")
-    private WebElement companyTab;
     @FindBy (xpath = "//div[@id='mobileMenuMain']/nav/ul[2]/li/ul")
     private WebElement companyTabStyle;
     //phone #
@@ -53,10 +42,6 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//ul[@class='nav navbar-nav']")
     private WebElement SubscribedSuccessfully;
 
-    //Home
-    public void click_home_tab() {
-        homeTab.click();
-    }
 
     //Language
     public String get_default_language(){
@@ -69,9 +54,6 @@ public class HomePage extends AbstractPageBase{
             actual.add(eachLanguage.getText());
         }
         return actual;
-    }
-    public void click_language_bar(){
-        languageBar.click();
     }
 
     //Currency
@@ -88,28 +70,13 @@ public class HomePage extends AbstractPageBase{
 
         return actual;
     }
-    public void click_currency_tab(){
-        currencyDropdown.click();
-    }
 
     //My Account
-    public void click_account_tab() {
-        accountTab.click();
-    }
     public String get_account_text(){
         return accountTab.getText();
     }
-    public void click_login_tab(){
-        loginTab.click();
-    }
-    public void click_signUp_tab(){
-        signUpTab.click();
-    }
 
     // Company
-    public void click_company_tab(){
-        companyTab.click();
-    }
     public String get_companyTab_Style_text(){
         return companyTabStyle.getAttribute("Style");
     }
@@ -147,6 +114,8 @@ public class HomePage extends AbstractPageBase{
         }
         return targetPageTitle;
     }
+
+    //These two not used
     public void click_subscribe(String email){
         EnterEmail.sendKeys(email, Keys.ENTER);
         SubscribeButton.click();
@@ -155,6 +124,8 @@ public class HomePage extends AbstractPageBase{
 
        return SubscribedSuccessfully.getText().trim();
     }
+
+
     public ArrayList<String> get_footer_texts (){
         ArrayList<String> actual = new ArrayList<>();
         for (WebElement eachElement : actualFooterTexts) {
@@ -184,7 +155,6 @@ public class HomePage extends AbstractPageBase{
 
         driver.findElement(By.xpath(blog)).click();
     }
-
 
     /**Featured Items
      *
