@@ -79,7 +79,7 @@ public class TestHomePage extends AbstractTestBase {
     }
     @Test
     public void verify_signUp_tab(){
-        homepage.navigateTo("account","Sign up");
+        homepage.navigateTo("account","Sign Up");
         BrowserUtils.wait(1);
         String expected = "Register";
         String actual = homepage.getTitle();
