@@ -124,8 +124,6 @@ public class HomePage extends AbstractPageBase{
 
        return SubscribedSuccessfully.getText().trim();
     }
-
-
     public ArrayList<String> get_footer_texts (){
         ArrayList<String> actual = new ArrayList<>();
         for (WebElement eachElement : actualFooterTexts) {
