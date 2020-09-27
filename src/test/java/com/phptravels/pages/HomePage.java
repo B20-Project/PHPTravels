@@ -50,6 +50,13 @@ public class HomePage extends AbstractPageBase{
     private WebElement visato;
     @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[3]/div/label")
     private WebElement visadate;
+    @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[1]/div/div[2]/div/a")
+    private WebElement visafrombar;
+    @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[2]/div/div[2]/div/a")
+    private WebElement visatobar;
+    @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[3]/div")
+    private WebElement visadatebar;
+
 
 
 
@@ -169,6 +176,24 @@ public class HomePage extends AbstractPageBase{
     public String get_visa_date() {
         return visadate.getText();
     }
+
+
+    //Trying to find the dynamic xpath for visa from, to, date for it work
+    public void search_visa_from_bar(String name){
+        String search = String.format("//a[contains(text(),'%s')]",name);
+        driver.findElement(By.xpath(search)).click();
+    }
+
+    public void search_visa_to_bar(String name){
+        String search = String.format("//a[contains(text(),'%s')]",name);
+        driver.findElement(By.xpath(search)).click();
+    }
+
+    public void search_visa_date_bar(String name){
+        String search = String.format("//a[contains(text(),'%s')]",name);
+        driver.findElement(By.xpath(search)).click();
+    }
+
 
 
 
