@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -166,6 +167,19 @@ public class HomePage extends AbstractPageBase{
                                         "/following-sibling::div//div[%s]//a",item,num);
 
         driver.findElement(By.xpath(featured)).click();
+
+    }
+
+    public void click_hotel_destination(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::a")).click();
+    }
+
+    public void pick_hotel_by_name(String name){
+        String xpath = String.format("//li[child::div[contains(.,'%s')]]",name);
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void pick_hotel_checkIn_date(){
 
     }
 }

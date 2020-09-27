@@ -137,4 +137,12 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(expected,actual);
     }
 
+    @Test
+    public void hotelsTest(){
+        homepage.searchFor("Hotels");
+        homepage.click_hotel_destination();
+        homepage.pick_hotel_by_name("Oasis Beach");
+
+    }
+
 }
