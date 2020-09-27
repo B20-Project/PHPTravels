@@ -41,6 +41,16 @@ public class HomePage extends AbstractPageBase{
     private WebElement EnterEmail;
     @FindBy(xpath = "//ul[@class='nav navbar-nav']")
     private WebElement SubscribedSuccessfully;
+    //VISA
+    @FindBy(xpath = "//a[contains(@class,'text-center visa')]")
+    private WebElement visapage;
+    @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[1]/div/label")
+    private WebElement visafrom;
+    @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[2]/div/label")
+    private WebElement visato;
+    @FindBy(xpath = "//*[@id=\"visa\"]/div/div/form/div/div/div[3]/div/label")
+    private WebElement visadate;
+
 
 
     //Language
@@ -144,6 +154,25 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(search)).click();
 
     }
+
+    //NOTE: Tried to find a common xpath to make a new method like searchFor to
+    //      find all the various texts under the visa menu. For now I had to
+    //      get texts one by one till i can find one method to find all
+    public String get_visa_from() {
+        return visafrom.getText();
+    }
+
+    public String get_visa_to() {
+        return visato.getText();
+    }
+
+    public String get_visa_date() {
+        return visadate.getText();
+    }
+
+
+
+
 
     /**Latest Blog
      *
