@@ -142,7 +142,11 @@ public class TestHomePage extends AbstractTestBase {
         homepage.searchFor("Hotels");
         homepage.click_hotel_destination();
         homepage.pick_hotel_by_name("Oasis Beach");
-
+        homepage.enter_hotel_checkIn_date();
+        homepage.enter_hotel_checkOut_date();
+        homepage.add_adult();
+        homepage.add_child();
+        homepage.hotel_search_button();
     }
 
 }

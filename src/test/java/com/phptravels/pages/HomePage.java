@@ -1,4 +1,5 @@
 package com.phptravels.pages;
+import com.phptravels.Utility.HelperUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -179,7 +180,29 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(xpath)).click();
     }
 
-    public void pick_hotel_checkIn_date(){
+    public void enter_hotel_checkIn_date(){
+        WebElement startDate = driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkin')]"));
+        startDate.clear();
+        startDate.sendKeys(HelperUtil.getStartDate());
+    }
 
+    public void enter_hotel_checkOut_date(){
+        WebElement endDate = driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkout')]"));
+        endDate.clear();
+        endDate.sendKeys(HelperUtil.getEndDate(7));
+    }
+
+    public void add_adult(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'adults')]//" +
+                "following-sibling::span/button[.='+']")).click();
+    }
+
+    public void add_child(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'child')]//" +
+                "following-sibling::span/button[.='+']")).click();
+    }
+
+    public void hotel_search_button(){
+        driver.findElement(By.xpath("//div[@id='hotels']//button[@type='submit']")).click();
     }
 }
