@@ -7,7 +7,6 @@ public class HelperUtil {
 
     static DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-
     public static String getStartDate(){
         return LocalDate.now().plusDays(1).format(format);
     }

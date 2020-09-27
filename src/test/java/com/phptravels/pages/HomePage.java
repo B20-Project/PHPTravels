@@ -1,4 +1,5 @@
 package com.phptravels.pages;
+import com.phptravels.Utility.BrowserUtils;
 import com.phptravels.Utility.HelperUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -175,8 +176,8 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath("//div[@id='hotels']//child::a")).click();
     }
 
-    public void pick_hotel_by_name(String name){
-        String xpath = String.format("//li[child::div[contains(.,'%s')]]",name);
+    public void pick_hotel(String name){
+        String xpath = String.format("//li[child::div[.='%s']]",name);
         driver.findElement(By.xpath(xpath)).click();
     }
 
@@ -185,6 +186,59 @@ public class HomePage extends AbstractPageBase{
         startDate.clear();
         startDate.sendKeys(HelperUtil.getStartDate());
     }
+
+    public void click_hotel_checkIn_box(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkin')]")).click();
+    }
+    public void click_hotel_checkOut_box(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkout')]")).click();
+
+    }
+    public void move_to_checkIn_date_slot(String month, String year){
+        String monthYear_slot = String.format("//div[@id='datepickers-container']/div[1]//div[contains(.,'%s, %s')]",month,year);
+        boolean month_found = false;
+        while(!month_found) {
+            try {
+                driver.findElement(By.xpath(monthYear_slot));
+                month_found = true;
+            } catch (Exception e) {
+                click_checkIn_next_month_button();
+                BrowserUtils.wait(1);
+            }
+        }
+    }
+    public void move_to_checkOut_date_slot(String month, String year){
+        String monthYear_slot = String.format("//div[@id='datepickers-container']/div[2]//div[contains(.,'%s, %s')]",month,year);
+        boolean month_found = false;
+        while(!month_found) {
+            try {
+                driver.findElement(By.xpath(monthYear_slot));
+                month_found = true;
+            } catch (Exception e) {
+                click_checkOut_next_month_button();
+                BrowserUtils.wait(1);
+            }
+        }
+    }
+    public void select_checkIn_day(int day){
+        String day_slot = String.format("//div[@id='datepickers-container']/div[1]//div[@data-date='%s'][@data-month='1']",day);
+
+        driver.findElement(By.xpath(day_slot)).click();
+    }
+
+    public void select_checkOut_day(int day){
+        String day_slot = String.format("//div[@id='datepickers-container']/div[2]//div[@data-date='%s'][@data-month='1']",day);
+
+        driver.findElement(By.xpath(day_slot)).click();
+    }
+
+    public void click_checkIn_next_month_button(){
+        driver.findElement(By.xpath("//div[@id='datepickers-container']/div[1]//div[@data-action='next']")).click();
+    }
+    public void click_checkOut_next_month_button(){
+        driver.findElement(By.xpath("//div[@id='datepickers-container']/div[2]//div[@data-action='next']")).click();
+    }
+
 
     public void enter_hotel_checkOut_date(){
         WebElement endDate = driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkout')]"));
@@ -197,9 +251,19 @@ public class HomePage extends AbstractPageBase{
                 "following-sibling::span/button[.='+']")).click();
     }
 
+    public void remove_adult(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'adults')]//" +
+                "following-sibling::span/button[.='-']")).click();
+    }
+
     public void add_child(){
         driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'child')]//" +
                 "following-sibling::span/button[.='+']")).click();
+    }
+
+    public void remove_child(){
+        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'child')]//" +
+                "following-sibling::span/button[.='-']")).click();
     }
 
     public void hotel_search_button(){

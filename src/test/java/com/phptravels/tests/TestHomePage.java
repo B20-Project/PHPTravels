@@ -1,6 +1,7 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
+import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -138,15 +139,29 @@ public class TestHomePage extends AbstractTestBase {
     }
 
     @Test
-    public void hotelsTest(){
+    public void fullTest(){
         homepage.searchFor("Hotels");
         homepage.click_hotel_destination();
-        homepage.pick_hotel_by_name("Oasis Beach");
-        homepage.enter_hotel_checkIn_date();
-        homepage.enter_hotel_checkOut_date();
-        homepage.add_adult();
+        BrowserUtils.wait(1);
+        homepage.pick_hotel("Oasis Beach Tower, Dubai");
+        BrowserUtils.wait(1);
+        homepage.click_hotel_checkIn_box();
+        BrowserUtils.wait(1);
+        homepage.move_to_checkIn_date_slot("February","2021");
+        homepage.select_checkIn_day(2);
+        BrowserUtils.wait(1);
+        homepage.move_to_checkOut_date_slot("February","2021");
+        homepage.select_checkOut_day(7);
+        BrowserUtils.wait(1);
+        homepage.remove_adult();
+        BrowserUtils.wait(1);
         homepage.add_child();
+        homepage.add_child();
+        BrowserUtils.wait(1);
+        homepage.remove_child();
+        BrowserUtils.wait(1);
         homepage.hotel_search_button();
+
     }
 
 }
