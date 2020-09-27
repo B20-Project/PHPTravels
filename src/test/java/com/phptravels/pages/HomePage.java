@@ -246,24 +246,15 @@ public class HomePage extends AbstractPageBase{
         endDate.sendKeys(HelperUtil.getEndDate(7));
     }
 
-    public void add_adult(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'adults')]//" +
-                "following-sibling::span/button[.='+']")).click();
+    public void add_person(String person){
+        String xpath = String.format("//div[@id='hotels']//child::input[contains(@name,'%s')]//" +
+                "following-sibling::span/button[.='+']",person);
+        driver.findElement(By.xpath(xpath)).click();
     }
-
-    public void remove_adult(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'adults')]//" +
-                "following-sibling::span/button[.='-']")).click();
-    }
-
-    public void add_child(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'child')]//" +
-                "following-sibling::span/button[.='+']")).click();
-    }
-
-    public void remove_child(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'child')]//" +
-                "following-sibling::span/button[.='-']")).click();
+    public void remove_person(String person){
+        String xpath = String.format("//div[@id='hotels']//child::input[contains(@name,'%s')]//" +
+                "following-sibling::span/button[.='-']",person);
+        driver.findElement(By.xpath(xpath)).click();
     }
 
     public void hotel_search_button(){
