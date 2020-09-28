@@ -136,23 +136,4 @@ public class TestHomePage extends AbstractTestBase {
         String actual= homepage.click_footer_links("Supplier Sign Up");
         Assert.assertEquals(expected,actual);
     }
-
-    @Test
-    public void verify_visa_texts() {
-        homepage.searchFor("Visa");
-        //searchFor method only works for identifiying the general menu tab names
-
-        String expected1 = "FROM COUNTRY";
-        String actual1 = homepage.get_visa_from();
-        Assert.assertEquals(expected1,actual1, "Visa From Country text is not matching");
-
-        String expected2 = "TO COUNTRY";
-        String actual2 = homepage.get_visa_to();
-        Assert.assertEquals(expected2,actual2, "Visa To Country text is not matching");
-
-        String expected3 = "DATE*";
-        String actual3 = homepage.get_visa_date();
-        Assert.assertEquals(expected3,actual3, "Visa Date text is not matching");
-    }
-
 }
