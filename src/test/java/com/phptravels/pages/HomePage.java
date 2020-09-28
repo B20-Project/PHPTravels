@@ -177,28 +177,6 @@ public class HomePage extends AbstractPageBase{
         return visadate.getText();
     }
 
-
-    //Trying to find the dynamic xpath for visa from, to, date for it work
-    public void search_visa_from_bar(String name){
-        String search = String.format("//a[contains(text(),'%s')]",name);
-        driver.findElement(By.xpath(search)).click();
-    }
-
-    public void search_visa_to_bar(String name){
-        String search = String.format("//a[contains(text(),'%s')]",name);
-        driver.findElement(By.xpath(search)).click();
-    }
-
-    public void search_visa_date_bar(String name){
-        String search = String.format("//a[contains(text(),'%s')]",name);
-        driver.findElement(By.xpath(search)).click();
-    }
-
-
-
-
-
-
     /**Latest Blog
      *
      * @param num 1-2-3
