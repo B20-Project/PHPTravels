@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -238,7 +237,6 @@ public class HomePage extends AbstractPageBase{
     public void click_checkOut_next_month_button(){
         driver.findElement(By.xpath("//div[@id='datepickers-container']/div[2]//div[@data-action='next']")).click();
     }
-
 
     public void enter_hotel_checkOut_date(){
         WebElement endDate = driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkout')]"));
