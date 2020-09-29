@@ -141,9 +141,10 @@ public class HomePage extends AbstractPageBase{
      * @param name Hotels, Flights, Boats, Rentals, Tours, Cars, Visa
      */
     public void searchFor(String name){
-
         String search = String.format("//a[contains(text(),'%s')]",name);
         driver.findElement(By.xpath(search)).click();
+
+
 
     }
 

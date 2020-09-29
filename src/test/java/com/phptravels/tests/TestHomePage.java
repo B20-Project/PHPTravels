@@ -1,6 +1,7 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
+import com.phptravels.Utility.GlobalDataUtil;
 import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -164,5 +165,15 @@ public class TestHomePage extends AbstractTestBase {
         homepage.hotel_search_button();
 
     }
+
+    @Test
+    public void submitTest(){
+        homepage.searchFor("Hotels");
+        GlobalDataUtil hotelTab = new GlobalDataUtil();
+        hotelTab.setTabName("Hotels");
+
+    }
+
+
 
 }
