@@ -75,7 +75,7 @@ public class TestHomePage extends AbstractTestBase {
         String expected = "Login";
         BrowserUtils.wait(1);
         String actual = homepage.getTitle();
-        Assert.assertTrue(!actual.equals(expected),"Page title does not match");
+        Assert.assertEquals(actual,expected,"Page title does not match");
     }
     @Test
     public void verify_signUp_tab(){
