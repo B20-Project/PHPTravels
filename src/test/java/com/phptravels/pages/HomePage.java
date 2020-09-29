@@ -172,7 +172,8 @@ public class HomePage extends AbstractPageBase{
     }
 
     public void click_hotel_destination(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::a")).click();
+        driver.findElement(By.xpath("//div[@id='boats']//" +
+                "child::a[span[@class='select2-chosen']]")).click();
     }
 
     public void pick_hotel(String name){
@@ -257,5 +258,10 @@ public class HomePage extends AbstractPageBase{
 
     public void hotel_search_button(){
         driver.findElement(By.xpath("//div[@id='hotels']//button[@type='submit']")).click();
+    }
+
+    public void click_search_or_submit_button(String tabName) {
+        String xpath = String.format("//div[@id='%s']//button[@type='submit']", tabName);
+        driver.findElement(By.xpath(xpath)).click();
     }
 }

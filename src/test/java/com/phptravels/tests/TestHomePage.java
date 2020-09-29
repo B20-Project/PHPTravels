@@ -147,10 +147,10 @@ public class TestHomePage extends AbstractTestBase {
         BrowserUtils.wait(1);
         homepage.click_hotel_checkIn_box();
         BrowserUtils.wait(1);
-        homepage.move_to_checkIn_date_slot("February","2021");
+        homepage.move_to_checkIn_date_slot("February","2022");
         homepage.select_checkIn_day(2);
         BrowserUtils.wait(1);
-        homepage.move_to_checkOut_date_slot("February","2021");
+        homepage.move_to_checkOut_date_slot("February","2022");
         homepage.select_checkOut_day(7);
         BrowserUtils.wait(1);
         homepage.add_person("adult");
