@@ -1,8 +1,6 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
-import com.phptravels.Utility.GlobalDataUtil;
-import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -139,38 +137,22 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(expected,actual);
     }
 
-    @Test
-    public void fullTest(){
-        homepage.searchFor("Hotels");
-        homepage.click_hotel_destination();
-        BrowserUtils.wait(1);
-        homepage.pick_hotel("Oasis Beach Tower, Dubai");
-        BrowserUtils.wait(1);
-        homepage.click_hotel_checkIn_box();
-        BrowserUtils.wait(1);
-        homepage.move_to_checkIn_date_slot("February","2022");
-        homepage.select_checkIn_day(2);
-        BrowserUtils.wait(1);
-        homepage.move_to_checkOut_date_slot("February","2022");
-        homepage.select_checkOut_day(7);
-        BrowserUtils.wait(1);
-        homepage.add_person("adult");
-        BrowserUtils.wait(1);
-        homepage.add_person("child");
-        BrowserUtils.wait(1);
-        homepage.remove_person("adult");
-        BrowserUtils.wait(1);
-        homepage.remove_person("child");
-        BrowserUtils.wait(1);
-        homepage.hotel_search_button();
-
-    }
 
     @Test
     public void submitTest(){
         homepage.searchFor("Hotels");
-        GlobalDataUtil hotelTab = new GlobalDataUtil();
-        hotelTab.setTabName("Hotels");
+        homepage.click_destination();
+        homepage.pick("Oasis Beach Tower, Dubai");
+        homepage.click_date("checkin");
+        homepage.select_monthYear("February","2021");
+        homepage.select_day(3);
+        homepage.click_date("checkout");
+        homepage.select_monthYear("March","2021");
+        homepage.select_day(7);
+        homepage.remove_person("adult");
+        homepage.add_person("child");
+        homepage.submit_search();
+
 
     }
 
