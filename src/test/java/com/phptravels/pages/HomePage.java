@@ -39,7 +39,6 @@ public class HomePage extends AbstractPageBase{
     private List <WebElement> actualFooterTexts;
 
 
-
     //Language
     public String get_default_language(){
         String actual = languageBar.getText();
