@@ -2,6 +2,7 @@ package com.phptravels.pages;
 
 
 import com.phptravels.Utility.Driver;
+import com.phptravels.Utility.GlobalDataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +14,8 @@ public abstract class AbstractPageBase {
 
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver,10);
+
+    GlobalDataUtil active_tab = new GlobalDataUtil();
 
     public AbstractPageBase() {
         PageFactory.initElements(driver, this);
@@ -26,78 +29,35 @@ public abstract class AbstractPageBase {
         return driver.getTitle();
     }
 
-    /**NavigateTo
+    /**
      *
-     * @param tabName currency, language, account, company
-     * @param moduleName Login, Sign Up, Vietnamese, Russian, English, Arabic, Farsi
-     *                                   Turkish, French, Spanish, German
-     *                                   USD, GBP, SAR, EUR, PKR, KWD, JPY,
-     *                                   INR, CNY, TRY, RUB
-     *                   company - About Us, Contact
-     *                   "//button[contains(text(),'%s')]" //dynamic xpath
+     * @param dropdown currency, language, account
      */
-    public void navigateTo(String tabName,String moduleName){
-
-        String tabNameXpath="";
-        String moduleXpath="";
-        if (!tabName.equals("company")) {
-            if (tabName.equals("account")) {
-                tabName = "login dropdown-tab";
-            } else if (tabName.equals("language")) {
-                moduleName = " " + moduleName;
-            }
-
-            tabNameXpath = String.format("//div[@class='dropdown dropdown-%s']",tabName);
-            moduleXpath = String.format("//a[.='%s']",moduleName);
-
-        }else{
-            tabNameXpath = String.format("//a[.='%s']",tabName);
-            moduleXpath = String.format("//a[.='%s']",moduleName);
+    public void select_header_dropdown(String dropdown){
+        if (dropdown.equalsIgnoreCase("account")){
+            dropdown="login";
         }
-
-        WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
-        WebElement moduleElement = driver.findElement(By.xpath(moduleXpath));
-
-        Actions actions = new Actions(driver);
-
-        actions.moveToElement(tabElement).
-                pause(1000).
-                click(tabElement).
-                pause(1000).
-                click(moduleElement).
-                build().perform();
-
+        String xpath = String.format("//div[contains(@class,'%s')]/a",dropdown);
+        driver.findElement(By.xpath(xpath)).click();
     }
 
-    /**NavigateTotab
+    /**
      *
-     * @param tabName home, currency, language, account, company
+     * @param selection all languages, all currency, Login Sign Up
      */
-    public void navigateTo(String tabName){
-        String tabNameXpath="";
-        if (tabName.equals("Home")){
-            tabNameXpath=String.format("//a[.='%s']",tabName);
-        }else {
-            if (!tabName.equals("company")) {
-                if (tabName.equals("account")) {
-                    tabName = "login dropdown-tab";
-                }
-                tabNameXpath = String.format("//div[@class='dropdown dropdown-%s']", tabName);
-
-            } else {
-                tabNameXpath = String.format("//a[.='%s']", tabName);
-            }
-        }
-
-        WebElement tabElement = driver.findElement(By.xpath(tabNameXpath));
-
-        Actions actions = new Actions(driver);
-
-        actions.moveToElement(tabElement).
-                pause(1000).
-                click(tabElement).
-                build().perform();
+    public void select_header_dropdown_item(String selection){
+        String xpath = String.format("//div[contains(@class,'dropdown-menu dropdown-menu-right')]//" +
+                "a[contains(.,'%s')]",selection);
+        driver.findElement(By.xpath(xpath)).click();
     }
 
+    /**
+     *
+     * @param tab home, company, contact, about us
+     */
+    public void navigateTo(String tab){
+        String xpath = String.format("//div[@class='header-nav']//a[.='%s']",tab);
+        driver.findElement(By.xpath(xpath)).click();
+    }
 }
 

@@ -12,7 +12,8 @@ public class TestHomePage extends AbstractTestBase {
     @Test
     public void verify_home_tab() {
         //navigate to anypage
-        homepage.navigateTo("company", "Contact");
+        homepage.navigateTo("company");
+        homepage.navigateTo("Contact");
         homepage.navigateTo("Home");
         String expectedTitle = "PHPTRAVELS | Travel Technology Partner";
         String actualTitle = homepage.getTitle();
@@ -30,7 +31,7 @@ public class TestHomePage extends AbstractTestBase {
     public void verify_each_language() {
         String[] expectedListOfLanguages = {"Vietnamese", "Russian", "English", "Arabic", "Farsi", "Turkish", "French", "Spanish", "German"};
         ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedListOfLanguages));
-        homepage.navigateTo("language");
+        homepage.select_header_dropdown("language");
         ArrayList<String> actual = homepage.get_language_list();
 
         if (expected.size() != actual.size()) {
@@ -53,7 +54,7 @@ public class TestHomePage extends AbstractTestBase {
         String[] expectedCurrencyList = {"USD", "GBP", "SAR", "EUR", "PKR", "KWD", "JPY", "INR", "CNY", "TRY", "RUB"};
 
         ArrayList<String> expected = new ArrayList<>(Arrays.asList(expectedCurrencyList));
-        homepage.navigateTo("currency");
+        homepage.select_header_dropdown("currency");
         ArrayList<String> actual = homepage.get_currency_List();
 
         if (expected.size() != actual.size()) {
@@ -67,7 +68,7 @@ public class TestHomePage extends AbstractTestBase {
     @Test
     public void verify_account_tab() {
 
-        homepage.navigateTo("account");
+        homepage.select_header_dropdown("Account");
         String expected = "MY ACCOUNT";
         String actual = homepage.get_account_text();
         Assert.assertEquals(actual, expected, "default text does not match");
@@ -76,7 +77,9 @@ public class TestHomePage extends AbstractTestBase {
 
     @Test
     public void verify_login_Tab() {
-        homepage.navigateTo("account", "Login");
+        homepage.select_header_dropdown("account");
+        BrowserUtils.wait(2);
+        homepage.select_header_dropdown_item("Login");
         String expected = "Login";
         BrowserUtils.wait(1);
         String actual = homepage.getTitle();
@@ -85,7 +88,8 @@ public class TestHomePage extends AbstractTestBase {
 
     @Test
     public void verify_signUp_tab() {
-        homepage.navigateTo("account", "Sign Up");
+        homepage.select_header_dropdown("account");
+        homepage.select_header_dropdown_item("Sign Up");
         BrowserUtils.wait(1);
         String expected = "Register";
         String actual = homepage.getTitle();
@@ -103,13 +107,15 @@ public class TestHomePage extends AbstractTestBase {
 
     @Test
     public void verify_company_sub_modules() {
-        homepage.navigateTo("company", "Contact");
+        homepage.navigateTo("company");
+        homepage.navigateTo("Contact");
         String expected_title_Value = "Contact";
         String actual_title_Value = homepage.getTitle();
         Assert.assertEquals(actual_title_Value, expected_title_Value, "Contact page title does not match");
 
         homepage.navigateTo("Home");
-        homepage.navigateTo("company", "About Us");
+        homepage.navigateTo("company");
+        homepage.navigateTo("About Us");
         String expected_title = "About Us";
         String actual_title = homepage.getTitle();
         Assert.assertEquals(actual_title, expected_title, "About US page title does not match");

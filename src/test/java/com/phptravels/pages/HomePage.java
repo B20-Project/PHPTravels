@@ -1,9 +1,6 @@
 package com.phptravels.pages;
-import com.phptravels.Utility.BrowserUtils;
 import com.phptravels.Utility.GlobalDataUtil;
-import com.phptravels.Utility.HelperUtil;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,7 +8,6 @@ import java.util.*;
 
 public class HomePage extends AbstractPageBase{
 
-    GlobalDataUtil active_tab = new GlobalDataUtil();
 
     //language
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
