@@ -1,15 +1,17 @@
 package com.phptravels.pages;
+import com.phptravels.Utility.BrowserUtils;
+import com.phptravels.Utility.GlobalDataUtil;
+import com.phptravels.Utility.HelperUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class HomePage extends AbstractPageBase{
+
+    GlobalDataUtil active_tab = new GlobalDataUtil();
 
     //language
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
@@ -35,12 +37,7 @@ public class HomePage extends AbstractPageBase{
     //FOOTER
     @FindBy(xpath = "//footer[@id='footer']//a")
     private List <WebElement> actualFooterTexts;
-    @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
-    private WebElement SubscribeButton;
-    @FindBy(xpath = "//input[contains(@type,'email')]")
-    private WebElement EnterEmail;
-    @FindBy(xpath = "//ul[@class='nav navbar-nav']")
-    private WebElement SubscribedSuccessfully;
+
 
     //Language
     public String get_default_language(){
@@ -114,15 +111,6 @@ public class HomePage extends AbstractPageBase{
         return targetPageTitle;
     }
 
-    //These two not used
-    public void click_subscribe(String email){
-        EnterEmail.sendKeys(email, Keys.ENTER);
-        SubscribeButton.click();
-    }
-    public String get_subscription_text(){
-
-       return SubscribedSuccessfully.getText().trim();
-    }
     public ArrayList<String> get_footer_texts (){
         ArrayList<String> actual = new ArrayList<>();
         for (WebElement eachElement : actualFooterTexts) {
@@ -131,19 +119,6 @@ public class HomePage extends AbstractPageBase{
         return actual;
     }
 
-
-
-    /**Search
-     *
-     * @param name Hotels, Flights, Boats, Rentals, Tours, Cars, Visa
-     */
-    public void searchFor(String name){
-
-        String search = String.format("//a[contains(text(),'%s')]",name);
-        driver.findElement(By.xpath(search)).click();
-
-    }
-    
     /**Latest Blog
      *
      * @param num 1-2-3
@@ -166,5 +141,115 @@ public class HomePage extends AbstractPageBase{
 
         driver.findElement(By.xpath(featured)).click();
 
+    }
+
+    /**Search
+     *
+     * @param name Hotels, Flights, Boats, Rentals, Tours, Cars, Visa
+     */
+    public void searchFor(String name){
+        active_tab.setTabName(name);
+        String search = String.format("//a[contains(text(),'%s')]",name);
+        driver.findElement(By.xpath(search)).click();
+    }
+
+    /**
+     * click destination input box
+     */
+    public void click_destination(){
+        String xpath = String.format("//div[@id='%s']//" +
+                "child::a[span[@class='select2-chosen']]",active_tab.getTabName());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     * pick item from the list
+     * @param name hotel / location name
+     */
+    public void pick(String name){
+        String xpath = String.format("//li[child::div[.='%s']]",name);
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     * click_date box
+     * @param type checkin/checkout - depart/return - pickup/dropoff
+     */
+    public void click_date(String type){
+        active_tab.setDateType(type);
+        String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]",
+                active_tab.getTabName(),active_tab.getDateType());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     *move to correct month
+     * @param month
+     * @param year
+     */
+    public void select_monthYear(String month, String year){
+        String monthYear_slot = String.format("//div[@id='datepickers-container']/div[%s]//div[contains(.,'%s, %s')]",
+                active_tab.getIndex(),month,year);
+
+        active_tab.setMonth(month);
+        boolean month_found = false;
+        while(!month_found) {
+            try {
+                driver.findElement(By.xpath(monthYear_slot));
+                month_found = true;
+            } catch (Exception e) {
+                click_next_month_button();
+            }
+        }
+    }
+
+    /**
+     * select day
+     * @param day
+     */
+    public void select_day(int day){
+
+        String day_slot = String.format("//div[@id='datepickers-container']/div[%s]" +
+                "//div[@data-date='%s'][@data-month='%s']",active_tab.getIndex(),day,active_tab.monthValue());
+
+        driver.findElement(By.xpath(day_slot)).click();
+    }
+
+    /**
+     * next button on calendar
+     */
+    public void click_next_month_button(){
+        String xpath = String.format("//div[@id='datepickers-container']/div[%s]//div[@data-action='next']",active_tab.getIndex());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     * add person
+     * @param person adult, child, infant
+     */
+    public void add_person(String person){
+        active_tab.setPerson(person);
+        String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]//" +
+                "following-sibling::span/button[.='+']",active_tab.getTabName(),active_tab.getPerson());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     * remove person
+     * @param person adult, child, infant
+     */
+    public void remove_person(String person){
+        active_tab.setPerson(person);
+        String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]//" +
+                "following-sibling::span/button[.='-']",active_tab.getTabName(),active_tab.getPerson());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     * submit/search button
+     */
+    public void submit_search() {
+        String xpath = String.format("//div[@id='%s']//button[@type='submit']", active_tab.getTabName());
+        driver.findElement(By.xpath(xpath)).click();
     }
 }
