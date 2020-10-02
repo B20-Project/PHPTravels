@@ -166,5 +166,4 @@ public class TestHomePage extends AbstractTestBase {
         homepage.add_person("child");
         homepage.submit_search();
     }
-
 }
