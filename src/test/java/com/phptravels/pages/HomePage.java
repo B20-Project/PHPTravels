@@ -8,6 +8,7 @@ import java.util.*;
 
 public class HomePage extends AbstractPageBase{
 
+    GlobalDataUtil active_tab = new GlobalDataUtil();
 
     //language
     @FindBy(xpath = "//a[@id='dropdownLangauge']")
