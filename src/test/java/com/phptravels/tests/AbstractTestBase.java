@@ -15,7 +15,7 @@ public abstract class  AbstractTestBase {
     public void setUp() {
         String URL = "https://www.phptravels.net/";
         Driver.getDriver().get(URL);
-        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Driver.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         homepage = new HomePage();
     }
 

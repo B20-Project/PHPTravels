@@ -7,10 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class HomePage extends AbstractPageBase{
 
@@ -40,12 +37,7 @@ public class HomePage extends AbstractPageBase{
     //FOOTER
     @FindBy(xpath = "//footer[@id='footer']//a")
     private List <WebElement> actualFooterTexts;
-    @FindBy(xpath = "//button[contains(@class,'btn btn-secondary sub_newsletter')]")
-    private WebElement SubscribeButton;
-    @FindBy(xpath = "//input[contains(@type,'email')]")
-    private WebElement EnterEmail;
-    @FindBy(xpath = "//ul[@class='nav navbar-nav']")
-    private WebElement SubscribedSuccessfully;
+
 
 
     //Language
@@ -120,15 +112,6 @@ public class HomePage extends AbstractPageBase{
         return targetPageTitle;
     }
 
-    //These two not used
-    public void click_subscribe(String email){
-        EnterEmail.sendKeys(email, Keys.ENTER);
-        SubscribeButton.click();
-    }
-    public String get_subscription_text(){
-
-       return SubscribedSuccessfully.getText().trim();
-    }
     public ArrayList<String> get_footer_texts (){
         ArrayList<String> actual = new ArrayList<>();
         for (WebElement eachElement : actualFooterTexts) {
@@ -136,10 +119,6 @@ public class HomePage extends AbstractPageBase{
         }
         return actual;
     }
-
-
-
-
 
     /**Latest Blog
      *
@@ -164,76 +143,6 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(featured)).click();
 
     }
-
-
-    /**
-     * first try hotel
-     */
-    public void enter_hotel_checkIn_date(){
-        WebElement startDate = driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkin')]"));
-        startDate.clear();
-        startDate.sendKeys(HelperUtil.getStartDate());
-    }
-
-    public void click_hotel_checkIn_box(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkin')]")).click();
-    }
-    public void click_hotel_checkOut_box(){
-        driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkout')]")).click();
-
-    }
-    public void move_to_checkIn_date_slot(String month, String year){
-        String monthYear_slot = String.format("//div[@id='datepickers-container']/div[1]//div[contains(.,'%s, %s')]",month,year);
-        boolean month_found = false;
-        while(!month_found) {
-            try {
-                driver.findElement(By.xpath(monthYear_slot));
-                month_found = true;
-            } catch (Exception e) {
-                click_next_month_button();
-                BrowserUtils.wait(1);
-            }
-        }
-    }
-    public void move_to_checkOut_date_slot(String month, String year){
-        String monthYear_slot = String.format("//div[@id='datepickers-container']/div[2]//div[contains(.,'%s, %s')]",month,year);
-        boolean month_found = false;
-        while(!month_found) {
-            try {
-                driver.findElement(By.xpath(monthYear_slot));
-                month_found = true;
-            } catch (Exception e) {
-                click_checkOut_next_month_button();
-                BrowserUtils.wait(1);
-            }
-        }
-    }
-    public void select_checkIn_day(int day){
-        String day_slot = String.format("//div[@id='datepickers-container']/div[1]//div[@data-date='%s'][@data-month='1']",day);
-
-        driver.findElement(By.xpath(day_slot)).click();
-    }
-
-    public void select_checkOut_day(int day){
-        String day_slot = String.format("//div[@id='datepickers-container']/div[2]//div[@data-date='%s'][@data-month='1']",day);
-
-        driver.findElement(By.xpath(day_slot)).click();
-    }
-
-    public void click_checkOut_next_month_button(){
-        driver.findElement(By.xpath("//div[@id='datepickers-container']/div[2]//div[@data-action='next']")).click();
-    }
-
-    public void enter_hotel_checkOut_date(){
-        WebElement endDate = driver.findElement(By.xpath("//div[@id='hotels']//child::input[contains(@name,'checkout')]"));
-        endDate.clear();
-        endDate.sendKeys(HelperUtil.getEndDate(7));
-    }
-
-
-    /**
-     * Dynamic
-     */
 
     /**Search
      *
@@ -280,7 +189,6 @@ public class HomePage extends AbstractPageBase{
      * @param year
      */
     public void select_monthYear(String month, String year){
-        ;
         String monthYear_slot = String.format("//div[@id='datepickers-container']/div[%s]//div[contains(.,'%s, %s')]",
                 active_tab.getIndex(),month,year);
 
