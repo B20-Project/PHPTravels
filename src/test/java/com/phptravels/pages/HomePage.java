@@ -166,7 +166,7 @@ public class HomePage extends AbstractPageBase{
      * pick item from the list
      * @param name hotel / location name
      */
-    public void pick(String name){
+    public void pick_destination(String name){
         String xpath = String.format("//li[child::div[.='%s']]",name);
         driver.findElement(By.xpath(xpath)).click();
     }

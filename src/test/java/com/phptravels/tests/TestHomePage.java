@@ -1,8 +1,6 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -157,7 +155,7 @@ public class TestHomePage extends AbstractTestBase {
     public void submitTest() {
         homepage.searchFor("Hotels");
         homepage.click_destination();
-        homepage.pick("Oasis Beach Tower, Dubai");
+        homepage.pick_destination("Oasis Beach Tower, Dubai");
         homepage.click_date("checkin");
         homepage.select_monthYear("February", "2021");
         homepage.select_day(3);
