@@ -249,4 +249,40 @@ public class HomePage extends AbstractPageBase{
         String xpath = String.format("//div[@id='%s']//button[@type='submit']", active_tab.getTabName());
         driver.findElement(By.xpath(xpath)).click();
     }
+
+    /** click_search_submit
+     *
+     * @param tabName hotels, flights, boats, rentals, tours, cars, visa
+     */
+    public void click_search_submit_button(String tabName) {
+        String xpath = String.format("//div[@id='%s']//button[@type='submit']", tabName.toLowerCase());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /** boatsType, toursType
+     *
+     * @param tabName boats, tours
+     */
+    public void click_boatType_tours_type(String tabName){
+        String xpath = String.format("//div[@id='%s']//div[@class='chosen-container chosen-container-single chosen-container-single-nosearch']/a", tabName.toLowerCase());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+    public void select_boatType_toursType(String tabName, String typeName){
+        String xpath = String.format(" //div[@id='%s']//ul/li[contains(text(),'%s')]", tabName.toLowerCase(), typeName);
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /** click_destination
+     *
+     * @param tabName hotels, boats, tours
+     */
+    public void click_destination(String tabName){
+        String xpath = String.format("//div[@id='%s']//span[@class='select2-chosen']", tabName.toLowerCase());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void select_destination_(String tabNameTypes_locationName){
+        String xpath = String.format("//div[@id='select2-drop']//ul/li/div[contains(text(),'%s')]", tabNameTypes_locationName);
+        driver.findElement(By.xpath(xpath)).click();
+    }
 }
