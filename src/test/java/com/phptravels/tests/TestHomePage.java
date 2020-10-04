@@ -172,4 +172,60 @@ public class TestHomePage extends AbstractTestBase {
         homepage.add_person("child");
         homepage.submit_search();
     }
+
+    @Test
+    public void test1(){
+        homepage.searchFor("Visa");
+        BrowserUtils.wait(1);
+        homepage.submit_search();
+    }
+
+    @Test
+    public void test2(){
+        homepage.searchFor("Tours");
+        BrowserUtils.wait(1);
+        homepage.click_type();
+        BrowserUtils.wait(1);
+        homepage.select_Type( "Ferry");
+        BrowserUtils.wait(1);
+    }
+
+    @Test
+    public void test3(){
+        homepage.searchFor("Tours");
+        BrowserUtils.wait(1);
+        homepage.click_destination();
+        BrowserUtils.wait(1);
+        homepage.pick_destination("Egypt");
+        BrowserUtils.wait(1);
+
+    }
+
+    @Test
+    public void flightTestArpatWay(){
+        homepage.searchFor("Flights");
+        BrowserUtils.wait(2);
+        homepage.tripType("Round Trip");
+        BrowserUtils.wait(2);
+        homepage.flightClass("Business");
+        homepage.flightFrom("Toronto");
+        homepage.select_firstAvailable_result();
+        BrowserUtils.wait(1);
+        homepage.flightTo("Urumqi");
+        BrowserUtils.wait(1);
+        homepage.select_firstAvailable_result();
+        BrowserUtils.wait(1);
+        homepage.click_date("depart");
+        BrowserUtils.wait(1);
+        homepage.select_monthYear("November", "2020");
+        homepage.select_day(15);
+        BrowserUtils.wait(2);
+        homepage.click_date("retur");
+        homepage.select_monthYear("December", "2020");
+        homepage.select_day(10);
+        homepage.add_person("adult");
+        homepage.remove_person("child");
+        homepage.submit_search();
+
+    }
 }
