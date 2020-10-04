@@ -228,4 +228,23 @@ public class TestHomePage extends AbstractTestBase {
         homepage.submit_search();
 
     }
+
+    @Test
+    public void locationselection(){
+        homepage.searchFor("Flights");
+        homepage.enter_location("From","toronto");
+        homepage.select_firstAvailable_result();
+        homepage.enter_location("To","london");
+        homepage.select_firstAvailable_result();
+
+        BrowserUtils.wait(2);
+
+        homepage.searchFor("Cars");
+        homepage.enter_location("Pick up","toronto");
+        homepage.select_firstAvailable_result();
+        homepage.enter_location("Drop off","toronto");
+        homepage.select_firstAvailable_result();
+
+    }
+
 }

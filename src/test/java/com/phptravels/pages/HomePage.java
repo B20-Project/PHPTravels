@@ -2,6 +2,7 @@ package com.phptravels.pages;
 import com.phptravels.Utility.GlobalDataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.*;
@@ -307,4 +308,49 @@ public class HomePage extends AbstractPageBase{
         String xpath = "//div[@id='select2-drop']//ul/li[1]";
         driver.findElement(By.xpath(xpath)).click();
     }
+
+    /**
+     * @param locationType  Flights, Cars
+     * @param locationName     from, to, pick up location, drop off location
+     */
+    public void enter_location1(String locationType, String locationName){
+        int index = -1;
+        if (locationType.equals("From") || locationType.equals("pick up  Location")) index = 1;
+        else if (locationType.equals("To") || locationType.equals("drop off  Location")) index = 2;
+
+        String xpath_p1 = String.format("//div[@id='%s']",active_tab.getTabName().toLowerCase());
+        String xpath_flight = String.format(xpath_p1+"//div[contains(@class,'row no-gutters row-reverse')]/div[1]/div/div[%s]//a",index);
+        String xpath_cars = String.format(xpath_p1+"//div[@class='form-inner']/div/div[%s]//a",index);
+
+        Actions action =  new Actions(driver);
+        if (active_tab.getTabName().equalsIgnoreCase("Flights")){
+            WebElement webElement = driver.findElement(By.xpath(xpath_flight));
+            action.moveToElement(webElement).click().perform();
+            webElement.sendKeys(locationName);
+
+        } else if (active_tab.getTabName().equalsIgnoreCase("Cars")){
+            WebElement webElement = driver.findElement(By.xpath(xpath_cars));
+            action.moveToElement(webElement).click().perform();
+            webElement.sendKeys(locationName);
+        }
+    }
+
+    /**
+     *
+     * @param locationType From, To, Pick up, Drop off
+     * @param locationName toronto, london, ...
+     */
+    public void enter_location(String locationType, String locationName){
+        String xpath = String.format("//div[@id='%s']//a[ancestor::div[label[contains(.,'%s')]]]"
+                ,active_tab.getTabName().toLowerCase(),locationType);
+
+        WebElement location = driver.findElement(By.xpath(xpath));
+        Actions action = new Actions(driver);
+
+        action.moveToElement(location).click().perform();
+        action.pause(2000).perform();
+        action.sendKeys(location,locationName).perform();
+        action.pause(2000).perform();
+    }
+
 }
