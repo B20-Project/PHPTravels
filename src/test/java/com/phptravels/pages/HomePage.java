@@ -1,4 +1,5 @@
 package com.phptravels.pages;
+import com.phptravels.Utility.BrowserUtils;
 import com.phptravels.Utility.GlobalDataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -310,32 +311,6 @@ public class HomePage extends AbstractPageBase{
     }
 
     /**
-     * @param locationType  Flights, Cars
-     * @param locationName     from, to, pick up location, drop off location
-     */
-    public void enter_location1(String locationType, String locationName){
-        int index = -1;
-        if (locationType.equals("From") || locationType.equals("pick up  Location")) index = 1;
-        else if (locationType.equals("To") || locationType.equals("drop off  Location")) index = 2;
-
-        String xpath_p1 = String.format("//div[@id='%s']",active_tab.getTabName().toLowerCase());
-        String xpath_flight = String.format(xpath_p1+"//div[contains(@class,'row no-gutters row-reverse')]/div[1]/div/div[%s]//a",index);
-        String xpath_cars = String.format(xpath_p1+"//div[@class='form-inner']/div/div[%s]//a",index);
-
-        Actions action =  new Actions(driver);
-        if (active_tab.getTabName().equalsIgnoreCase("Flights")){
-            WebElement webElement = driver.findElement(By.xpath(xpath_flight));
-            action.moveToElement(webElement).click().perform();
-            webElement.sendKeys(locationName);
-
-        } else if (active_tab.getTabName().equalsIgnoreCase("Cars")){
-            WebElement webElement = driver.findElement(By.xpath(xpath_cars));
-            action.moveToElement(webElement).click().perform();
-            webElement.sendKeys(locationName);
-        }
-    }
-
-    /**
      *
      * @param locationType From, To, Pick up, Drop off
      * @param locationName toronto, london, ...
@@ -353,4 +328,45 @@ public class HomePage extends AbstractPageBase{
         action.pause(2000).perform();
     }
 
+    public List<String> search_result() {
+        String xpath = "//div[@id='select2-drop']//ul/li";
+        List<WebElement> elementList = driver.findElements(By.xpath(xpath));
+
+        System.out.println(elementList.size());
+        List<String> stringList = BrowserUtils.getTextFromWebElements(elementList);
+        for (String each : stringList) {
+            System.out.println(each);
+        }
+        return stringList;
+    }
+
+    /**
+     * @param timeType  Depart, Return
+     * @param timeValue 12 || 12:30     can be exact or partial
+     *
+     * this method will send the given timeValue inside the input box
+     */
+    public void enter_time(String timeType, String timeValue) {
+
+        String xpath = String.format("//div[@id='cars']//a[ancestor::div[label[contains(.,'%s  Time')]]]", timeType);
+        String xpath_result = xpath + "/..//ul/li[1]";
+
+        driver.findElement(By.xpath(xpath)).click();
+        driver.findElement(By.xpath(xpath + "/..//input")).sendKeys(timeValue);
+        driver.findElement(By.xpath(xpath_result)).click();
+    }
+
+    /**
+     * @param timeType  Depart, Return
+     * @param timeValue 12:00 format
+     *
+     * this method will directly select the give timeValue
+     */
+    public void select_time(String timeType, String timeValue) {
+        String xpath = String.format("//div[@id='cars']//a[ancestor::div[label[contains(.,'%s  Time')]]]", timeType);
+        String xpath_result = String.format(xpath + "/..//ul/li[contains(.,'%s')]",timeValue);
+
+        driver.findElement(By.xpath(xpath)).click();
+        driver.findElement(By.xpath(xpath_result)).click();
+    }
 }

@@ -247,4 +247,50 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
+    @Test
+    public void verifying_enter_time(){
+        homepage.searchFor("Cars");
+        BrowserUtils.wait(1);
+
+        homepage.enter_time("Depart", "08:30");
+        BrowserUtils.wait(2);
+
+        homepage.enter_time("Return", "12");
+        BrowserUtils.wait(2);
+
+        homepage.select_time("Depart", "23:00");
+        BrowserUtils.wait(2);
+
+        homepage.select_time("Return", "13:00");
+        BrowserUtils.wait(3);
+    }
+
+    @Test
+    public void verifying_full_carsTab_functionality(){
+        homepage.searchFor("Cars");
+
+        homepage.enter_location("Pick up","Toronto");
+        homepage.select_firstAvailable_result();
+
+        homepage.enter_location("Drop off","Canada");
+        homepage.select_firstAvailable_result();
+
+        homepage.click_date("pickupdate");
+        homepage.select_monthYear("November","2020");
+        homepage.select_day(21);
+
+        homepage.select_time("Depart","08:00");
+
+        homepage.click_date("dropoffdate");
+        homepage.select_monthYear("December","2020");
+        homepage.select_day(21);
+
+        homepage.select_time("Return","16:00");
+
+        homepage.submit_search();
+        BrowserUtils.wait(5);
+
+    }
+
+
 }
