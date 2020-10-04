@@ -184,9 +184,9 @@ public class TestHomePage extends AbstractTestBase {
     public void test2(){
         homepage.searchFor("Tours");
         BrowserUtils.wait(1);
-        homepage.click_type();
+        homepage.click_boatTour_type();
         BrowserUtils.wait(1);
-        homepage.select_Type( "Ferry");
+        homepage.select_boatTour_Type( "Ferry");
         BrowserUtils.wait(1);
     }
 
@@ -208,10 +208,10 @@ public class TestHomePage extends AbstractTestBase {
         homepage.tripType("Round Trip");
         BrowserUtils.wait(2);
         homepage.flightClass("Business");
-        homepage.flightFrom("Toronto");
+        homepage.enter_location("From","Toronto");
         homepage.select_firstAvailable_result();
         BrowserUtils.wait(1);
-        homepage.flightTo("Urumqi");
+        homepage.enter_location("To","London");
         BrowserUtils.wait(1);
         homepage.select_firstAvailable_result();
         BrowserUtils.wait(1);
@@ -290,6 +290,17 @@ public class TestHomePage extends AbstractTestBase {
         homepage.submit_search();
         BrowserUtils.wait(5);
 
+    }
+
+    @Test
+    public void visa(){
+        homepage.searchFor("Visa");
+        homepage.enter_country("From","Canada");
+        BrowserUtils.wait(2);
+        homepage.select_country();
+        homepage.enter_country("To","Turkey");
+        BrowserUtils.wait(2);
+        homepage.select_country();
     }
 
 
