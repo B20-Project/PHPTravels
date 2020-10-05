@@ -297,10 +297,9 @@ public class TestHomePage extends AbstractTestBase {
         homepage.searchFor("Visa");
         homepage.enter_country("From","Canada");
         BrowserUtils.wait(2);
-        homepage.select_country();
         homepage.enter_country("To","Turkey");
         BrowserUtils.wait(2);
-        homepage.select_country();
+
     }
 
 
