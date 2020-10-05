@@ -332,15 +332,12 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(xpath)).click();
         String countryXpath = String.format("//label[.='%s Country']/.. //input",toFrom);
         driver.findElement(By.xpath(countryXpath)).sendKeys(countryName);
-
-
-    }
-
-    public void select_country(){
-        String xpath = String.format("//label[.='%s Country']/.. //ul",active_tab.getToFrom());
-        driver.findElement(By.xpath(xpath)).click();
+        BrowserUtils.wait(1);
+        String xpath2 = String.format("//label[.='%s Country']/.. //ul",active_tab.getToFrom());
+        driver.findElement(By.xpath(xpath2)).click();
 
     }
+
 
     /**
      * submit/search button
