@@ -331,9 +331,6 @@ public class HomePage extends AbstractPageBase{
         active_tab.setToFrom(toFrom);
         String xpath = String.format("//label[.='%s Country']/.. ",toFrom);
         driver.findElement(By.xpath(xpath)).click();
-//        Select select = new Select(driver.findElement(By.xpath("//div[@class='row gap-10 mb-20 align-items-end row-reverse']/div[1]//select")));
-//        List<WebElement> listFromCountries = driver.findElements(By.xpath("//div[@class='row gap-10 mb-20 align-items-end row-reverse']/div[1]//select"));
-//        System.out.println("listFromCountries = " + listFromCountries.size());
         String countryXpath = String.format("//label[.='%s Country']/.. //input",toFrom);
         driver.findElement(By.xpath(countryXpath)).sendKeys(countryName);
         BrowserUtils.wait(1);
