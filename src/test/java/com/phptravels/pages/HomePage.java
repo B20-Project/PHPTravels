@@ -232,6 +232,11 @@ public class HomePage extends AbstractPageBase{
                 "following-sibling::span/button[.='+']",active_tab.getTabName(),active_tab.getPerson());
         driver.findElement(By.xpath(xpath)).click();
     }
+    public void add_people(int num, String person){
+        for (int i = 0; i < num; i++) {
+            add_person(person);
+        }
+    }
 
     /**
      * remove person
@@ -242,6 +247,11 @@ public class HomePage extends AbstractPageBase{
         String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]//" +
                 "following-sibling::span/button[.='-']",active_tab.getTabName(),active_tab.getPerson());
         driver.findElement(By.xpath(xpath)).click();
+    }
+    public void remove_people(int num, String person){
+        for (int i = 0; i < num; i++) {
+            remove_person(person);
+        }
     }
 
     /** boatsType, toursType
