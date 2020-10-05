@@ -6,6 +6,7 @@ public class GlobalDataUtil {
     private String dateType;
     private String month;
     private String person;
+    private String toFrom;
 
     public String getTabName() {
         return tabName;
@@ -38,6 +39,14 @@ public class GlobalDataUtil {
 
     public void setPerson(String person) {
         this.person = person;
+    }
+
+    public String getToFrom() {
+        return toFrom;
+    }
+
+    public void setToFrom(String toFrom) {
+        this.toFrom = toFrom;
     }
 
     public String getIndex(){

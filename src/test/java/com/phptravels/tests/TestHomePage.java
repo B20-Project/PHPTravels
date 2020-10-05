@@ -172,4 +172,136 @@ public class TestHomePage extends AbstractTestBase {
         homepage.add_person("child");
         homepage.submit_search();
     }
+
+    @Test
+    public void test1(){
+        homepage.searchFor("Visa");
+        BrowserUtils.wait(1);
+        homepage.submit_search();
+    }
+
+    @Test
+    public void test2(){
+        homepage.searchFor("Tours");
+        BrowserUtils.wait(1);
+        homepage.click_boatTour_type();
+        BrowserUtils.wait(1);
+        homepage.select_boatTour_Type( "Ferry");
+        BrowserUtils.wait(1);
+    }
+
+    @Test
+    public void test3(){
+        homepage.searchFor("Tours");
+        BrowserUtils.wait(1);
+        homepage.click_destination();
+        BrowserUtils.wait(1);
+        homepage.pick_destination("Egypt");
+        BrowserUtils.wait(1);
+
+    }
+
+    @Test
+    public void flightTestArpatWay(){
+        homepage.searchFor("Flights");
+        BrowserUtils.wait(2);
+        homepage.tripType("Round Trip");
+        BrowserUtils.wait(2);
+        homepage.flightClass("Business");
+        homepage.enter_location("From","Toronto");
+        homepage.select_firstAvailable_result();
+        BrowserUtils.wait(1);
+        homepage.enter_location("To","London");
+        BrowserUtils.wait(1);
+        homepage.select_firstAvailable_result();
+        BrowserUtils.wait(1);
+        homepage.click_date("depart");
+        BrowserUtils.wait(1);
+        homepage.select_monthYear("November", "2020");
+        homepage.select_day(15);
+        BrowserUtils.wait(2);
+        homepage.click_date("retur");
+        homepage.select_monthYear("December", "2020");
+        homepage.select_day(10);
+        homepage.add_person("adult");
+        homepage.remove_person("child");
+        homepage.submit_search();
+
+    }
+
+    @Test
+    public void locationselection(){
+        homepage.searchFor("Flights");
+        homepage.enter_location("From","toronto");
+        homepage.select_firstAvailable_result();
+        homepage.enter_location("To","london");
+        homepage.select_firstAvailable_result();
+
+        BrowserUtils.wait(2);
+
+        homepage.searchFor("Cars");
+        homepage.enter_location("Pick up","toronto");
+        homepage.select_firstAvailable_result();
+        homepage.enter_location("Drop off","toronto");
+        homepage.select_firstAvailable_result();
+
+    }
+
+    @Test
+    public void verifying_enter_time(){
+        homepage.searchFor("Cars");
+        BrowserUtils.wait(1);
+
+        homepage.enter_time("Depart", "08:30");
+        BrowserUtils.wait(2);
+
+        homepage.enter_time("Return", "12");
+        BrowserUtils.wait(2);
+
+        homepage.select_time("Depart", "23:00");
+        BrowserUtils.wait(2);
+
+        homepage.select_time("Return", "13:00");
+        BrowserUtils.wait(3);
+    }
+
+    @Test
+    public void verifying_full_carsTab_functionality(){
+        homepage.searchFor("Cars");
+
+        homepage.enter_location("Pick up","Toronto");
+        homepage.select_firstAvailable_result();
+
+        homepage.enter_location("Drop off","Canada");
+        homepage.select_firstAvailable_result();
+
+        homepage.click_date("pickupdate");
+        homepage.select_monthYear("November","2020");
+        homepage.select_day(21);
+
+        homepage.select_time("Depart","08:00");
+
+        homepage.click_date("dropoffdate");
+        homepage.select_monthYear("December","2020");
+        homepage.select_day(21);
+
+        homepage.select_time("Return","16:00");
+
+        homepage.submit_search();
+        BrowserUtils.wait(5);
+
+    }
+
+    @Test
+    public void visa(){
+        homepage.searchFor("Visa");
+        homepage.enter_country("From","Canada");
+        BrowserUtils.wait(2);
+        homepage.select_country();
+        homepage.enter_country("To","Turkey");
+        BrowserUtils.wait(2);
+        homepage.select_country();
+    }
+
+
 }

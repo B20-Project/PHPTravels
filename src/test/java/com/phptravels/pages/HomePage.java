@@ -1,7 +1,9 @@
 package com.phptravels.pages;
+import com.phptravels.Utility.BrowserUtils;
 import com.phptravels.Utility.GlobalDataUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.*;
@@ -242,6 +244,104 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(xpath)).click();
     }
 
+    /** boatsType, toursType
+     *
+     *
+     */
+    public void click_boatTour_type(){
+        String xpath = String.format("//div[@id='%s']//div[@class='chosen-container chosen-container-single chosen-container-single-nosearch']/a", active_tab.getTabName().toLowerCase());
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void select_boatTour_Type(String typeName){
+        String xpath = String.format(" //div[@id='%s']//ul/li[contains(text(),'%s')]",active_tab.getTabName().toLowerCase(), typeName);
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     *
+     * @param tripType: Round Trip, One Way"
+     */
+    public void tripType(String tripType){
+        String xpath = String.format("//label[.='%s']",tripType);
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     *
+     * @param flightClass: Business, Economy, First
+     */
+    public void flightClass(String flightClass){
+        driver.findElement(By.xpath("//div[@class='form-icon-left flightclass']")).click();
+        String xpath = String.format("//li[.='%s']",flightClass);
+        driver.findElement(By.xpath(xpath)).click();
+
+    }
+
+    /**
+     *
+     * @param locationType From, To, Pick up, Drop off
+     * @param locationName toronto, london, ...
+     */
+    public void enter_location(String locationType, String locationName){
+        String xpath = String.format("//div[@id='%s']//a[ancestor::div[label[contains(.,'%s')]]]"
+                ,active_tab.getTabName().toLowerCase(),locationType);
+
+        WebElement location = driver.findElement(By.xpath(xpath));
+        Actions action = new Actions(driver);
+
+        action.moveToElement(location).click().perform();
+        action.pause(2000).perform();
+        action.sendKeys(location,locationName).perform();
+        action.pause(2000).perform();
+    }
+
+    /**
+     * @param timeType  Depart, Return
+     * @param timeValue 12 || 12:30     can be exact or partial
+     *
+     * this method will send the given timeValue inside the input box
+     */
+    public void enter_time(String timeType, String timeValue) {
+
+        String xpath = String.format("//div[@id='cars']//a[ancestor::div[label[contains(.,'%s  Time')]]]", timeType);
+        String xpath_result = xpath + "/..//ul/li[1]";
+
+        driver.findElement(By.xpath(xpath)).click();
+        driver.findElement(By.xpath(xpath + "/..//input")).sendKeys(timeValue);
+        driver.findElement(By.xpath(xpath_result)).click();
+    }
+
+    /**
+     * @param timeType  Depart, Return
+     * @param timeValue 12:00 format
+     *
+     * this method will directly select the give timeValue
+     */
+    public void select_time(String timeType, String timeValue) {
+        String xpath = String.format("//div[@id='cars']//a[ancestor::div[label[contains(.,'%s  Time')]]]", timeType);
+        String xpath_result = String.format(xpath + "/..//ul/li[contains(.,'%s')]",timeValue);
+
+        driver.findElement(By.xpath(xpath)).click();
+        driver.findElement(By.xpath(xpath_result)).click();
+    }
+
+    public void enter_country(String toFrom, String countryName){
+        active_tab.setToFrom(toFrom);
+        String xpath = String.format("//label[.='%s Country']/.. ",toFrom);
+        driver.findElement(By.xpath(xpath)).click();
+        String countryXpath = String.format("//label[.='%s Country']/.. //input",toFrom);
+        driver.findElement(By.xpath(countryXpath)).sendKeys(countryName);
+
+
+    }
+
+    public void select_country(){
+        String xpath = String.format("//label[.='%s Country']/.. //ul",active_tab.getToFrom());
+        driver.findElement(By.xpath(xpath)).click();
+
+    }
+
     /**
      * submit/search button
      */
@@ -249,4 +349,22 @@ public class HomePage extends AbstractPageBase{
         String xpath = String.format("//div[@id='%s']//button[@type='submit']", active_tab.getTabName());
         driver.findElement(By.xpath(xpath)).click();
     }
+
+    public void select_firstAvailable_result(){
+        String xpath = "//div[@id='select2-drop']//ul/li[1]";
+        driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public List<String> search_result() {
+        String xpath = "//div[@id='select2-drop']//ul/li";
+        List<WebElement> elementList = driver.findElements(By.xpath(xpath));
+
+        System.out.println(elementList.size());
+        List<String> stringList = BrowserUtils.getTextFromWebElements(elementList);
+        for (String each : stringList) {
+            System.out.println(each);
+        }
+        return stringList;
+    }
+
 }

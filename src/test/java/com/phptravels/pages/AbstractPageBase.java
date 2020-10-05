@@ -15,7 +15,6 @@ public abstract class AbstractPageBase {
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver,10);
 
-    GlobalDataUtil active_tab = new GlobalDataUtil();
 
     public AbstractPageBase() {
         PageFactory.initElements(driver, this);
