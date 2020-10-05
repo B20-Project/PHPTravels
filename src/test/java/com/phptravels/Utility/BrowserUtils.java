@@ -32,20 +32,6 @@ public class BrowserUtils {
         return textValues;
     }
 
-//    /**
-//     * wait for backgrounds processes on the browser to complete
-//     * @param timeOutInSeconds
-//     */
-//    public static void waitForPageToLoad(long timeOutInSeconds){
-//        ExpectedCondition<Boolean>  expectation = driver ->((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-//        try{
-//            WebDriverWait wait = new WebDriverWait(Driver.getDriver(),timeOutInSeconds);
-//            wait.until(expectation);
-//        }catch (Throwable error){
-//            error.printStackTrace();
-//        }
-//    }
-
     /**
      * wait for page load after click action
      */
