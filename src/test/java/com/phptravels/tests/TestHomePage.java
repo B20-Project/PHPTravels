@@ -165,4 +165,18 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertTrue(isDisplayed,"list is not displayed");
     }
 
+    @Test
+    public void pick_any_hotel(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.pick_random_by_hotel();
+
+        String actual = homepage.getSelected_dest_txt();
+        String expected = homepage.getRand_dest_txt();
+        System.out.println("actual = " + actual);
+        System.out.println("expected = " + expected);
+        Assert.assertEquals(actual,expected,"selection does not match");
+
+    }
+
 }

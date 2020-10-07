@@ -7,6 +7,7 @@ public class GlobalDataUtil {
     private String month;
     private String person;
     private String toFrom;
+    private String rand_dest_txt;
 
     public String getTabName() {
         return tabName;
@@ -47,6 +48,14 @@ public class GlobalDataUtil {
 
     public void setToFrom(String toFrom) {
         this.toFrom = toFrom;
+    }
+
+    public String getRand_dest_txt() {
+        return rand_dest_txt;
+    }
+
+    public void setRand_dest_txt(String rand_dest_txt) {
+        this.rand_dest_txt = rand_dest_txt;
     }
 
     public String getIndex(){
