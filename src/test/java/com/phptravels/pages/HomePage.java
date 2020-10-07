@@ -180,6 +180,10 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(xpath)).click();
     }
 
+    /**
+     *
+     * @param name enter input value
+     */
     public void enter_dest(String name){
         String xpath = String.format("//div[@id='%s']//a[ancestor::div[label[contains(.,'%s')]]]",
                 active_tab.getTabName(),active_tab.getActiveModule());
@@ -189,6 +193,10 @@ public class HomePage extends AbstractPageBase{
 
     }
 
+    /**
+     *
+     * @return text from all list items
+     */
     public List<String> get_search_result(){
         String xpath = String.format("//li[child::div[contains(.,'%s')]]",active_tab.getCurrentDest());
         List<WebElement> searchList = driver.findElements(By.xpath(xpath));
