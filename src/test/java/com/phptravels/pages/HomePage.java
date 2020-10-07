@@ -38,6 +38,13 @@ public class HomePage extends AbstractPageBase{
     @FindBy(xpath = "//footer[@id='footer']//a")
     private List <WebElement> actualFooterTexts;
 
+    @FindBy(xpath = "//ul[@class='select2-results']/li[1]//li")
+    private List<WebElement> list_by_hotel;
+    @FindBy(xpath = "//ul[@class='select2-results']/li[2]//li" )
+    private List<WebElement> list_by_location;
+    @FindBy(xpath = "//div[@id='hotels']//span[@class='select2-chosen']")
+    private WebElement current_hotel_selection;
+
 
     //Language
     public String get_default_language(){
@@ -175,6 +182,30 @@ public class HomePage extends AbstractPageBase{
         By select2_list = By.xpath("//ul[@class='select2-results']/li[1]");
         wait.until(ExpectedConditions.presenceOfElementLocated(select2_list));
         return driver.findElement(select2_list).isDisplayed();
+    }
+
+    public void pick_random_by_hotel(){
+        Random rand = new Random();
+        int index = rand.nextInt(list_by_hotel.size());
+        wait.until(ExpectedConditions.elementToBeClickable(list_by_hotel.get(index)));
+        active_tab.setRand_dest_txt(list_by_hotel.get(index).getText());
+        list_by_hotel.get(index).click();
+    }
+
+    public void pick_random_by_location(){
+        Random rand = new Random();
+        int index = rand.nextInt(list_by_location.size());
+        wait.until(ExpectedConditions.elementToBeClickable(list_by_location.get(index)));
+        active_tab.setRand_dest_txt(list_by_location.get(index).getText());
+        list_by_location.get(index).click();
+    }
+
+    public String getRand_dest_txt(){
+        return active_tab.getRand_dest_txt();
+    }
+
+    public String getSelected_dest_txt(){
+        return current_hotel_selection.getText();
     }
 
     /**
