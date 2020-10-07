@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.*;
 
@@ -168,6 +169,12 @@ public class HomePage extends AbstractPageBase{
     public void pick_destination(String name){
         String xpath = String.format("//li[child::div[.='%s']]",name);
         driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public boolean destination_list_Display(){
+        By select2_list = By.xpath("//ul[@class='select2-results']/li[1]");
+        wait.until(ExpectedConditions.presenceOfElementLocated(select2_list));
+        return driver.findElement(select2_list).isDisplayed();
     }
 
     /**
@@ -347,7 +354,6 @@ public class HomePage extends AbstractPageBase{
         driver.findElement(By.xpath(xpath2)).click();
 
     }
-
 
     /**
      * submit/search button

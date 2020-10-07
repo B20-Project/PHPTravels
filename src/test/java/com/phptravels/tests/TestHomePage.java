@@ -1,6 +1,7 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
+import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -154,6 +155,14 @@ public class TestHomePage extends AbstractTestBase {
         String expected = "supplier Registration";
         String actual = homepage.click_footer_links("Supplier Sign Up");
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void Hotels_List_Display(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        boolean isDisplayed = homepage.destination_list_Display();
+        Assert.assertTrue(isDisplayed,"list is not displayed");
     }
 
 }
