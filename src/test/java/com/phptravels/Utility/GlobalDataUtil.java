@@ -8,6 +8,8 @@ public class GlobalDataUtil {
     private String person;
     private String toFrom;
     private String rand_dest_txt;
+    private String activeModule;
+    private String currentDest;
 
     public String getTabName() {
         return tabName;
@@ -56,6 +58,22 @@ public class GlobalDataUtil {
 
     public void setRand_dest_txt(String rand_dest_txt) {
         this.rand_dest_txt = rand_dest_txt;
+    }
+
+    public String getActiveModule() {
+        return activeModule;
+    }
+
+    public void setActiveModule(String activeModule) {
+        this.activeModule = activeModule;
+    }
+
+    public String getCurrentDest() {
+        return currentDest;
+    }
+
+    public void setCurrentDest(String currentDest) {
+        this.currentDest = currentDest;
     }
 
     public String getIndex(){

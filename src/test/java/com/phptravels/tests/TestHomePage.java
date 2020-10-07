@@ -1,12 +1,12 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
-import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TestHomePage extends AbstractTestBase {
 
@@ -176,7 +176,20 @@ public class TestHomePage extends AbstractTestBase {
         System.out.println("actual = " + actual);
         System.out.println("expected = " + expected);
         Assert.assertEquals(actual,expected,"selection does not match");
+    }
 
+    @Test
+    public void verify_dest_filter(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.enter_dest("London");
+        List<String> searchResult = homepage.get_search_result();
+
+        String expected = "London";
+        for (String each: searchResult){
+            System.out.println("each = " + each);
+            Assert.assertTrue(each.contains(expected),"search result does not match");
+        }
     }
 
 }
