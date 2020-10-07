@@ -167,6 +167,8 @@ public class HomePage extends AbstractPageBase{
         String xpath = String.format("//div[@id='%s']//" +
                 "child::a[span[@class='select2-chosen']]",active_tab.getTabName());
         driver.findElement(By.xpath(xpath)).click();
+
+        active_tab.setActiveModule("Destination");
     }
 
     /**
@@ -176,6 +178,25 @@ public class HomePage extends AbstractPageBase{
     public void pick_destination(String name){
         String xpath = String.format("//li[child::div[.='%s']]",name);
         driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void enter_dest(String name){
+        String xpath = String.format("//div[@id='%s']//a[ancestor::div[label[contains(.,'%s')]]]",
+                active_tab.getTabName(),active_tab.getActiveModule());
+        driver.findElement(By.xpath(xpath)).sendKeys(name);
+
+        active_tab.setCurrentDest(name);
+
+    }
+
+    public List<String> get_search_result(){
+        String xpath = String.format("//li[child::div[contains(.,'%s')]]",active_tab.getCurrentDest());
+        List<WebElement> searchList = driver.findElements(By.xpath(xpath));
+        List<String> searchTxt = new ArrayList<>();
+        for (WebElement each: searchList){
+            searchTxt.add(each.getText());
+        }
+        return searchTxt;
     }
 
     /**
@@ -401,7 +422,6 @@ public class HomePage extends AbstractPageBase{
         BrowserUtils.wait(1);
         String xpath2 = String.format("//label[.='%s Country']/.. //ul",active_tab.getToFrom());
         driver.findElement(By.xpath(xpath2)).click();
-
     }
 
     /**
