@@ -2,6 +2,7 @@ package com.phptravels.pages;
 import com.phptravels.Utility.BrowserUtils;
 import com.phptravels.Utility.GlobalDataUtil;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -264,6 +265,32 @@ public class HomePage extends AbstractPageBase{
         String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]",
                 active_tab.getTabName(),active_tab.getDateType());
         driver.findElement(By.xpath(xpath)).click();
+    }
+
+    /**
+     * move to element
+     * @param name
+     */
+    public void move_to_dest(String name){
+        WebElement lastItem = driver.findElement(By.xpath(String.format("//li[child::div[contains(.,'%s')]]",name)));
+        Actions action = new Actions(driver);
+        action.moveToElement(lastItem).perform();
+        action.click().perform();
+    }
+
+    /**
+     * scroll to element
+     * @param name
+     */
+    public void scroll_to_dest(String name){
+        Actions action = new Actions(driver);
+        String xpath = String.format("//div[@id='%s']//" +
+                "child::a[span[@class='select2-chosen']]",active_tab.getTabName());
+        WebElement given_item = driver.findElement(By.xpath(String.format("//li[child::div[contains(.,'%s')]]",name)));
+        do {
+            action.sendKeys(driver.findElement(By.xpath(xpath)),Keys.DOWN).perform();
+        }while (!given_item.getAttribute("class").contains("select2-highlighted"));
+        action.click(given_item).perform();
     }
 
     /**
