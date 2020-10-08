@@ -1,6 +1,7 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
+import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,7 +9,6 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 
 public class TestHomePage extends AbstractTestBase {
 
