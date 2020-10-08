@@ -457,4 +457,15 @@ public class HomePage extends AbstractPageBase{
         return stringList;
     }
 
+    /**
+     * date box WebElement
+     * @param type checkin/checkout - depart/return - pickup/dropoff
+     */
+    public WebElement current_date(String type){
+        active_tab.setDateType(type);
+        String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]",
+                active_tab.getTabName(),active_tab.getDateType());
+        //driver.findElement(By.xpath(xpath)).click();
+        return driver.findElement(By.xpath(xpath));
+    }
 }
