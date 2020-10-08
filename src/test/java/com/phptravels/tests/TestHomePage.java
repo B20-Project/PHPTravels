@@ -1,12 +1,14 @@
 package com.phptravels.tests;
 
 import com.phptravels.Utility.BrowserUtils;
-import com.phptravels.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class TestHomePage extends AbstractTestBase {
 
@@ -179,4 +181,20 @@ public class TestHomePage extends AbstractTestBase {
 
     }
 
+    @Test
+    public void Calendar_Current_MonthYear(){
+        homepage.searchFor("Hotels");
+        String currentDate = homepage.current_date("checkin").getAttribute("value");
+
+        String date_dd_MM_yyyy[] = (currentDate.split(" ")[0]).split("/");
+
+        int actuallyMonth  = Integer.parseInt(date_dd_MM_yyyy[1]);
+        int actuallyYear = Integer.parseInt(date_dd_MM_yyyy[2]);
+
+        int expectYear = LocalDateTime.now().getYear();
+        int expectMonth = LocalDateTime.now().getMonthValue();
+
+        Assert.assertEquals(expectMonth,actuallyMonth);
+        Assert.assertEquals(expectYear,actuallyYear);
+    }
 }
