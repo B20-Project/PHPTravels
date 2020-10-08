@@ -192,4 +192,18 @@ public class TestHomePage extends AbstractTestBase {
         }
     }
 
+    @Test
+    public void move_to_dest(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.move_to_dest("Singapore, Singapore");
+    }
+
+    @Test
+    public void scroll_to_dest(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.scroll_to_dest("Singapore, Singapore");
+    }
+
 }
