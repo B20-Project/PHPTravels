@@ -7,6 +7,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Year;
 import java.util.*;
 
 public class HomePage extends AbstractPageBase{
@@ -276,6 +280,7 @@ public class HomePage extends AbstractPageBase{
                 active_tab.getIndex(),month,year);
 
         active_tab.setMonth(month);
+        active_tab.setYear(year);
         boolean month_found = false;
         while(!month_found) {
             try {
@@ -468,4 +473,40 @@ public class HomePage extends AbstractPageBase{
         //driver.findElement(By.xpath(xpath)).click();
         return driver.findElement(By.xpath(xpath));
     }
-}
+
+    public int randomValidDay() throws Exception {
+       Random random = new Random();
+        int randomDay = 0;
+
+
+            //if (LocalDate.now().getMonth().toString().equalsIgnoreCase(active_tab.getMonth()))
+
+                if (Integer.parseInt(active_tab.getYear()) >= LocalDate.now().getYear()) {
+
+                    if (Integer.parseInt(active_tab.getYear()) == LocalDate.now().getYear()){
+                        if (LocalDate.now().getMonth().toString().equalsIgnoreCase(active_tab.getMonth())){
+
+                        }
+                    }
+
+                    if (Year.isLeap(Integer.parseInt(active_tab.getYear()))) {
+                        randomDay = random.nextInt(Month.valueOf(active_tab.getMonth().toUpperCase()).maxLength()) + 1;
+                        return randomDay;
+                    } else {
+                        if (active_tab.getMonth().equalsIgnoreCase("February")) {
+                            randomDay = random.nextInt(28) + 1;
+                            return randomDay;
+                        }
+                        randomDay = random.nextInt(Month.valueOf(active_tab.getMonth().toUpperCase()).maxLength()) + 1;
+                        return randomDay;
+                    }
+
+                } else {
+                    throw new Exception("Must be valid year");
+                }
+            }
+
+
+    }
+
+

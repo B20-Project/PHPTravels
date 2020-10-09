@@ -209,4 +209,19 @@ public class TestHomePage extends AbstractTestBase {
         Assert.assertEquals(expectMonth,actuallyMonth);
         Assert.assertEquals(expectYear,actuallyYear);
     }
+
+    @Test
+    public void calendar_Select_Valid_Day() throws Exception {
+        homepage.searchFor("Hotels");
+        homepage.click_date("checkin");
+        homepage.select_monthYear("December","2020");
+        int validDay = homepage.randomValidDay();
+        homepage.select_day(validDay);
+        String currentDate = homepage.current_date("checkin").getAttribute("value");
+        String date_dd_MM_yyyy[] = (currentDate.split(" ")[0]).split("/");
+        int actuallyDay = Integer.parseInt(date_dd_MM_yyyy[0]);
+
+        Assert.assertEquals(validDay,actuallyDay);
+
+    }
 }

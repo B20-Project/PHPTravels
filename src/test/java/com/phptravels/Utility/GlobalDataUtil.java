@@ -10,6 +10,15 @@ public class GlobalDataUtil {
     private String rand_dest_txt;
     private String activeModule;
     private String currentDest;
+    private String year;
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
 
     public String getTabName() {
         return tabName;
