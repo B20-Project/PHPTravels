@@ -461,11 +461,13 @@ public class HomePage extends AbstractPageBase{
      * date box WebElement
      * @param type checkin/checkout - depart/return - pickup/dropoff
      */
-    public WebElement current_date(String type){
+    public String[] verify_MonthandYear(String type){
         active_tab.setDateType(type);
         String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]",
                 active_tab.getTabName(),active_tab.getDateType());
-        //driver.findElement(By.xpath(xpath)).click();
-        return driver.findElement(By.xpath(xpath));
+
+        String currentDate = driver.findElement(By.xpath(xpath)).getAttribute("value");
+        String date_dd_MM_yyyy[] = (currentDate.split(" ")[0]).split("/");
+       return date_dd_MM_yyyy;
     }
 }

@@ -196,9 +196,7 @@ public class TestHomePage extends AbstractTestBase {
     @Test
     public void Calendar_Current_MonthYear(){
         homepage.searchFor("Hotels");
-        String currentDate = homepage.current_date("checkin").getAttribute("value");
-
-        String date_dd_MM_yyyy[] = (currentDate.split(" ")[0]).split("/");
+        String date_dd_MM_yyyy[] = homepage.verify_MonthandYear("checkin");
 
         int actuallyMonth  = Integer.parseInt(date_dd_MM_yyyy[1]);
         int actuallyYear = Integer.parseInt(date_dd_MM_yyyy[2]);
@@ -208,5 +206,6 @@ public class TestHomePage extends AbstractTestBase {
 
         Assert.assertEquals(expectMonth,actuallyMonth);
         Assert.assertEquals(expectYear,actuallyYear);
+
     }
 }
