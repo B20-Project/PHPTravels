@@ -59,6 +59,9 @@ public class BrowserUtils {
         ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",element);
     }
 
+    public static void scrollBy(){
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("scroll(0,100)");
+    }
 
     /**
      *
