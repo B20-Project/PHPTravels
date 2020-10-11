@@ -206,4 +206,16 @@ public class TestHomePage extends AbstractTestBase {
         homepage.scroll_to_dest("Singapore, Singapore");
     }
 
+    @Test
+    public void invalid_dest(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.enter_dest("fdasf");
+        String actual = homepage.invalid_result();
+        String expected = "No matches found";
+        System.out.println("actual = " + actual);
+        System.out.println("expected = " + expected);
+        Assert.assertEquals(actual,expected,"no match found msg does not match");
+    }
+
 }
