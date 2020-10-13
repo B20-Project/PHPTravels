@@ -4,6 +4,7 @@ import com.phptravels.Utility.BrowserUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -217,5 +218,20 @@ public class TestHomePage extends AbstractTestBase {
         System.out.println("expected = " + expected);
         Assert.assertEquals(actual,expected,"no match found msg does not match");
     }
+    @Test
+    public void calendar_Current_MonthYear() {
+        homepage.searchFor("Hotels");
+        String date_dd_MM_yyyy[] = homepage.verify_MonthandYear("checkin");
+
+        int actuallyMonth = Integer.parseInt(date_dd_MM_yyyy[1]);
+        int actuallyYear = Integer.parseInt(date_dd_MM_yyyy[2]);
+
+        int expectYear = LocalDateTime.now().getYear();
+        int expectMonth = LocalDateTime.now().getMonthValue();
+
+        Assert.assertEquals(expectMonth, actuallyMonth);
+        Assert.assertEquals(expectYear, actuallyYear);
+    }
+
 
 }

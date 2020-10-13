@@ -495,4 +495,17 @@ public class HomePage extends AbstractPageBase{
         return stringList;
     }
 
+    /**
+     * date box WebElement
+     * @param type checkin/checkout - depart/return - pickup/dropoff
+     */
+    public String[] verify_MonthandYear(String type){
+        active_tab.setDateType(type);
+        String xpath = String.format("//div[@id='%s']//child::input[contains(@name,'%s')]",
+                active_tab.getTabName(),active_tab.getDateType());
+
+        String currentDate = driver.findElement(By.xpath(xpath)).getAttribute("value");
+        String date_dd_MM_yyyy[] = (currentDate.split(" ")[0]).split("/");
+       return date_dd_MM_yyyy;
+    }
 }
