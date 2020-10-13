@@ -208,6 +208,17 @@ public class HomePage extends AbstractPageBase{
         return searchTxt;
     }
 
+    public String invalid_result(){
+        String msg = "";
+        try {
+            driver.findElement(By.xpath(String.format("//li[child::div[contains(.,'%s')]]",active_tab.getCurrentDest())));
+        }catch (Exception e){
+            WebElement invalid_msg = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul[.='No matches found']")));
+            msg = invalid_msg.getText();
+        }
+        return msg;
+    }
+
     /**
      *
      * @return true if destination dropdown menu displays

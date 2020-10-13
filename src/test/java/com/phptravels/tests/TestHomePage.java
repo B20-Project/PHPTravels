@@ -194,18 +194,29 @@ public class TestHomePage extends AbstractTestBase {
     }
 
     @Test
-    public void calendar_Current_MonthYear(){
+    public void move_to_dest(){
         homepage.searchFor("Hotels");
-        String date_dd_MM_yyyy[] = homepage.verify_MonthandYear("checkin");
-
-        int actuallyMonth  = Integer.parseInt(date_dd_MM_yyyy[1]);
-        int actuallyYear = Integer.parseInt(date_dd_MM_yyyy[2]);
-
-        int expectYear = LocalDateTime.now().getYear();
-        int expectMonth = LocalDateTime.now().getMonthValue();
-
-        Assert.assertEquals(expectMonth,actuallyMonth);
-        Assert.assertEquals(expectYear,actuallyYear);
-
+        homepage.click_destination();
+        homepage.move_to_dest("Singapore, Singapore");
     }
+
+    @Test
+    public void scroll_to_dest(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.scroll_to_dest("Singapore, Singapore");
+    }
+
+    @Test
+    public void invalid_dest(){
+        homepage.searchFor("Hotels");
+        homepage.click_destination();
+        homepage.enter_dest("fdasf");
+        String actual = homepage.invalid_result();
+        String expected = "No matches found";
+        System.out.println("actual = " + actual);
+        System.out.println("expected = " + expected);
+        Assert.assertEquals(actual,expected,"no match found msg does not match");
+    }
+
 }
