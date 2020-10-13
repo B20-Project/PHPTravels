@@ -194,7 +194,7 @@ public class TestHomePage extends AbstractTestBase {
     }
 
     @Test
-    public void Calendar_Current_MonthYear(){
+    public void calendar_Current_MonthYear(){
         homepage.searchFor("Hotels");
         String date_dd_MM_yyyy[] = homepage.verify_MonthandYear("checkin");
 
